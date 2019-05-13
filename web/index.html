@@ -12,7 +12,7 @@
 </head>
 <body>
   <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">ParkAnywhere</a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">Navbar Link</a></li>
       </ul>
@@ -26,19 +26,110 @@
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center orange-text">Starter Template</h1>
+	  <ul class="collection">
+      <li class="collection-item">
+	  <!-- Parkiranje -->
+		<h5>Parkiraj</h5>
       <div class="row center">
-        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-      </div>
-      <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
-      </div>
-      <br><br>
-
-    </div>
+	  <!-- Prilepi link v action -->
+        <form action="">
+			<div class="col s5">
+				<input type="text" name="idUporabnik" label="uporabnik"/>
+				<label>ID uporabnik</label>
+			</div>
+			<div class="col s5">
+				<input type="text" name="idParkirisce"/>
+				<label>ID parkirišče</label>
+			</div>
+			<div class="col s2">
+				<button class="btn waves-effect waves-light" type="submit" name="action">Parkiraj
+					<i class="material-icons right">send</i>
+				</button>
+			</div>
+		</form>
+	</div>
+	  </li>
+      <li class="collection-item">
+	  <!-- Odpelji -->
+		<h5>Odpelji</h5>
+	<div class="row center">
+		<!-- Prilepi link v action -->
+        <form action="">
+			<div class="col s5">
+				<input type="text" name="idUporabnik" label="uporabnik"/>
+				<label>ID uporabnik</label>
+			</div>
+			<div class="col s5">
+				<input type="text" name="idParkirisce"/>
+				<label>ID parkirišče</label>
+			</div>
+			<div class="col s2">
+				<button class="btn waves-effect waves-light" type="submit" name="action">Odpelji
+					<i class="material-icons right">send</i>
+				</button>
+			</div>
+		</form>
+	</div>
+	  </li>
+      <li class="collection-item">
+	  <!-- Rezervacija -->
+		<h5>Rezerviraj</h5>
+	<div class="row center">
+		<!-- Prilepi link v action -->
+        <form action="">
+			<div class="col s5">
+				<input type="text" name="idUporabnik" label="uporabnik"/>
+				<label>ID uporabnik</label>
+			</div>
+			<div class="col s5">
+				<input type="text" name="idParkirisce"/>
+				<label>ID parkirišče</label>
+			</div>
+			<div class="col s2">
+				<button class="btn waves-effect waves-light" type="submit" name="action">Rezerviraj
+					<i class="material-icons right">send</i>
+				</button>
+			</div>
+		</form>
+	</div>		
+	  </li>
+    </ul>
   </div>
+<br>
+	<div class="container">
+		<h4>Seznam vseh parkirišč</h4>
+		<table>
+        <thead>
+          <tr>
+              <th>Naziv parkirišča</th>
+              <th>Lokacija</th>
+              <th>Število parkirnih mest</th>
+			  <th>Število zasedenih parkirnih mest</div>
+          </tr>
+        </thead>
 
-
+        <tbody>
+          <tr>
+            <td>Pod gradom</td>
+            <td>Cesta pod gradom 5</td>
+            <td>550</td>
+			<td>413</td>
+          </tr>
+          <tr>
+            <td>Pristan</td>
+            <td>Koroška cesta 15</td>
+            <td>60</td>
+			<td>52</td>
+          </tr>
+		  <tr>
+            <td>Parkirišče lent</td>
+            <td>Gosposka 15</td>
+            <td>320</td>
+			<td>115</td>
+          </tr>
+        </tbody>
+      </table>
+	</div>
   <div class="container">
     <div class="section">
 
