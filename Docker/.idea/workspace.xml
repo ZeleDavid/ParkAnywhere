@@ -7,10 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="71fb63ed-01f4-47da-b7b3-247cd06ccb98" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/javax_ws_rs_api_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/javax_ws_rs_api_2_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-dir/Docker/Docker_war.war" beforeDir="false" afterPath="$PROJECT_DIR$/docker-dir/Docker/Docker_war.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android app/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android app/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android app/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android app/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android app/app/src/main/java/com/example/androidapp/LoginScreenFrag.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android app/app/src/main/java/com/example/androidapp/MainFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android app/app/src/main/res/layout/fragment_login_screen.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android app/app/src/main/res/layout/fragment_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Android app/app/src/main/res/navigation/nav.xml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,8 +50,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/rest/UporabnikiResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="272">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="e#530#531#0" expanded="true" />
                 <element signature="e#555#556#0" expanded="true" />
@@ -99,7 +104,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-4" />
     <option name="y" value="-17" />
     <option name="width" value="1936" />
@@ -316,15 +321,15 @@
       <workItem from="1557917069549" duration="1443000" />
       <workItem from="1557918794366" duration="458000" />
       <workItem from="1557919334194" duration="469000" />
-      <workItem from="1557920111062" duration="285000" />
+      <workItem from="1557920111062" duration="1008000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5663000" />
+    <option name="totallyTimeSpent" value="6386000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="OpenShift" />
@@ -409,8 +414,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/rest/UporabnikiResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="272">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
           <folding>
             <element signature="e#530#531#0" expanded="true" />
             <element signature="e#555#556#0" expanded="true" />
