@@ -3,6 +3,12 @@
     <output-path>$PROJECT_DIR$/docker-dir/Docker</output-path>
     <root id="archive" name="Docker_war.war">
       <element id="artifact" artifact-name="Docker:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="javax.ws.rs-api-2.0" />
+          <element id="library" level="project" name="JBoss Weld-2.0.3" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

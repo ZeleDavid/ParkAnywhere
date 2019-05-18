@@ -9,6 +9,8 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Mojarra-2.4.0" />
+          <element id="library" level="project" name="JBoss Weld-2.0.3" />
+          <element id="library" level="project" name="javax.ws.rs-api-2.0" />
         </element>
       </element>
     </root>
