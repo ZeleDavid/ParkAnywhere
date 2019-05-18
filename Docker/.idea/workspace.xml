@@ -299,20 +299,32 @@
       <workItem from="1557917069549" duration="1443000" />
       <workItem from="1557918794366" duration="458000" />
       <workItem from="1557919334194" duration="469000" />
+<<<<<<< HEAD
       <workItem from="1557920111062" duration="285000" />
       <workItem from="1557920913746" duration="2976000" />
       <workItem from="1557924007677" duration="189000" />
       <workItem from="1557924222300" duration="250000" />
       <workItem from="1557924499184" duration="196000" />
       <workItem from="1557924719925" duration="1458000" />
+=======
+      <workItem from="1557920111062" duration="1008000" />
+>>>>>>> 6afe91d7f5f82e5ee1732c3c39520b18ba16f65d
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="10732000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+=======
+    <option name="totallyTimeSpent" value="6386000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+>>>>>>> 6afe91d7f5f82e5ee1732c3c39520b18ba16f65d
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49833888" visible="true" weight="0.2739872" />
       <window_info id="Structure" order="1" sideWeight="0.5016611" side_tool="true" weight="0.26332623" />
@@ -390,8 +402,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/REST/RestApplication.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="85">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+=======
+        <state relative-caret-position="272">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#530#531#0" expanded="true" />
+            <element signature="e#555#556#0" expanded="true" />
+          </folding>
+>>>>>>> 6afe91d7f5f82e5ee1732c3c39520b18ba16f65d
         </state>
       </provider>
     </entry>
