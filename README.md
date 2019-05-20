@@ -37,6 +37,7 @@ Za inštalacijo Angular aplikacije je potrebno:
 npm i -g npm-check-updates
 ncu -u -q
 npm install
+npm install -g @angular/cli
 ```
 
 
