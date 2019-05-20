@@ -1,6 +1,5 @@
 package com.example.parkmobile
 
-import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,7 +12,7 @@ import android.content.Intent
 
 
 
-class TestFragment : Fragment() {
+class MainMapFragment : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +30,7 @@ class TestFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        button.setOnClickListener {
+        findPark.setOnClickListener{
             val gmmIntentUri = Uri.parse("google.navigation:q=46.554649,15.645881")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")

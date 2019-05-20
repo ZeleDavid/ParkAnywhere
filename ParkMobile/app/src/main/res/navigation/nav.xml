@@ -4,6 +4,6 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav"
             app:startDestination="@id/testFragment">
 
-    <fragment android:id="@+id/testFragment" android:name="com.example.parkmobile.TestFragment"
+    <fragment android:id="@+id/testFragment" android:name="com.example.parkmobile.MainMapFragment"
               android:label="fragment_test" tools:layout="@layout/fragment_test"/>
 </navigation>
