@@ -28,6 +28,17 @@ bind ports: specify <br>
 port bindings-port:8080 protcol:tcp hostip:127.0.0.1 .....bindings-port:9990 protcol:tcp hostip:127.0.0.1 
 - run
 
+<hr>
+
+Za inštalacijo Angular aplikacije je potrebno:
+- odpreti mapo "my-app"
+- v njej zagnati cmd in ukaze za posodobitev vseh odvisnosti: 
+```
+npm i -g npm-check-updates
+ncu -u -q
+npm install
+```
+
 
 # AVTORJI
 [<img alt="EvaSmolak" src="https://avatars0.githubusercontent.com/u/33725038?s=400&v=4" width="117">](https://github.com/EvaSmolak) |[<img alt="CetinaLuka" src="https://avatars3.githubusercontent.com/u/33715779?s=400&u=4752d8027850c8f376c54dd977df726c1d24c58a&v=4" width="117">](https://github.com/CetinaLuka) |[<img alt="KovacZan" src="https://avatars1.githubusercontent.com/u/39158639?s=400&v=4" width="117">](https://github.com/KovacZan) |[<img alt="ZeleDavid" src="https://avatars3.githubusercontent.com/u/33752926?s=400&v=4" width="117">](https://github.com/ZeleDavid) |
