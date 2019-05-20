@@ -7,6 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b9aae5f-67e0-45e2-9150-73e30cc74a0c" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -14,6 +15,24 @@
       <change beforePath="$PROJECT_DIR$/out/production/classes/META-INF/Docker_rest.Docker_rest.main.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/REST/ParkiranjeResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/REST/ParkiranjeResource.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../web/index.html" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/../../ParkMobile/app/src/main/res/drawable/ic_local_parking_black_24dp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ParkMobile/app/src/main/res/values/google_maps_api.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android app/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android app/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android app/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android app/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android app/app/src/main/java/com/example/androidapp/LoginScreenFrag.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android app/app/src/main/java/com/example/androidapp/MainFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android app/app/src/main/res/layout/fragment_login_screen.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android app/app/src/main/res/layout/fragment_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Android app/app/src/main/res/navigation/nav.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ParkMobile/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../ParkMobile/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ParkMobile/app/src/main/java/com/example/parkmobile/TestFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../ParkMobile/app/src/main/java/com/example/parkmobile/MainMapFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ParkMobile/app/src/main/res/layout/fragment_test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ParkMobile/app/src/main/res/layout/fragment_test.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ParkMobile/app/src/main/res/navigation/nav.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ParkMobile/app/src/main/res/navigation/nav.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> b08ea4e51f45e0213d2ec8ccc5d3bf45a234735a
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -73,8 +92,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/REST/ParkiranjeResource.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="369">
               <caret line="48" column="52" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
+=======
+            <state relative-caret-position="476">
+              <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+>>>>>>> b08ea4e51f45e0213d2ec8ccc5d3bf45a234735a
             </state>
           </provider>
         </entry>
@@ -119,9 +143,78 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="ProjectPane" />
       <pane id="PackagesPane" />
+=======
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Docker_rest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Docker_rest" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="Docker_rest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Docker_rest" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="docker-dir" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Docker_rest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Docker_rest" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Docker_rest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Docker_rest" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="Docker_rest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Docker_rest" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Docker_rest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Docker_rest" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="DAO" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Docker_rest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Docker_rest" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="REST" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Docker_rest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Docker_rest" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="VAO" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Docker_rest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Docker_rest" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+>>>>>>> b08ea4e51f45e0213d2ec8ccc5d3bf45a234735a
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -129,7 +222,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557928725909" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../arkj/ark-java-tester" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -207,18 +300,31 @@
       <workItem from="1557927120243" duration="259000" />
       <workItem from="1557927405182" duration="1336000" />
       <workItem from="1558123592847" duration="502000" />
+<<<<<<< HEAD
       <workItem from="1558342387750" duration="956000" />
+=======
+      <workItem from="1558340016047" duration="623000" />
+      <workItem from="1558343514666" duration="793000" />
+>>>>>>> b08ea4e51f45e0213d2ec8ccc5d3bf45a234735a
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="3882000" />
+=======
+    <option name="totallyTimeSpent" value="4342000" />
+>>>>>>> b08ea4e51f45e0213d2ec8ccc5d3bf45a234735a
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27248323" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26599148" />
+>>>>>>> b08ea4e51f45e0213d2ec8ccc5d3bf45a234735a
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -236,8 +342,13 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32998884" />
       <window_info anchor="bottom" id="Terminal" order="8" />
+<<<<<<< HEAD
       <window_info active="true" anchor="bottom" id="Docker" order="9" visible="true" weight="0.30736545" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3286119" />
+=======
+      <window_info anchor="bottom" id="Docker" order="9" visible="true" weight="0.14301191" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+>>>>>>> b08ea4e51f45e0213d2ec8ccc5d3bf45a234735a
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
@@ -308,8 +419,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/REST/ParkiranjeResource.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="369">
           <caret line="48" column="52" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
+=======
+        <state relative-caret-position="476">
+          <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+>>>>>>> b08ea4e51f45e0213d2ec8ccc5d3bf45a234735a
         </state>
       </provider>
     </entry>
