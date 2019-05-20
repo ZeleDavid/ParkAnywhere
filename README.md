@@ -2,14 +2,13 @@
 Projekt - Praktikum 2
 <hr>
 
-<p align="center"><img src="https://ark.io/images/media-kit/ark-side.png" alt="ParkAnywhere" title="ParkAnywhere" width="500px" height="200px"/></p>
-
-# ARK
-ARK zagotavlja uporabnikom, razvijalcem in startupom inovativne blockchain tehnologije. Naš cilj je ustvariti celoten ekosistem povezanih verig in navidezno pajkova mreža neskončnih primerov, zaradi katerih je ARK zelo prilagodljiv, prilagodljiv in prilagodljiv. ARK je varna platforma, namenjena množičnemu sprejemanju in bo zagotavljala storitve, ki jih potrošniki želijo in potrebujejo razvijalcem.
+<p align="center"><img src="https://ark.io/images/media-kit/ark-side.png" alt="ParkAnywhere" title="ParkAnywhere" width="300px" height="120px"/></p>
 
 # NAŠ PROJEKT
+ParkAnywhere je rešitev, ki uporabnikom omogoča da najdejo parkirno mesto in plačajo parkirnino kar z mobilno aplikacijo, to pa podpira blockchain platforma ARK.
 
-...
+## ARK
+ARK zagotavlja uporabnikom, razvijalcem in startupom inovativne blockchain tehnologije. Naš cilj je ustvariti celoten ekosistem povezanih verig in navidezno pajkova mreža neskončnih primerov, zaradi katerih je ARK zelo prilagodljiv, prilagodljiv in prilagodljiv. ARK je varna platforma, namenjena množičnemu sprejemanju in bo zagotavljala storitve, ki jih potrošniki želijo in potrebujejo razvijalcem.
 
 
 # VZPOSTAVITEV 
