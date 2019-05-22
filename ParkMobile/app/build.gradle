@@ -39,5 +39,7 @@ dependencies {
 
 
     // google maps storitev
-    implementation 'com.google.android.gms:play-services-maps:16.1.0'
+    implementation 'com.google.android.gms:play-services-maps:12.0.1'
+    implementation 'com.google.android.gms:play-services:12.0.1'
+    implementation 'com.google.android.gms:play-services-location:12.0.1'
 }
