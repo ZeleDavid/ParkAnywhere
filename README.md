@@ -34,10 +34,8 @@ Za inštalacijo Angular aplikacije je potrebno:
 - odpreti mapo "my-app"
 - v njej zagnati cmd in ukaze za posodobitev vseh odvisnosti: 
 ```
-npm i -g npm-check-updates
-ncu -u -q
 npm install
-npm install -g @angular/cli
+npm start
 ```
 
 
