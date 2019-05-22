@@ -1,1 +1,34 @@
-my-app/node_modules/
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/ParkWeb/sb-admin-material/tmp
+/ParkWeb/sb-admin-material/out-tsc
+
+# dependencies
+/ParkWeb/sb-admin-material/node_modules
+ParkWeb/sb-admin-material/package-lock.json
+
+# IDEs and editors
+/ParkWeb/sb-admin-material/.idea
+/ParkWeb/sb-admin-material/project
+/ParkWeb/sb-admin-material/classpath
+/ParkWeb/sb-admin-material/history
+/ParkWeb/sb-admin-material/c9/
+/ParkWeb/sb-admin-material/settings/
+
+# misc
+/ParkWeb/sb-admin-material/.sass-cache
+/ParkWeb/sb-admin-material/connect.lock
+/ParkWeb/sb-admin-material/coverage
+/ParkWeb/sb-admin-material/libpeerconnection.log
+/ParkWeb/sb-admin-materialnpm-debug.log
+/ParkWeb/sb-admin-materialtestem.log
+/ParkWeb/sb-admin-material/typings
+
+# e2e
+/ParkWeb/sb-admin-material/e2e/*.js
+/ParkWeb/sb-admin-material/e2e/*.map
+
+# System Files
+/ParkWeb/sb-admin-material/DS_Store
+ParkWeb/sb-admin-material/Thumbs.db
