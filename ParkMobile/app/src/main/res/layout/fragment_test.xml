@@ -28,13 +28,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                app:navigationIcon="@drawable/ic_directions_car_black_24dp"/>
+                app:navigationIcon="@drawable/ic_directions_car_black_24dp"
+                app:hideOnScroll="true">
+        </com.google.android.material.bottomappbar.BottomAppBar>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/findPark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_anchor="@id/bar"
-                android:src="@drawable/ic_local_parking_white_24dp" app:backgroundTint="#009688"/>
+                app:backgroundTint="@color/colorPrimaryDark"
+                android:src="@drawable/ic_baseline_navigation_24px"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

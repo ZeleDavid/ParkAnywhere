@@ -10,17 +10,17 @@
     <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
+            android:background="@android:color/white"
             android:theme="?attr/actionBarTheme"
             android:minHeight="?attr/actionBarSize"
             android:id="@+id/toolbar"
-            app:logo="@drawable/ic_directions_car_white_24dp">
+            app:logo="@drawable/ic_directions_car_black_24dp">
         <TextView
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:textSize="26sp"
                 android:id="@+id/naslovniText" android:text="@string/app_title" android:fontFamily="@font/roboto"
-                android:paddingStart="15dp" android:textColor="@android:color/white"/>
+                android:paddingStart="15dp" android:textColor="@android:color/black"/>
     </androidx.appcompat.widget.Toolbar>
     <FrameLayout
             android:layout_width="match_parent"

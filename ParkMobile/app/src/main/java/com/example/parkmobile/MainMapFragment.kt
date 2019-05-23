@@ -1,6 +1,7 @@
 package com.example.parkmobile
 
 import android.content.Context
+import android.content.DialogInterface
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -71,7 +72,7 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener {
             mMap.addMarker(
                 MarkerOptions()
                     .position(LatLng(46.554649, 15.645881))
-                    .icon(bitmapDescriptorFromVector(context!!, R.drawable.ic_local_parking_black_24dp))
+                    .icon(bitmapDescriptorFromVector(context!!, R.drawable.ic_directions_car_black_24dp))
                     .snippet("50 prostih mest")
                     .title("Parkirišče pod gradom")
             )
@@ -109,16 +110,17 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener {
 
         findPark.setOnClickListener{
             if(clicked==true){
-                /*MaterialAlertDialogBuilder(context)
-                    .setTitle("Title")
-                    .setMessage("Message")
-                    .setPositiveButton("Ok", null)
-                    .setNegativeButton("Cancel", null)
-                    .show()*/
-                val gmmIntentUri = Uri.parse("google.navigation:q=${clickedMarker.position.latitude},${clickedMarker.position.longitude}")
-                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-                mapIntent.setPackage("com.google.android.apps.maps")
-                startActivity(mapIntent)
+                MaterialAlertDialogBuilder(context)
+                    .setTitle("Navigacija do parkirišča ${clickedMarker.title}")
+                    .setMessage("Ali želite navigacijo do izbranega parkirišča?")
+                    .setPositiveButton("Navigiraj", DialogInterface.OnClickListener { dialog, id ->
+                        val gmmIntentUri = Uri.parse("google.navigation:q=${clickedMarker.position.latitude},${clickedMarker.position.longitude}")
+                        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                        mapIntent.setPackage("com.google.android.apps.maps")
+                        startActivity(mapIntent)
+                    })
+                    .setNegativeButton("Prekini", null)
+                    .show()
             }
             else{
                 Toast.makeText(context, "Izberite parkirišče do katerega želite navigacijo", Toast.LENGTH_SHORT).show()
