@@ -14,6 +14,7 @@
     <fragment
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:id="@+id/mapFragment"
+            tools:layout="@layout/fragment_test"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -33,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_anchor="@id/bar"
-                android:src="@drawable/ic_local_parking_black_24dp"/>
+                android:src="@drawable/ic_local_parking_white_24dp" app:backgroundTint="#009688"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

@@ -14,11 +14,13 @@
             android:theme="?attr/actionBarTheme"
             android:minHeight="?attr/actionBarSize"
             android:id="@+id/toolbar"
-            app:logo="@drawable/ic_local_parking_black_24dp">
+            app:logo="@drawable/ic_directions_car_white_24dp">
         <TextView
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                android:text="Test" android:textSize="18sp"/>
+                android:textSize="26sp"
+                android:id="@+id/naslovniText" android:text="@string/app_title" android:fontFamily="@font/roboto"
+                android:paddingStart="15dp" android:textColor="@android:color/white"/>
     </androidx.appcompat.widget.Toolbar>
     <FrameLayout
             android:layout_width="match_parent"

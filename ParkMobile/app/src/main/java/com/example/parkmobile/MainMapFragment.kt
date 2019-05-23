@@ -1,5 +1,6 @@
 package com.example.parkmobile
 
+import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,25 +15,33 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.CameraPosition
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import androidx.core.content.ContextCompat
+import android.graphics.drawable.Drawable
+import android.widget.Toast
+import com.google.android.gms.maps.model.*
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.android.synthetic.main.activity_main.*
 
 
-
-
-
-
-class MainMapFragment : Fragment() {
+class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener {
+    //sem se shrani zadnji kliknjen marker
+    private lateinit var clickedMarker: Marker
+    //check, da se ne sproži navigacija, če marker še ni bil kliknjen
+    private var clicked = false
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
+    override fun onMarkerClick(marker: Marker): Boolean {
+        clickedMarker = marker
+        clicked = true
+        return false
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(activity!!)
 
     }
 
@@ -47,6 +56,9 @@ class MainMapFragment : Fragment() {
             mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
 
             mMap.clear() //clear old markers
+            mMap.setOnMarkerClickListener(this)
+            mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(context, R.raw.map_style_day))
+
 
             val googlePlex = CameraPosition.builder()
                 .target(LatLng(46.554649, 15.645881))
@@ -58,34 +70,59 @@ class MainMapFragment : Fragment() {
 
             mMap.addMarker(
                 MarkerOptions()
-                    .position(LatLng(37.4219999, -122.0862462))
-                    .title("Spider Man")
+                    .position(LatLng(46.554649, 15.645881))
+                    .icon(bitmapDescriptorFromVector(context!!, R.drawable.ic_local_parking_black_24dp))
+                    .snippet("50 prostih mest")
+                    .title("Parkirišče pod gradom")
             )
 
             mMap.addMarker(
                 MarkerOptions()
-                    .position(LatLng(37.4629101, -122.2449094))
-                    .title("Iron Man")
-                    .snippet("His Talent : Plenty of money")
+                    .position(LatLng(46.555860, 15.645881))
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+                    .title("Parkirna hiša")
+                    .snippet("10 prostih mest")
             )
 
             mMap.addMarker(
                 MarkerOptions()
-                    .position(LatLng(37.3092293, -122.1136845))
-                    .title("Captain America")
+                    .position(LatLng(46.559080, 15.645881))
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+                    .title("Parkirišče lent")
+                    .snippet("Polno")
             )
         }
         return v
+    }
+    private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): BitmapDescriptor {
+        val vectorDrawable = ContextCompat.getDrawable(context, vectorResId)
+        vectorDrawable!!.setBounds(0, 0, vectorDrawable.intrinsicWidth, vectorDrawable.intrinsicHeight)
+        val bitmap =
+            Bitmap.createBitmap(vectorDrawable.intrinsicWidth, vectorDrawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        vectorDrawable.draw(canvas)
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         findPark.setOnClickListener{
-            val gmmIntentUri = Uri.parse("google.navigation:q=46.554649,15.645881")
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            mapIntent.setPackage("com.google.android.apps.maps")
-            startActivity(mapIntent)
+            if(clicked==true){
+                /*MaterialAlertDialogBuilder(context)
+                    .setTitle("Title")
+                    .setMessage("Message")
+                    .setPositiveButton("Ok", null)
+                    .setNegativeButton("Cancel", null)
+                    .show()*/
+                val gmmIntentUri = Uri.parse("google.navigation:q=${clickedMarker.position.latitude},${clickedMarker.position.longitude}")
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.setPackage("com.google.android.apps.maps")
+                startActivity(mapIntent)
+            }
+            else{
+                Toast.makeText(context, "Izberite parkirišče do katerega želite navigacijo", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
