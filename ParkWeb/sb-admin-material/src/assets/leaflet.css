@@ -1,4 +1,11 @@
 /* required styles */
+.leaflet-default-icon-path {
+    background-image: url(images/marker-icon-2x.png);
+}
+
+.leaflet-default-shadow-path {
+    background-image: url(images/marker-shadow.png);
+}
 
 .leaflet-pane,
 .leaflet-tile,

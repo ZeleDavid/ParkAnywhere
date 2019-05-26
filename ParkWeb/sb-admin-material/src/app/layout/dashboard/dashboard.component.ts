@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 declare let L;
-let polje: int[]=[46.520812, 15.612940, 46.620812, 15.612940];
+const polje: number[] = [46.520812, 15.612940, 46.620812, 15.612940];
 
 
 export interface PeriodicElement {
@@ -70,17 +70,15 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
-		const map = L.map('map').setView([46.520812, 15.612940], 13);
+      const map = L.map('map').setView([46.520812, 15.612940], 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-		
-		
-	for (var i = 0; i < polje.length-1; i++) {
-	L.marker([polje[i], polje[i+1]).addTo(map)
-    .bindPopup("tralala");
-	}
+      for (let i = 0; i < polje.length - 1; i++) {
+        L.marker([polje[i], polje[i + 1]]).addTo(map)
+        .bindPopup('tralala');
+      }
 
-	}
+    }
 }
