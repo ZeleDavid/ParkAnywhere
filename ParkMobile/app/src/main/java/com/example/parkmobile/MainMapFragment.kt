@@ -11,20 +11,18 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_test.*
 import android.content.Intent
 import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.SupportMapFragment
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
 import androidx.core.content.ContextCompat
-import android.graphics.drawable.Drawable
 import android.widget.Toast
 import com.google.android.gms.maps.model.*
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.bottom_bar.*
 
 
 class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener {
@@ -67,20 +65,19 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener {
                 .bearing(0f)
                 .build()
 
-            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(googlePlex), 1000, null)
+            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(googlePlex), 100, null)
 
             mMap.addMarker(
                 MarkerOptions()
                     .position(LatLng(46.554649, 15.645881))
-                    .icon(bitmapDescriptorFromVector(context!!, R.drawable.ic_directions_car_black_24dp))
-                    .snippet("50 prostih mest")
-                    .title("Parkirišče pod gradom")
+                    .icon(bitmapDescriptorFromVector(context!!, R.drawable.ic_person_pin_circle_black_48dp))
+                    .title("Vaša lokacija")
             )
 
             mMap.addMarker(
                 MarkerOptions()
                     .position(LatLng(46.555860, 15.645881))
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
                     .title("Parkirna hiša")
                     .snippet("10 prostih mest")
             )
@@ -88,7 +85,7 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener {
             mMap.addMarker(
                 MarkerOptions()
                     .position(LatLng(46.559080, 15.645881))
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
                     .title("Parkirišče lent")
                     .snippet("Polno")
             )
@@ -107,7 +104,8 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val fab = findPark
+        fab.setColorFilter(Color.WHITE)
         findPark.setOnClickListener{
             if(clicked==true){
                 MaterialAlertDialogBuilder(context)
@@ -126,6 +124,12 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener {
                 Toast.makeText(context, "Izberite parkirišče do katerega želite navigacijo", Toast.LENGTH_SHORT).show()
             }
         }
+        bottom_bar_car.setOnClickListener(View.OnClickListener {
+            val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
+            val dialog = BottomSheetDialog(context!!)
+            dialog.setContentView(view)
+            dialog.show()
+        })
     }
 
 
