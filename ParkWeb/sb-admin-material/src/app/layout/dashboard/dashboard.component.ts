@@ -1,17 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import {Observable} from 'rxjs';
+import { map, filter, switchMap } from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
+import * as _ from 'lodash';
 declare let L;
 
-const polje: number[] = [46.520812, 15.612940, 46.620812, 15.612940];
 
-interface ParkiranHisa {
-   naziv:string;
-   naslov: string;
-   lastnik: string;
-   stVsehMest:number;
-   stProstihMest:number;
-   
+interface ParkirnaHisa {
+  cenaNaUro: string;
+  idParkirnaHisa: string;
+  lastnik: string;
+  lat: string;
+  lng: string;
+  naslov: string;
+  naziv: string;
+  stVsehMest: string;
+  stZasedenihMest: string;
 }
+
 
 export interface PeriodicElement {
     name: string;
@@ -39,6 +46,7 @@ export class DashboardComponent implements OnInit {
     displayedColumns = ['position', 'name', 'weight', 'symbol'];
     dataSource = new MatTableDataSource(ELEMENT_DATA);
     places: Array<any> = [];
+	parkirneHise$: Observable<ParkirnaHisa[]>;
 
     applyFilter(filterValue: string) {
         filterValue = filterValue.trim(); // Remove whitespace
@@ -46,7 +54,11 @@ export class DashboardComponent implements OnInit {
         this.dataSource.filter = filterValue;
     }
 
-    constructor() {
+    constructor(private http: HttpClient ) {
+        this.parkirneHise$ = this.http
+        .get<ParkirnaHisa[]>('http://localhost:8080/Docker_rest/REST/parkirneHise')
+          .pipe(map(data => _.values(data)))
+        ;
         this.places = [
             {
                 imgSrc: 'assets/images/card-1.jpg',
@@ -79,21 +91,23 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
-      const map = L.map('map').setView([46.520812, 15.612940], 13);
+      const map1 =L.map('map').setView([46.560630, 15.632039], 15);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
+      }).addTo(map1);
 
-      for (let i = 0; i < polje.length - 1; i++) {
-        L.marker([polje[i], polje[i + 1]]).addTo(map)
-        .bindPopup(
-		'<p><b>PARKIRNA HIŠA NA KOROŠKI</b></br>'+
-		'Koroška cesta 33, Maribor<p>'+
-		'<p><b>Lastnik: </b>Luka Četina</p>'+
-		'<p>Število parkrnih mest: 100 </br>'+
-		'Število prostih mest: 33</p>'
-		);
-      }
+      this.parkirneHise$.forEach(function (hisa) {
+        hisa.forEach(function (podatki) {
+          L.marker([podatki.lat, podatki.lng]).addTo(map1)
+            .bindPopup(
+              '<p><b>'+podatki.naziv+'</b></br>'+
+              podatki.naslov+'<p>'+
+              '<p><b>Lastnik: </b>'+podatki.lastnik+'</p>'+
+              '<p>Število parkrnih mest:'+podatki.stVsehMest+' </br>'+
+              'Število zasedenih mest: '+podatki.stZasedenihMest+'</p>'
+            );
+        })
+      })
 
     }
 }
