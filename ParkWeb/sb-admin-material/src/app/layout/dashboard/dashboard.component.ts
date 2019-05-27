@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 declare let L;
-let polje: int[]=[46.520812, 15.612940, 46.620812, 15.612940];
+let polje: number[]=[46.520812, 15.612940, 46.620812, 15.612940];
 
 
 export interface PeriodicElement {
@@ -78,7 +78,7 @@ export class DashboardComponent implements OnInit {
 		
 		
 	for (var i = 0; i < polje.length-1; i++) {
-	L.marker([polje[i], polje[i+1]).addTo(map)
+	L.marker([polje[i], polje[i+1]]).addTo(map)
     .bindPopup("tralala");
 	}
 
