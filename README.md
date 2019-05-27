@@ -40,6 +40,7 @@ npm start
 
 <hr>
 Za inštalacijo delovanja zahtev je potrebno namestiti naslednji vtičnik:
+
 [AllowControlAllowOrigin](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related)
 
 # AVTORJI
