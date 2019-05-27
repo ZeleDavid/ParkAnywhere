@@ -6,11 +6,11 @@
              tools:context=".MainMapFragment" android:id="@+id/frameLayout">
 
     <!--<com.google.android.material.button.MaterialButton-->
-            <!--android:id="@+id/button"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="najdi" tools:layout_conversion_absoluteHeight="48dp" tools:layout_editor_absoluteY="0dp"-->
-            <!--tools:layout_editor_absoluteX="0dp" tools:layout_conversion_absoluteWidth="88dp"/>-->
+    <!--android:id="@+id/button"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="najdi" tools:layout_conversion_absoluteHeight="48dp" tools:layout_editor_absoluteY="0dp"-->
+    <!--tools:layout_editor_absoluteX="0dp" tools:layout_conversion_absoluteWidth="88dp"/>-->
     <fragment
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:id="@+id/mapFragment"
@@ -21,25 +21,26 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <!-- Other components and views -->
+
 
         <com.google.android.material.bottomappbar.BottomAppBar
                 android:id="@+id/bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                app:navigationIcon="@drawable/ic_directions_car_black_24dp"
                 app:hideOnScroll="true">
+            <include layout="@layout/bottom_bar"/>
         </com.google.android.material.bottomappbar.BottomAppBar>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/findPark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_anchor="@id/bar"
-                app:backgroundTint="@color/colorPrimaryDark"
-                android:src="@drawable/ic_baseline_navigation_24px"/>
+                app:backgroundTint="@color/colorAccent" app:rippleColor="#71B5EE"
+                android:src="@drawable/ic_local_parking_black_24dp"
+                android:backgroundTint="@color/colorAccent">
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 
 </FrameLayout>

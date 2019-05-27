@@ -6,24 +6,48 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="fc662c48-3e44-41af-bcc0-e163d404f630" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../ParkMobile/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ParkMobile/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ParkMobile/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../ParkMobile/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ParkMobile/app/src/main/java/com/example/parkmobile/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../ParkMobile/app/src/main/java/com/example/parkmobile/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ParkMobile/app/src/main/java/com/example/parkmobile/MainMapFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../ParkMobile/app/src/main/java/com/example/parkmobile/MainMapFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ParkMobile/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ParkMobile/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ParkMobile/app/src/main/res/layout/fragment_test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ParkMobile/app/src/main/res/layout/fragment_test.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ParkMobile/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ParkMobile/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/exploded/Docker_rest-1.0-SNAPSHOT.war/WEB-INF/classes/VAO/ParkirnaHisa.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/exploded/Docker_rest-1.0-SNAPSHOT.war/WEB-INF/classes/VAO/ParkirnaHisa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-dir/Docker_rest_war/Docker_rest.war" beforeDir="false" afterPath="$PROJECT_DIR$/docker-dir/Docker_rest_war/Docker_rest.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/VAO/ParkirnaHisa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/VAO/ParkirnaHisa.class" afterDir="false" />
+=======
     <list default="true" id="8b9aae5f-67e0-45e2-9150-73e30cc74a0c" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/DAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/REST/ParkiranjeResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/REST/ParkiranjeResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/VAO/Rezervacija.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VAO/Rezervacija.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/../../ParkWeb/sb-admin-material/src/app/layout/dashboard/dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../ParkWeb/sb-admin-material/src/app/layout/dashboard/dashboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-dir/Docker_rest_war/Docker_rest.war" beforeDir="false" afterPath="$PROJECT_DIR$/docker-dir/Docker_rest_war/Docker_rest.war" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/VAO/ParkirnaHisa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VAO/ParkirnaHisa.java" afterDir="false" />
+>>>>>>> 7598d4e08b2246ac0a29acb8bed741bc7a1114e1
+>>>>>>> de63bfd247f5df547637c54b88e559d166e4c68a
+>>>>>>> 1f53218a6d64c1684c6c6a021fc302a68d4c2a00
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -32,6 +56,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file leaf-file-name="ParkirnaHisa.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/VAO/ParkirnaHisa.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -41,49 +66,102 @@
                 <element signature="e#1104#1105#0" expanded="true" />
                 <element signature="e#1132#1133#0" expanded="true" />
               </folding>
+=======
+<<<<<<< HEAD
+      <file pinned="false" current-in-tab="false">
+=======
+<<<<<<< HEAD
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docker-dir/Dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+=======
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
+>>>>>>> de63bfd247f5df547637c54b88e559d166e4c68a
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="7939">
+              <caret line="468" column="10" selection-start-line="468" selection-start-column="10" selection-end-line="468" selection-end-column="10" />
+>>>>>>> 1f53218a6d64c1684c6c6a021fc302a68d4c2a00
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="Rezervacija.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/VAO/Rezervacija.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="222">
               <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/VAO/ParkirnaHisa.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+>>>>>>> 1f53218a6d64c1684c6c6a021fc302a68d4c2a00
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="ParkiranjeResource.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/REST/ParkiranjeResource.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="850">
               <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/REST/ParkiranjeResource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+>>>>>>> 1f53218a6d64c1684c6c6a021fc302a68d4c2a00
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DAO.java" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/DAO/DAO.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="238">
               <caret line="20" selection-start-line="20" selection-end-line="20" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="238">
+              <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+=======
+            <state relative-caret-position="119">
+              <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+              <folding>
+                <element signature="e#594#608#0" expanded="true" />
+                <element signature="e#907#908#0" expanded="true" />
+                <element signature="e#947#948#0" expanded="true" />
+                <element signature="e#1011#1012#0" expanded="true" />
+                <element signature="e#1054#1055#0" expanded="true" />
+                <element signature="e#1450#1451#0" expanded="true" />
+                <element signature="e#1482#1483#0" expanded="true" />
+                <element signature="e#1540#1541#0" expanded="true" />
+                <element signature="e#1570#1571#0" expanded="true" />
+              </folding>
+>>>>>>> 7598d4e08b2246ac0a29acb8bed741bc7a1114e1
+>>>>>>> de63bfd247f5df547637c54b88e559d166e4c68a
+>>>>>>> 1f53218a6d64c1684c6c6a021fc302a68d4c2a00
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
       <map>
@@ -386,6 +464,7 @@
       </map>
     </option>
   </component>
+>>>>>>> de63bfd247f5df547637c54b88e559d166e4c68a
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -401,6 +480,12 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-5" />
+    <option name="y" value="-20" />
+    <option name="width" value="1940" />
+=======
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
@@ -410,10 +495,12 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
+>>>>>>> 7598d4e08b2246ac0a29acb8bed741bc7a1114e1
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-5" />
-    <option name="y" value="-20" />
-    <option name="width" value="1939" />
+    <option name="x" value="-4" />
+    <option name="y" value="-17" />
+    <option name="width" value="1936" />
+>>>>>>> de63bfd247f5df547637c54b88e559d166e4c68a
     <option name="height" value="1055" />
   </component>
   <component name="ProjectView">
@@ -421,9 +508,21 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
+=======
+<<<<<<< HEAD
+      <pane id="PackagesPane" />
+=======
+<<<<<<< HEAD
+=======
+      <pane id="AndroidView" />
+>>>>>>> de63bfd247f5df547637c54b88e559d166e4c68a
+      <pane id="Scope" />
+>>>>>>> 7598d4e08b2246ac0a29acb8bed741bc7a1114e1
+>>>>>>> 1f53218a6d64c1684c6c6a021fc302a68d4c2a00
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -439,68 +538,34 @@
             <path>
               <item name="Docker_rest" type="b2602c69:ProjectViewProjectNode" />
               <item name="Docker_rest" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Docker_rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Docker_rest" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="Docker_rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Docker_rest" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Docker_rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Docker_rest" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="DAO" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Docker_rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Docker_rest" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="REST" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Docker_rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Docker_rest" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="VAO" type="462c0819:PsiDirectoryNode" />
+              <item name="docker-dir" type="462c0819:PsiDirectoryNode" />
+              <item name="Docker_rest_war" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      <pane id="Scope" />
+=======
+>>>>>>> 7598d4e08b2246ac0a29acb8bed741bc7a1114e1
+      <pane id="PackagesPane" />
+>>>>>>> de63bfd247f5df547637c54b88e559d166e4c68a
+>>>>>>> 1f53218a6d64c1684c6c6a021fc302a68d4c2a00
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="plug&#9;ACTION&#9;WelcomeScreen.Plugins" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557928725909" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558937361546" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.42622954" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\lukac\Documents\Sola\Sola 2018-19\PRAKTIKUM\Test\Docker_rest\src\main\java" />
-    </key>
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -515,13 +580,23 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="docker-dir/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+    <configuration name="Unnamed" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
       <deployment type="dockerfile">
         <settings>
+<<<<<<< HEAD
           <option name="JSONFilePath" value="" />
+          <option name="buildCliOptions" value="" />
           <option name="command" value="" />
+=======
+          <option name="buildCliOptions" value="" />
+          <option name="command" value="" />
+<<<<<<< HEAD
+          <option name="containerName" value="Docker_test" />
+=======
           <option name="commandLineOptions" value="" />
+>>>>>>> de63bfd247f5df547637c54b88e559d166e4c68a
           <option name="containerName" value="Docker_rest" />
+>>>>>>> 7598d4e08b2246ac0a29acb8bed741bc7a1114e1
           <option name="entrypoint" value="" />
           <option name="imageTag" value="" />
           <option name="portBindings">
@@ -533,33 +608,31 @@
               </DockerPortBindingImpl>
             </list>
           </option>
+          <option name="commandLineOptions" value="" />
           <option name="sourceFilePath" value="docker-dir/Dockerfile" />
-          <option name="startBrowserSettings">
-            <browser url="http://127.0.0.1" />
-          </option>
         </settings>
       </deployment>
-      <method>
+      <method v="2">
         <option name="BuildArtifacts" enabled="true">
           <artifact name="Docker_rest" />
         </option>
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Docker.docker-dir/Dockerfile" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8b9aae5f-67e0-45e2-9150-73e30cc74a0c" name="Default Changelist" comment="" />
-      <created>1557926194266</created>
+      <changelist id="fc662c48-3e44-41af-bcc0-e163d404f630" name="Default Changelist" comment="" />
+      <created>1558937003210</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
+      <updated>1558937003210</updated>
+      <workItem from="1558937004509" duration="506000" />
+      <workItem from="1558937921505" duration="75000" />
+=======
       <updated>1557926194266</updated>
       <workItem from="1557926199534" duration="405000" />
       <workItem from="1557926667554" duration="424000" />
@@ -575,12 +648,65 @@
       <workItem from="1558343514666" duration="793000" />
       <workItem from="1558810034894" duration="891000" />
       <workItem from="1558946401742" duration="882000" />
+<<<<<<< HEAD
       <workItem from="1558947554515" duration="3822000" />
+=======
+<<<<<<< HEAD
+      <workItem from="1558948543364" duration="282000" />
+      <workItem from="1558949079457" duration="635000" />
+=======
+>>>>>>> 7598d4e08b2246ac0a29acb8bed741bc7a1114e1
+>>>>>>> de63bfd247f5df547637c54b88e559d166e4c68a
+>>>>>>> 1f53218a6d64c1684c6c6a021fc302a68d4c2a00
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="13765000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="10860000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="581000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Build" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info active="true" anchor="bottom" id="Docker" order="9" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32936078" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+=======
+    <option name="totallyTimeSpent" value="9943000" />
+>>>>>>> de63bfd247f5df547637c54b88e559d166e4c68a
+>>>>>>> 1f53218a6d64c1684c6c6a021fc302a68d4c2a00
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -592,6 +718,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
@@ -603,23 +730,60 @@
       <window_info id="Designer" order="2" />
       <window_info anchor="bottom" id="Docker" order="9" visible="true" weight="0.28547856" />
       <window_info anchor="right" id="Database" order="7" />
+=======
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2885906" />
+>>>>>>> 1f53218a6d64c1684c6c6a021fc302a68d4c2a00
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="5" />
+      <window_info id="Designer" order="2" />
+      <window_info id="OpenShift" order="3" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="UI Designer" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info id="Web" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.37623763" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info id="Image Layers" order="3" />
-      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.46534654" />
+      <window_info anchor="bottom" id="OpenShift Origin" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Docker" order="10" visible="true" weight="0.27053824" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.37623763" />
+      <window_info anchor="bottom" id="Java Enterprise" order="13" />
+      <window_info anchor="bottom" id="Database Changes" order="14" />
+      <window_info anchor="bottom" id="Version Control" order="15" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
+<<<<<<< HEAD
+=======
       <window_info anchor="bottom" id="Version Control" order="14" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28517398" />
       <window_info id="Web" order="7" side_tool="true" />
+>>>>>>> 7598d4e08b2246ac0a29acb8bed741bc7a1114e1
+>>>>>>> de63bfd247f5df547637c54b88e559d166e4c68a
       <window_info anchor="right" id="Gradle" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
+<<<<<<< HEAD
+      <window_info anchor="right" id="Maven Projects" order="10" />
+=======
+<<<<<<< HEAD
+=======
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="OpenShift Origin" order="7" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -631,15 +795,18 @@
       <window_info id="OpenShift" order="2" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
+>>>>>>> 7598d4e08b2246ac0a29acb8bed741bc7a1114e1
+>>>>>>> de63bfd247f5df547637c54b88e559d166e4c68a
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15487">
@@ -809,6 +976,7 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/RestApplication.java" />
+>>>>>>> 7598d4e08b2246ac0a29acb8bed741bc7a1114e1
     <entry file="file://$PROJECT_DIR$/docker-dir/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -816,6 +984,8 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
     <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -854,6 +1024,7 @@
         </state>
       </provider>
     </entry>
+>>>>>>> de63bfd247f5df547637c54b88e559d166e4c68a
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -890,22 +1061,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/REST/ParkiranjeResource.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+        <state relative-caret-position="7939">
+          <caret line="468" column="10" selection-start-line="468" selection-start-column="10" selection-end-line="468" selection-end-column="10" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/DAO/DAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="20" selection-start-line="20" selection-end-line="20" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/VAO/ParkirnaHisa.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
+>>>>>>> 1f53218a6d64c1684c6c6a021fc302a68d4c2a00
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/VAO/ParkirnaHisa.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="442">
           <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
           <folding>
@@ -926,6 +1105,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
           <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+=======
+        <state relative-caret-position="238">
+          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/REST/ParkiranjeResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+>>>>>>> 1f53218a6d64c1684c6c6a021fc302a68d4c2a00
         </state>
       </provider>
     </entry>
@@ -1006,5 +1196,6 @@
         </settings>
       </state>
     </states>
+>>>>>>> 7598d4e08b2246ac0a29acb8bed741bc7a1114e1
   </component>
 </project>
