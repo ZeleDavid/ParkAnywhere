@@ -94,7 +94,12 @@
             ],
             "assets": [
               "src/assets",
-              "src/favicon.ico"
+              "src/favicon.ico",
+			  {
+				  "glob": "**/*",
+				  "input": "node_modules/leaflet/dist/images/", // you may need to change this path, according to your files structure
+				  "output": "./assets/"
+			   }
             ]
           }
         },

@@ -7,7 +7,7 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
     styleUrls: ['./tables.component.scss']
 })
 export class TablesComponent implements OnInit {
-    displayedColumns = ['id', 'name', 'progress', 'color'];
+    displayedColumns = ['id', 'name', 'zasedenost', 'color'];
     dataSource: MatTableDataSource<UserData>;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -82,7 +82,7 @@ const NAMES = [
 export interface UserData {
     id: string;
     name: string;
-    progress: string;
+    zasedenost: string;
     color: string;
 }
 
@@ -97,7 +97,7 @@ function createNewUser(id: number): UserData {
     return {
         id: id.toString(),
         name: name,
-        progress: Math.round(Math.random() * 100).toString(),
+        zasedenost: Math.round(Math.random() * 100).toString(),
         color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
     };
 }

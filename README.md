@@ -31,7 +31,7 @@ port bindings-port:8080 protcol:tcp hostip:127.0.0.1 .....bindings-port:9990 pro
 <hr>
 
 Za inštalacijo Angular aplikacije je potrebno:
-- odpreti mapo "my-app"
+- odpreti mapo "sb-admin-material"
 - v njej zagnati cmd in ukaze za posodobitev vseh odvisnosti: 
 ```
 npm install

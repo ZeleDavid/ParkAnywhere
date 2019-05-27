@@ -12,7 +12,7 @@ public class ParkirnaHisa {
 	private double lng;
 	private String lastnik;
 
-	public ParkirnaHisa(String naziv, String naslov, int stVsehMest, int stZasedenihMest, double cenaNaUro, double lat, double lng, String lastnik) {
+	/*public ParkirnaHisa(String naziv, String naslov, int stVsehMest, int stZasedenihMest, double cenaNaUro, double lat, double lng, String lastnik) {
 		this.naziv = naziv;
 		this.naslov = naslov;
 		this.stVsehMest = stVsehMest;
@@ -21,12 +21,23 @@ public class ParkirnaHisa {
 		this.lat=lat;
 		this.lng=lng;
 		this.lastnik=lastnik;
-	}
+	}*/
 
 	public ParkirnaHisa() {
 	}
 
-	public long getIdParkirnaHisa() {
+    public ParkirnaHisa(String naziv, String naslov, int stVsehMest, int stZasedenihMest, double cenaNaUro, double lat, double lng, String lastnik) {
+        this.naziv = naziv;
+        this.naslov = naslov;
+        this.stVsehMest = stVsehMest;
+        this.stZasedenihMest = stZasedenihMest;
+        this.cenaNaUro = cenaNaUro;
+        this.lat=lat;
+        this.lng=lng;
+        this.lastnik=lastnik;
+	}
+
+    public long getIdParkirnaHisa() {
 		return idParkirnaHisa;
 	}
 
