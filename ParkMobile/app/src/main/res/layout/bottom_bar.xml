@@ -7,7 +7,7 @@
     <ImageButton
             android:layout_width="40dp"
             android:layout_height="40dp" app:srcCompat="@drawable/ic_home_black_24dp"
-            android:id="@+id/imageButton"
+            android:id="@+id/bottom_bar_home"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
             android:layout_marginTop="2dp" app:layout_constraintTop_toTopOf="parent"
             style="@style/Widget.AppCompat.ImageButton" android:tint="#000000"
@@ -15,8 +15,8 @@
     <ImageButton
             android:layout_width="40dp"
             android:layout_height="40dp" app:srcCompat="@drawable/ic_near_me_black_24dp"
-            android:id="@+id/imageButton2"
-            app:layout_constraintStart_toEndOf="@+id/imageButton" android:layout_marginStart="32dp"
+            android:id="@+id/bottom_bar_near_me"
+            app:layout_constraintStart_toEndOf="@+id/bottom_bar_home" android:layout_marginStart="32dp"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="2dp"
             android:background="?attr/selectableItemBackgroundBorderless"/>
@@ -24,13 +24,13 @@
             android:layout_width="40dp"
             android:layout_height="40dp" app:srcCompat="@drawable/ic_directions_car_black_24dp"
             android:id="@+id/bottom_bar_car"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton4" android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toStartOf="@+id/bottom_bar_user" android:layout_marginEnd="32dp"
             android:layout_marginTop="2dp" app:layout_constraintTop_toTopOf="parent"
             android:background="?attr/selectableItemBackgroundBorderless"/>
     <ImageButton
             android:layout_width="40dp"
             android:layout_height="40dp" app:srcCompat="@drawable/ic_person_black_24dp"
-            android:id="@+id/imageButton4" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/bottom_bar_user" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="32dp" android:layout_marginTop="2dp" app:layout_constraintTop_toTopOf="parent"
             android:background="?attr/selectableItemBackgroundBorderless"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
