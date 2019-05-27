@@ -18,13 +18,17 @@ public class DAO {
     ));
 	private static List<Rezervacija> seznamRezervacij = new ArrayList<>();
 
+
 	public static void addRezervacija(Rezervacija rezervacija){
+		//dodaj rezervacijo v ark
 		seznamRezervacij.add(rezervacija);
 	}
 	public static void addParkirnaHisa(ParkirnaHisa parkirnaHisa){
+		//dodaj parkirno hio v ark
 		seznamParkirnihHis.add(parkirnaHisa);
 	}
 	public static ParkirnaHisa getParkirnaHisa(long id){
+		//pridobi parkirno hiso iz arka
 		for(ParkirnaHisa p:seznamParkirnihHis){
 			if(p.getIdParkirnaHisa()==id){
 				return p;
@@ -33,6 +37,7 @@ public class DAO {
 		return null;
 	}
 	public static Rezervacija getRezervacija(long id){
+		//pridobi rezervacijo iz arka
 		for(Rezervacija r:seznamRezervacij){
 			if(r.getIdRezervacija()==id){
 				return r;
@@ -41,10 +46,20 @@ public class DAO {
 		return null;
 	}
 	public static List<ParkirnaHisa> getSeznamParkirnihHis() {
+		//pridobi vse iz arka
 		return seznamParkirnihHis;
 	}
 
 	public static List<Rezervacija> getSeznamRezervacij() {
+		//pridobi vse iz arka
 		return seznamRezervacij;
+	}
+
+	public static void deleteParkirnaHisa(ParkirnaHisa p) {
+		//delete
+	}
+
+	public static void deleteRezervacija(Rezervacija r) {
+		//delete
 	}
 }
