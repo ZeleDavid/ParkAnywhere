@@ -1,13 +1,13 @@
 <div id="sidebar">
     <mat-nav-list>
         <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/dashboard']">
-            <mat-icon class="sidenav-icon">dashboard</mat-icon> {{ 'Dashboard' | translate }}
-        </a>
-        <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/charts']">
-            <mat-icon class="sidenav-icon">bar_chart</mat-icon> {{ 'Charts' | translate }}
+            <mat-icon class="sidenav-icon">dashboard</mat-icon> {{ 'Zemljevid parkirnih hiš' | translate }}
         </a>
         <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/tables']">
-            <mat-icon class="sidenav-icon">table_chart</mat-icon> {{ 'Tables' | translate }}
+          <mat-icon class="sidenav-icon">table_chart</mat-icon> {{ 'Pregled parkirnih hiš' | translate }}
+        </a>
+        <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/charts']">
+            <mat-icon class="sidenav-icon">bar_chart</mat-icon> {{ 'Statistika' | translate }}
         </a>
         <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/forms']">
             <mat-icon class="sidenav-icon">input</mat-icon> {{ 'Forms' | translate }}
@@ -18,24 +18,5 @@
         <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/components']">
             <mat-icon class="sidenav-icon">code</mat-icon> {{ 'Material Component' | translate }}
         </a>
-        <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/blank-page']">
-            <mat-icon class="sidenav-icon">insert_drive_file</mat-icon> {{ 'Blank Page' | translate }}
-        </a>
-        <div class="nested-menu">
-            <a mat-list-item (click)="addExpandClass('pages')">
-                <mat-icon class="sidenav-icon">add</mat-icon> {{ 'Menu' | translate }}
-            </a>
-            <ul class="nested submenu" [class.expand]="showMenu === 'pages'">
-                <li>
-                    <a href="javascript:void(0)"><span>{{ 'Submenu' | translate }}</span></a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><span>{{ 'Submenu' | translate }}</span></a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)"><span>{{ 'Submenu' | translate }}</span></a>
-                </li>
-            </ul>
-        </div>
     </mat-nav-list>
 </div>
