@@ -38,6 +38,9 @@ npm install
 npm start
 ```
 
+<hr>
+Za inštalacijo delovanja zahtev je potrebno namestiti naslednji vtičnik:
+[AllowControlAllowOrigin](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related)
 
 # AVTORJI
 [<img alt="EvaSmolak" src="https://avatars0.githubusercontent.com/u/33725038?s=400&v=4" width="117">](https://github.com/EvaSmolak) |[<img alt="CetinaLuka" src="https://avatars3.githubusercontent.com/u/33715779?s=400&u=4752d8027850c8f376c54dd977df726c1d24c58a&v=4" width="117">](https://github.com/CetinaLuka) |[<img alt="KovacZan" src="https://avatars1.githubusercontent.com/u/39158639?s=400&v=4" width="117">](https://github.com/KovacZan) |[<img alt="ZeleDavid" src="https://avatars3.githubusercontent.com/u/33752926?s=400&v=4" width="117">](https://github.com/ZeleDavid) |
