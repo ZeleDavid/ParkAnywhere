@@ -1,5 +1,21 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import {Observable} from 'rxjs';
+import { map, filter, switchMap } from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
+import * as _ from 'lodash';
+
+interface ParkirnaHisa {
+  cenaNaUro: string;
+  idParkirnaHisa: string;
+  lastnik: string;
+  lat: string;
+  lng: string;
+  naslov: string;
+  naziv: string;
+  stVsehMest: string;
+  stZasedenihMest: string;
+}
 
 @Component({
     selector: 'app-tables',
@@ -9,11 +25,12 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 export class TablesComponent implements OnInit {
     displayedColumns = ['id', 'name', 'zasedenost', 'color'];
     dataSource: MatTableDataSource<UserData>;
+    parkirneHise$: Observable<ParkirnaHisa[]>;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
 
-    constructor() {
+    constructor(private http: HttpClient ) {
         // Create 100 users
         const users: UserData[] = [];
         for (let i = 1; i <= 100; i++) {
@@ -27,6 +44,10 @@ export class TablesComponent implements OnInit {
     ngOnInit() {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+        this.parkirneHise$ = this.http
+        .get<ParkirnaHisa[]>('http://localhost:8080/Docker_rest/REST/parkirneHise')
+          .pipe(map(data => _.values(data)))
+        ;
     }
 
     applyFilter(filterValue: string) {
