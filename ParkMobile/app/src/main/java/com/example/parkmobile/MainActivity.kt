@@ -2,6 +2,7 @@ package com.example.parkmobile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.bottom_bar.*
 
 class MainActivity : AppCompatActivity() {
 

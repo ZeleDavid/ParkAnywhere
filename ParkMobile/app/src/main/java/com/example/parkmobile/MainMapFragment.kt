@@ -19,6 +19,8 @@ import android.graphics.Canvas
 import android.graphics.Color
 import androidx.core.content.ContextCompat
 import android.widget.Toast
+import androidx.navigation.NavOptions
+import androidx.navigation.Navigation
 import com.google.android.gms.maps.model.*
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -130,6 +132,12 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener {
             dialog.setContentView(view)
             dialog.show()
         })
+        /*val options = NavOptions.Builder()
+        options.setEnterAnim(R.anim.slide_in_left)
+        options.setExitAnim(R.anim.slide_out_left)*/
+        bottom_bar_user.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_testFragment_to_profileFragment)
+        }
     }
 
 
