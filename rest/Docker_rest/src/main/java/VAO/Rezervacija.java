@@ -8,14 +8,12 @@ public class Rezervacija {
 	private Calendar zacetek;
 	private Calendar konec;
 	private ParkirnaHisa parkirnaHisa;
-	private double cena;
 
-	public Rezervacija(long idUporabnik, Calendar zacetek, Calendar konec, ParkirnaHisa parkirnaHisa, double cena) {
+	public Rezervacija(long idUporabnik, Calendar zacetek, Calendar konec, ParkirnaHisa parkirnaHisa) {
 		this.idUporabnik = idUporabnik;
 		this.zacetek = zacetek;
 		this.konec = konec;
 		this.parkirnaHisa = parkirnaHisa;
-		this.cena = cena;
 	}
 
 	public Rezervacija() {
@@ -61,11 +59,4 @@ public class Rezervacija {
 		this.parkirnaHisa = parkirnaHisa;
 	}
 
-	public double getCena() {
-		return cena;
-	}
-
-	public void setCena(double cena) {
-		this.cena = cena;
-	}
 }

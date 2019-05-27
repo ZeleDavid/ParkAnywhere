@@ -4,7 +4,14 @@ declare let L;
 
 const polje: number[] = [46.520812, 15.612940, 46.620812, 15.612940];
 
-
+interface ParkiranHisa {
+   naziv:string;
+   naslov: string;
+   lastnik: string;
+   stVsehMest:number;
+   stProstihMest:number;
+   
+}
 
 export interface PeriodicElement {
     name: string;
@@ -79,7 +86,13 @@ export class DashboardComponent implements OnInit {
 
       for (let i = 0; i < polje.length - 1; i++) {
         L.marker([polje[i], polje[i + 1]]).addTo(map)
-        .bindPopup('tralala');
+        .bindPopup(
+		'<p><b>PARKIRNA HIŠA NA KOROŠKI</b></br>'+
+		'Koroška cesta 33, Maribor<p>'+
+		'<p><b>Lastnik: </b>Luka Četina</p>'+
+		'<p>Število parkrnih mest: 100 </br>'+
+		'Število prostih mest: 33</p>'
+		);
       }
 
     }
