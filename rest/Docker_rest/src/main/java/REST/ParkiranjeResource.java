@@ -9,16 +9,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ParkiranjeResource {
 	
-	@GET
-	@Path("/rezervacije")
-	public Response vrniVseRezervacije(){
-		return Response.ok(DAO.getSeznamRezervacij()).build();
-	}
 	@GET
 	@Path("/parkirneHise")
 	public Response vrniVseParkirneHise(){
@@ -33,6 +29,24 @@ public class ParkiranjeResource {
 		} else {
 			return Response.status(403).entity("ParkirneHiseMogoceNajtiException").build();
 		}
+	}
+	@POST
+	@Path("/parkirneHise")
+	public Response dodajParkirnoHiso(ParkirnaHisa p){
+		DAO.addParkirnaHisa(p);
+		return Response.ok(p).build();
+	}
+	@DELETE
+	@Path("/parkirneHise{id}")
+	public Response odstraniPoarkirnoHiso(ParkirnaHisa p){
+		DAO.deleteParkirnaHisa(p);
+		return Response.ok(p).build();
+	}
+
+	@GET
+	@Path("/rezervacije")
+	public Response vrniVseRezervacije(){
+		return Response.ok(DAO.getSeznamRezervacij()).build();
 	}
 	@GET
 	@Path("/rezervacije/{id}")
@@ -50,10 +64,10 @@ public class ParkiranjeResource {
 		DAO.addRezervacija(r);
 		return Response.ok(r).build();
 	}
-	@POST
-	@Path("/parkirneHise")
-	public Response dodajParkirnoHiso(ParkirnaHisa p){
-		DAO.addParkirnaHisa(p);
-		return Response.ok(p).build();
+	@DELETE
+	@Path("/rezervacije{id}")
+	public Response odtraniRezervacijo(Rezervacija r){
+		DAO.deleteRezervacija(r);
+		return Response.ok(r).build();
 	}
 }

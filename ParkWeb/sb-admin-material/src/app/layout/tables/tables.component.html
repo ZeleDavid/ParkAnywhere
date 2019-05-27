@@ -2,6 +2,13 @@
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Iskanje">
 </mat-form-field>
 
+<ul *ngIf="parkirneHise$ | async as parkirnehise else noData">
+  <li *ngFor="let parkirnahisa of parkirnehise">
+    {{parkirnahisa.naziv}}
+  </li>
+</ul>
+<ng-template #noData>No Data Available</ng-template>
+
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
 
