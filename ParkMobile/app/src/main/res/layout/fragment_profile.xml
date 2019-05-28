@@ -7,12 +7,13 @@
                                                    tools:context=".ProfileFragment" android:id="@+id/frameLayout3">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.switchmaterial.SwitchMaterial
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:text="@string/hello_blank_fragment"
-            android:id="@+id/textView2" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
+            android:checked="false"
+            android:text="Omogoči temno temo"
+            android:id="@+id/dark_theme_switch" android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

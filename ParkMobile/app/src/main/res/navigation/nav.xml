@@ -7,8 +7,8 @@
     <fragment android:id="@+id/testFragment" android:name="com.example.parkmobile.MainMapFragment"
               android:label="fragment_test" tools:layout="@layout/fragment_test">
         <action android:id="@+id/action_testFragment_to_profileFragment" app:destination="@id/profileFragment"
-                app:enterAnim="@anim/slide_in_up" app:exitAnim="@anim/slide_out_down"
-                app:popEnterAnim="@anim/slide_in_up" app:popExitAnim="@anim/slide_out_down"/>
+                app:enterAnim="@anim/fade_in" app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in" app:popExitAnim="@anim/fade_out"/>
     </fragment>
     <fragment android:id="@+id/profileFragment" android:name="com.example.parkmobile.ProfileFragment"
               android:label="fragment_profile" tools:layout="@layout/fragment_profile"/>

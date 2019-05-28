@@ -58,8 +58,12 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener {
 
             mMap.clear() //clear old markers
             mMap.setOnMarkerClickListener(this)
-            mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(context, R.raw.map_style_day))
-
+            val sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE)
+            val darkMode = sharedPreferences.getBoolean("dark_mode", false)
+            var mapStyle = R.raw.map_style_day
+            if(darkMode)
+                mapStyle = R.raw.map_style_night
+            mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(context, mapStyle))
 
             val googlePlex = CameraPosition.builder()
                 .target(LatLng(46.554649, 15.645881))
@@ -132,9 +136,6 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener {
             dialog.setContentView(view)
             dialog.show()
         })
-        /*val options = NavOptions.Builder()
-        options.setEnterAnim(R.anim.slide_in_left)
-        options.setExitAnim(R.anim.slide_out_left)*/
         bottom_bar_user.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_testFragment_to_profileFragment)
         }
