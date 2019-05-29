@@ -44,7 +44,6 @@ class ProfileFragment : Fragment() {
                     .putBoolean("dark_mode", false)
                     .apply()
             }
-            Toast.makeText(context, sharedPreferences.getBoolean("dark_mode", false).toString(), Toast.LENGTH_SHORT).show()
         }
     }
 }

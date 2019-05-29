@@ -17,6 +17,8 @@ import com.google.android.gms.maps.SupportMapFragment
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import androidx.core.content.ContextCompat
 import android.widget.Toast
 import androidx.navigation.NavOptions
@@ -25,6 +27,7 @@ import com.google.android.gms.maps.model.*
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.bottom_bar.*
+import kotlinx.android.synthetic.main.bottom_sheet_dialog.*
 
 
 class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener {
@@ -131,10 +134,13 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener {
             }
         }
         bottom_bar_car.setOnClickListener(View.OnClickListener {
+            val values = arrayOf("Davidov BMW", "Žanov Mercedes", "Lukova peš Honda")
             val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
             val dialog = BottomSheetDialog(context!!)
             dialog.setContentView(view)
             dialog.show()
+            val arrayAdapter = ArrayAdapter<String>(context, R.layout.bottom_sheet_list_row, R.id.bottom_list_text, values)
+            view.findViewById<ListView>(R.id.car_list).adapter = arrayAdapter
         })
         bottom_bar_user.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_testFragment_to_profileFragment)
