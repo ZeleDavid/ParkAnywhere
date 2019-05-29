@@ -23,7 +23,7 @@ interface ParkirnaHisa {
     styleUrls: ['./tables.component.scss']
 })
 export class TablesComponent implements OnInit {
-    displayedColumns = ['idParkirnaHisa', 'naziv', 'naslov', 'cenaNaUro', 'stZasedenihMest', 'stVsehMest', 'zasedenost', 'lastnik'];
+    displayedColumns = ['naziv', 'naslov', 'cenaNaUro', 'stZasedenihMest', 'stVsehMest', 'zasedenost', 'lastnik'];
     dataSource: MatTableDataSource<ParkirnaHisa>;
     parkirneHise$: Observable<ParkirnaHisa[]>;
 

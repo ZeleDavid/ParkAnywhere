@@ -8,16 +8,16 @@
 		"idParkirnaHisa": "word word word word",
 		"naziv": "Parkirisce pod gradom",
 		"naslov": "Pod gradom 15",
-		"postnaSt": 2000,
 		"stVsehMest": 300,
 		"stZasedenihMest": 215,
-		"cenaNaUro": 1.5
-		"latitude": 46.00000
-		"longitude": 55.0000
+		"cenaNaUro": 1.5,
+		"lat": 46.00000,
+		"lng": 55.0000,
+		"lastnik": "David"
 		}
-	1.3 PUT(/idParkirnaHisa) - posodobijo se podatki (za json glej 1.2)
-	1.4 DELETE(/idParkirnaHisa) - izbriše se parkirna hiša z poslanim id
-	1.5 GET(/idParkirnaHisa) - vrnejo se podatki o parkirni hiši z ustreznim id-jem (za json glej 1.2)
+	1.3 DELETE(/idParkirnaHisa) - izbriše se parkirna hiša z poslanim id
+	1.4 GET(/idParkirnaHisa) - vrnejo se podatki o parkirni hiši z ustreznim id-jem (za json glej 1.2)
+	1.5 GET(/lastnik) - vrne seznam vseh parkirišč od ustreznega lastnika (za json glej 1.2)
 2./parkchain/park
 	2.1 POST - ko uporabnik parkira se pošlje json objekt, ki vsebuje podatke o parkirni hiši, času, uporabniku,...
 		{
