@@ -2,7 +2,7 @@ package VAO;
 
 public class ParkirnaHisa {
 
-	private long idParkirnaHisa;
+	private String idParkirnaHisa;
 	private String naziv;
 	private String naslov;
 	private int stVsehMest;
@@ -26,7 +26,8 @@ public class ParkirnaHisa {
 	public ParkirnaHisa() {
 	}
 
-    public ParkirnaHisa(String naziv, String naslov, int stVsehMest, int stZasedenihMest, double cenaNaUro, double lat, double lng, String lastnik) {
+    public ParkirnaHisa(String idParkirnaHisa,String naziv, String naslov, int stVsehMest, int stZasedenihMest, double cenaNaUro, double lat, double lng, String lastnik) {
+        this.idParkirnaHisa=idParkirnaHisa;
         this.naziv = naziv;
         this.naslov = naslov;
         this.stVsehMest = stVsehMest;
@@ -37,11 +38,11 @@ public class ParkirnaHisa {
         this.lastnik=lastnik;
 	}
 
-    public long getIdParkirnaHisa() {
+    public String getIdParkirnaHisa() {
 		return idParkirnaHisa;
 	}
 
-	public void setIdParkirnaHisa(long idParkirnaHisa) {
+	public void setIdParkirnaHisa(String idParkirnaHisa) {
 		this.idParkirnaHisa = idParkirnaHisa;
 	}
 

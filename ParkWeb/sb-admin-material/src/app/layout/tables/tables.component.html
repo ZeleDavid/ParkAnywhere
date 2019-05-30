@@ -2,21 +2,15 @@
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Iskanje">
 </mat-form-field>
 
-<ul *ngIf="parkirneHise$ | async as parkirnehise else noData">
-  <li *ngFor="let parkirnahisa of parkirnehise">
-    {{parkirnahisa.naziv}}
-  </li>
-</ul>
-<ng-template #noData>No Data Available</ng-template>
+<!--<ul *ngIf="parkirneHise$ | async as parkirnehise else noData">-->
+<!--  <li *ngFor="let parkirnahisa of parkirnehise">-->
+<!--    {{parkirnahisa.naziv}}-->
+<!--  </li>-->
+<!--</ul>-->
+<!--<ng-template #noData>No Data Available</ng-template>-->
 
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
-
-        <!-- ID Column -->
-        <ng-container matColumnDef="idParkirnaHisa">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-            <td mat-cell *matCellDef="let row"> {{row.idParkirnaHisa}} </td>
-        </ng-container>
 
         <ng-container matColumnDef="naslov">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Naslov </th>
@@ -36,7 +30,7 @@
         <!-- Progress Column -->
         <ng-container matColumnDef="zasedenost">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Zasedenost </th>
-            <td mat-cell *matCellDef="let row"> {{row.stZasedenihMest/row.stVsehMest}}% </td>
+            <td mat-cell *matCellDef="let row"> {{row.stZasedenihMest/row.stVsehMest | number:'1.2-2'}}% </td>
         </ng-container>
 
         <!-- Name Column -->
@@ -47,7 +41,7 @@
 
         <ng-container matColumnDef="cenaNaUro">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Cena na uro </th>
-          <td mat-cell *matCellDef="let row"> {{row.cenaNaUro}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.cenaNaUro | number:'1.2-2'}}€ </td>
         </ng-container>
 
         <!-- Color Column -->
