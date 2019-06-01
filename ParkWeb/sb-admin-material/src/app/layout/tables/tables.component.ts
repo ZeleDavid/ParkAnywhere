@@ -31,27 +31,19 @@ export class TablesComponent implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
 
     constructor(private http: HttpClient ) {
-
-        this.parkirneHise$ = this.http
-          .get<ParkirnaHisa[]>('http://localhost:8080/Docker_rest/REST/parkirneHise')
-          .pipe(map(data => _.values(data)))
-        ;
-
-
       let parkHise: ParkirnaHisa[] = new Array();
       this.http
         .get('http://localhost:8080/Docker_rest/REST/parkirneHise')
         .pipe(
           map(data => _.values(data)),
-          tap(parkirneHise => this.dataSource = new MatTableDataSource(parkirneHise))    // users array [Object, Object, Object]
+          tap(parkirneHise => {this.dataSource = new MatTableDataSource(parkirneHise); this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort; } )
         )
         .subscribe(parkirneHise => parkHise = parkirneHise);
-
     }
 
     ngOnInit() {
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+
 
     }
 
@@ -65,66 +57,3 @@ export class TablesComponent implements OnInit {
     }
 }
 
-/** Constants used to fill up our data base. */
-const COLORS = [
-    'maroon',
-    'red',
-    'orange',
-    'yellow',
-    'olive',
-    'green',
-    'purple',
-    'fuchsia',
-    'lime',
-    'teal',
-    'aqua',
-    'blue',
-    'navy',
-    'black',
-    'gray'
-];
-const NAMES = [
-    'Maia',
-    'Asher',
-    'Olivia',
-    'Atticus',
-    'Amelia',
-    'Jack',
-    'Charlotte',
-    'Theodore',
-    'Isla',
-    'Oliver',
-    'Isabella',
-    'Jasper',
-    'Cora',
-    'Levi',
-    'Violet',
-    'Arthur',
-    'Mia',
-    'Thomas',
-    'Elizabeth'
-];
-
-export interface UserData {
-    id: string;
-    naziv: string;
-    zasedenost: string;
-    lastnik: string;
-}
-
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-    const naziv =
-        NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-        ' ' +
-        NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-        '.';
-    const lastnik = 'David';
-
-    return {
-        id: id.toString(),
-        naziv: naziv,
-        zasedenost: Math.round(Math.random() * 100).toString(),
-        lastnik: lastnik
-    };
-}
