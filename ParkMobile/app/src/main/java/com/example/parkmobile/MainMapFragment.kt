@@ -165,7 +165,7 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener, GoogleMap.O
 
         if (ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             //Location Permission already granted
-            mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
+            mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper())
             mGoogleMap.isMyLocationEnabled = true
         } else {
             //Request Location Permission
@@ -211,16 +211,14 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener, GoogleMap.O
                     .setTitle("Potrebno je dovoljenje za dostop do vaše lokacije")
                     .setMessage("Aplikacija ParkAnywhere potrebuje dostop do vaše lokacije za delovanje zato vas prosimo da to omogočite.")
                     .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
-                        ActivityCompat.requestPermissions(activity!!,
-                            arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                        requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
                             MY_PERMISSIONS_REQUEST_LOCATION)
                     })
                     .create()
                     .show()
             } else {
                 // No explanation needed, we can request the permission.
-                ActivityCompat.requestPermissions(activity!!,
-                    arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
                     MY_PERMISSIONS_REQUEST_LOCATION)
 
                 // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
@@ -235,7 +233,9 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener, GoogleMap.O
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if(requestCode == MY_PERMISSIONS_REQUEST_LOCATION){
             if(grantResults.size>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                if(ContextCompat.checkSelfPermission(context!!, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+                if(ContextCompat.checkSelfPermission(context!!,
+                        android.Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED){
                     mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper())
                     mGoogleMap.isMyLocationEnabled = true
                 }
