@@ -9,7 +9,12 @@
         <action android:id="@+id/action_testFragment_to_profileFragment" app:destination="@id/profileFragment"
                 app:enterAnim="@anim/fade_in" app:exitAnim="@anim/fade_out"
                 app:popEnterAnim="@anim/fade_in" app:popExitAnim="@anim/fade_out"/>
+        <action android:id="@+id/action_testFragment_to_settingsFragment" app:destination="@id/settingsFragment"
+                app:enterAnim="@anim/fade_in" app:exitAnim="@anim/fade_out" app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/fade_out" app:launchSingleTop="false"/>
     </fragment>
     <fragment android:id="@+id/profileFragment" android:name="com.example.parkmobile.ProfileFragment"
               android:label="fragment_profile" tools:layout="@layout/fragment_profile"/>
+    <fragment android:id="@+id/settingsFragment" android:name="com.example.parkmobile.SettingsFragment"
+              android:label="fragment_settings" tools:layout="@layout/fragment_settings"/>
 </navigation>

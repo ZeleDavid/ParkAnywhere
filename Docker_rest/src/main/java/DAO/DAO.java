@@ -11,6 +11,7 @@ import java.util.List;
 
 public class DAO {
 	private static List<ParkirnaHisa> seznamParkirnihHis = new ArrayList<ParkirnaHisa>(Arrays.asList(
+<<<<<<< HEAD
             new ParkirnaHisa("Na Koroški cesti", "Koroška cesta 11", 100, 63, 1.4, 46.560092, 15.631116, "Luka")
             , new ParkirnaHisa("Na Gosposvetski cesti", "Gosposvetska cesta 12", 150, 100, 1.8, 46.560530, 15.641231, "David")
             , new ParkirnaHisa("Na Smetanovi", "Smetanova ulica 24", 30, 25, 1.1, 46.560403, 15.635597, "Luka")
@@ -22,6 +23,11 @@ public class DAO {
 			, new ParkirnaHisa("Pod Kalvarijo", "Hribovska ulica 2", 90, 30, 4.3, 46.567469, 15.632417, "Timi")
 			, new ParkirnaHisa("V centru", "Centreran trg 5", 80, 40, 12.1, 46.557791, 15.645592, "Žan")
 			, new ParkirnaHisa("Pri bloku", "Mestna ulica 33", 44, 43, 1.0, 46.556345, 15.634606, "Ewa")
+=======
+            new ParkirnaHisa("1","Na Koroški cesti", "Koroška cesta", 100, 63, 1.4, 46.560092, 15.631116, "Luka")
+            , new ParkirnaHisa("2","Na Gosposvetski cesti", "Gosposvetska cesta", 150, 100, 1.8, 46.560530, 15.641231, "David")
+            , new ParkirnaHisa("3","Na Smetanovi", "Smetanova ulica", 30, 25, 1.1, 46.560403, 15.635597, "Luka")
+>>>>>>> d20863badf3d6d824b62fd89d0f88d741beb5192
 
     ));
 	private static List<Rezervacija> seznamRezervacij = new ArrayList<>();
@@ -35,7 +41,7 @@ public class DAO {
 		//dodaj parkirno hio v ark
 		seznamParkirnihHis.add(parkirnaHisa);
 	}
-	public static ParkirnaHisa getParkirnaHisa(long id){
+	public static ParkirnaHisa getParkirnaHisa(String id){
 		//pridobi parkirno hiso iz arka
 		for(ParkirnaHisa p:seznamParkirnihHis){
 			if(p.getIdParkirnaHisa()==id){

@@ -145,6 +145,9 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener {
         bottom_bar_user.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_testFragment_to_profileFragment)
         }
+        bottom_bar_setings.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_testFragment_to_settingsFragment)
+        }
     }
 
 
