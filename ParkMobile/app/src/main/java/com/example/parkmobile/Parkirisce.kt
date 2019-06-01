@@ -3,11 +3,11 @@ package com.example.parkmobile
 
 import com.google.gson.annotations.SerializedName
 
-data class ParkirnaHisa(
+data class Parkirisce(
     @SerializedName("cenaNaUro")
     val cenaNaUro: Double,
-    @SerializedName("idParkirnaHisa")
-    val idParkirnaHisa: Int,
+    @SerializedName("id")
+    val id: String,
     @SerializedName("lastnik")
     val lastnik: String,
     @SerializedName("lat")
