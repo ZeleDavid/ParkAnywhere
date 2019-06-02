@@ -22,8 +22,6 @@ public class DAO {
 			, new ParkirnaHisa("9","Pod Kalvarijo", "Hribovska ulica 2", 90, 30, 4.3, 46.567469, 15.632417, "Timi")
 			, new ParkirnaHisa("10","V centru", "Centreran trg 5", 80, 40, 12.1, 46.557791, 15.645592, "Žan")
 			, new ParkirnaHisa("11","Pri bloku", "Mestna ulica 33", 44, 43, 1.0, 46.556345, 15.634606, "Ewa")
-
-
     ));
 	private static List<Rezervacija> seznamRezervacij = new ArrayList<>();
 

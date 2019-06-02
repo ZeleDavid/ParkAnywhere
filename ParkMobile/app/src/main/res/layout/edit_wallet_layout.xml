@@ -36,17 +36,17 @@
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.button.MaterialButton
-            android:id="@+id/prekini_dialog_button"
+            android:id="@+id/prekini_car_button"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Prekini"
-            app:layout_constraintEnd_toStartOf="@+id/potrdi_dialog_button"
+            app:layout_constraintEnd_toStartOf="@+id/potrdi_car_button"
             android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toTopOf="@+id/potrdi_dialog_button"
-            app:layout_constraintBottom_toBottomOf="@+id/potrdi_dialog_button"/>
+            app:layout_constraintTop_toTopOf="@+id/potrdi_car_button"
+            app:layout_constraintBottom_toBottomOf="@+id/potrdi_car_button"/>
     <com.google.android.material.button.MaterialButton
-            android:id="@+id/potrdi_dialog_button"
+            android:id="@+id/potrdi_car_button"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

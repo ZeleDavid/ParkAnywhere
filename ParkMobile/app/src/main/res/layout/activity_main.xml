@@ -10,17 +10,21 @@
     <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/colorAccent"
             android:theme="?attr/actionBarTheme"
             android:minHeight="?attr/actionBarSize"
-            android:id="@+id/toolbar"
-            app:logo="@drawable/ic_directions_car_black_24dp">
-        <TextView
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:textSize="24sp"
-                android:id="@+id/naslovniText" android:text="@string/app_title" android:fontFamily="@font/roboto"
-                android:paddingStart="15dp" android:textColor="@android:color/black"/>
+            android:id="@+id/toolbar">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                      android:orientation="horizontal">
+            <ImageView android:layout_width="30dp" android:layout_height="30dp"
+                       android:src="@drawable/ic_directions_car_black_24dp" android:tint="@color/white"/>
+            <TextView
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:textSize="24sp"
+                    android:id="@+id/naslovniText" android:text="@string/app_title" android:fontFamily="@font/roboto"
+                    android:paddingStart="15dp" android:textColor="@color/white"/>
+        </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
     <FrameLayout
             android:layout_width="match_parent"
@@ -38,5 +42,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
+        <View android:layout_width="match_parent"
+              android:layout_height="3dp"
+              android:background="@drawable/toolbar_dropshadow"/>
     </FrameLayout>
 </LinearLayout>

@@ -38,7 +38,17 @@ public class ParkirnaHisa {
         this.lastnik=lastnik;
 	}
 
-    public String getIdParkirnaHisa() {
+	public ParkirnaHisa(String naziv, String naslov, int stVsehMest, int stZasedenihMest, double cenaNaUro, double lat, double lng, String lastnik) {
+		this.naziv = naziv;
+		this.naslov = naslov;
+		this.stVsehMest = stVsehMest;
+		this.stZasedenihMest = stZasedenihMest;
+		this.cenaNaUro = cenaNaUro;
+		this.lat=lat;
+		this.lng=lng;
+		this.lastnik=lastnik;
+	}
+	public String getIdParkirnaHisa() {
 		return idParkirnaHisa;
 	}
 

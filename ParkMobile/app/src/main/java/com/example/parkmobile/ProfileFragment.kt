@@ -1,9 +1,6 @@
 package com.example.parkmobile
 
 import android.content.Context
-import android.content.DialogInterface
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,10 +10,7 @@ import android.widget.Button
 import android.widget.Toast
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.edit_wallet_layout.*
 import kotlinx.android.synthetic.main.fragment_profile.*
-import java.util.zip.Inflater
 
 class ProfileFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +43,7 @@ class ProfileFragment : Fragment() {
                     val parent = alertView.parent as ViewGroup
                     parent.removeView(alertView)
                 }
-            val potrdi_button = alertView.findViewById<Button>(R.id.potrdi_dialog_button)
+            val potrdi_button = alertView.findViewById<Button>(R.id.potrdi_car_button)
             potrdi_button.setOnClickListener {
                 val wallet_name_string = wallet_name_field.text.toString()
                 val wallet_code_string = wallet_code_field.text.toString()
@@ -67,7 +61,7 @@ class ProfileFragment : Fragment() {
                     Toast.makeText(context, "Name: $wallet_name_string, Code: $wallet_code_string, count: ${countWords(wallet_code_string)}", Toast.LENGTH_SHORT).show()
                 }
             }
-            val prekini_button = alertView.findViewById<Button>(R.id.prekini_dialog_button)
+            val prekini_button = alertView.findViewById<Button>(R.id.prekini_car_button)
             prekini_button.setOnClickListener {
                 wallet_name_field.text?.clear()
                 wallet_code_field.text?.clear()
