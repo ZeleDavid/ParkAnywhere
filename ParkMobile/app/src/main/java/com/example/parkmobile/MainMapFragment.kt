@@ -19,6 +19,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Color
 import android.location.Location
@@ -37,6 +38,7 @@ import androidx.navigation.Navigation
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.*
+import com.google.android.gms.vision.barcode.BarcodeDetector
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
@@ -155,7 +157,6 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener, GoogleMap.O
         if(darkMode)
             mapStyle = R.raw.map_style_night
         mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(context, mapStyle))
-
         addLocationMarkers()
         mGoogleMap.setOnInfoWindowClickListener(this)
         mLocationRequest = LocationRequest.create()
@@ -405,6 +406,5 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener, GoogleMap.O
                     { error -> Toast.makeText(context, "Prišlo je do napake pri prenosu podatkov "+error.message, Toast.LENGTH_SHORT).show()}
                 )
     }
-
 
 }
