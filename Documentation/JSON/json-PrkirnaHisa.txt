@@ -1,0 +1,143 @@
+{
+	"idParkirnaHisa": "word word word word",
+	"naziv": "Na Koroški cesti",
+	"naslov": "Koroška cesta 11",
+	"stVsehMest": 300,
+	"stZasedenihMest": 215,
+	"cenaNaUro": 1.5,
+	"lat": 46.557856,
+	"lng": 15.642783,
+	"lastnik": "David Žele"
+}
+
+{
+	"idParkirnaHisa": "word word word word",
+	"naziv": "Na Gosposvetski cesti",
+	"naslov": "Gosposvetska cesta 12",
+	"stVsehMest": 200,
+	"stZasedenihMest": 115,
+	"cenaNaUro": 1.8,
+	"lat": 46.561193,
+	"lng": 15.638914,
+	"lastnik": "David Žele"
+}
+
+{
+	"idParkirnaHisa": "word word word word",
+	"naziv": "Na Smetanovi",
+	"naslov": "Smetanova ulica 24",
+	"stVsehMest": 120,
+	"stZasedenihMest": 44,
+	"cenaNaUro": 1.4,
+	"lat":  46.559839, 
+	"lng": 15.638941,
+	"lastnik": "Luka Èetina"
+}
+
+{
+	"idParkirnaHisa": "word word word word",
+	"naziv": "Pri kliniènem",
+	"naslov": "Ljubljanska ulica 5",
+	"stVsehMest": 400,
+	"stZasedenihMest": 354,
+	"cenaNaUro": 2.0,
+	"lat": 46.551567,
+	"lng": 15.649045,
+	"lastnik": "Luka Èetina"
+}
+
+{
+	"idParkirnaHisa": "word word word word",
+	"naziv": "Pod gradom",
+	"naslov": "Grajska ulica 1",
+	"stVsehMest": 80,
+	"stZasedenihMest": 22,
+	"cenaNaUro": 1.1,
+	"lat": 46.560482, 
+	"lng": 15.648115,
+	"lastnik": "Luka Èetina"
+}
+
+{
+	"idParkirnaHisa": "word word word word",
+	"naziv": "Na Vodnikovem trgu",
+	"naslov": "Vodnikov trg 7",
+	"stVsehMest": 100,
+	"stZasedenihMest": 8,
+	"cenaNaUro": 2.0,
+	"lat":  46.557904, 
+	"lng": 15.641023,
+	"lastnik": "Luka Èetina"
+}
+
+{
+	"idParkirnaHisa": "word word word word",
+	"naziv": "Pod Europarkom"",
+	"naslov": "Poberška cesta 18",
+	"stVsehMest": 600,
+	"stZasedenihMest": 504,
+	"cenaNaUro": 1.7,
+	"lat": 46.554719, 
+	"lng": 15.653377,
+	"lastnik": "Žan Kovaè"
+}
+
+{
+	"idParkirnaHisa": "word word word word",
+	"naziv": "Pri Štuku",
+	"naslov": "Gosposvetska cesta 83",
+	"stVsehMest": 150,
+	"stZasedenihMest": 101,
+	"cenaNaUro": 1.0,
+	"lat": 46.562824, 
+	"lng": 15.626873,
+	"lastnik": "Žan Kovaè"
+}
+
+{
+	"idParkirnaHisa": "word word word word",
+	"naziv": "Pod Kalvarijo"",
+	"naslov": "Kamniška ulica 52",
+	"stVsehMest": 50,
+	"stZasedenihMest": 32,
+	"cenaNaUro": 1.0,
+	"lat": 46.567008, 
+	"lng": 15.632677,
+	"lastnik": "Žan Kovaè"
+}
+
+{
+	"idParkirnaHisa": "word word word word",
+	"naziv": "Pri Pristanu",
+	"naslov": "Ob bregu 24",
+	"stVsehMest": 110,
+	"stZasedenihMest": 78,
+	"cenaNaUro": 1.9,
+	"lat": 46.557578, 
+	"lng": 15.638266,
+	"lastnik": "Eva Smolak"
+}
+
+{
+	"idParkirnaHisa": "word word word word",
+	"naziv": "Pri stadionu",
+	"naslov": "Mladinska ulica 21",
+	"stVsehMest": 60,
+	"stZasedenihMest": 58,
+	"cenaNaUro": 1.2,
+	"lat":  46.562813, 
+	"lng": 15.643413,
+	"lastnik": "Eva Smolak"
+}
+
+{
+	"idParkirnaHisa": "word word word word",
+	"naziv": "V centru",
+	"naslov": "Ulica 10. oktobra 4",
+	"stVsehMest": 110,
+	"stZasedenihMest": 78,
+	"cenaNaUro": 1.9,
+	"lat": 46.559356, 
+	"lng": 15.645808,
+	"lastnik": "Eva Smolak"
+}

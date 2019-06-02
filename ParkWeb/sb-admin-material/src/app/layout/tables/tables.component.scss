@@ -7,7 +7,12 @@ table {
     width: 100%;
 }
 
-td,
-th {
-    width: 16%;
+#dodajGumb{
+  position:absolute;
+  left:10px;
+  bottom:10px;
+}
+
+.mat-elevation-z8{
+  position:relative;
 }

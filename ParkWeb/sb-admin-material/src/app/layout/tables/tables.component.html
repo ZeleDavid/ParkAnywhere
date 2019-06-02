@@ -27,13 +27,11 @@
           <td mat-cell *matCellDef="let row"> {{row.stZasedenihMest}} </td>
         </ng-container>
 
-        <!-- Progress Column -->
         <ng-container matColumnDef="zasedenost">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Zasedenost </th>
             <td mat-cell *matCellDef="let row"> {{row.stZasedenihMest/row.stVsehMest | number:'1.2-2'}}% </td>
         </ng-container>
 
-        <!-- Name Column -->
         <ng-container matColumnDef="naziv">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Naziv </th>
             <td mat-cell *matCellDef="let row"> {{row.naziv}} </td>
@@ -44,15 +42,23 @@
           <td mat-cell *matCellDef="let row"> {{row.cenaNaUro | number:'1.2-2'}}€ </td>
         </ng-container>
 
-        <!-- Color Column -->
         <ng-container matColumnDef="lastnik">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Lastnik </th>
             <td mat-cell *matCellDef="let row"> {{row.lastnik}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="izbrisi">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let row"> <button mat-raised-button color="warn" (click)="izbrisi()">Izbriši</button> </td>
+        </ng-container>
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-
     <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <button id="dodajGumb" mat-raised-button (click)="openDialog()">Dodaj</button>
 </div>
+
+
+       
+
