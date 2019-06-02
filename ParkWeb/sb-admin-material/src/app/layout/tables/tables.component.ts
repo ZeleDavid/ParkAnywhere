@@ -37,7 +37,7 @@ export class TablesComponent implements OnInit {
         .pipe(
           map(data => _.values(data)),
           tap(parkirneHise => {this.dataSource = new MatTableDataSource(parkirneHise); this.dataSource.paginator = this.paginator;
-            this.dataSource.sort = this.sort; } )
+             this.dataSource.sort = this.sort; } )
         )
         .subscribe(parkirneHise => parkHise = parkirneHise);
     }
