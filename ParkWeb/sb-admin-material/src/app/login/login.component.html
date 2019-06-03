@@ -1,6 +1,5 @@
 <div class="login-page">
     <div class="content">
-        <!-- <h1 class="app-name">Sb Admin Material</h1> -->
         <form class="login-form" fxFlex  >
             <div class="text-center">
                 <h2 class="app-name">ParkAnywhere</h2>
@@ -8,14 +7,14 @@
             <div fxFlex  fxlayout="row" fxlayout.lt-md="column">
                 <div fxFlexFill>
                     <mat-form-field class="w-100">
-                        <input matInput placeholder="Email">
+                        <input matInput #userName placeholder="Email">
                     </mat-form-field>
                 </div>
             </div>
             <div fxFlex  fxLayout="row" fxLayout.lt-md="column">
                 <div fxFlexFill>
                     <mat-form-field class="w-100">
-                        <input matInput type="password" placeholder="Geslo">
+                        <input matInput #userPassword type="password" placeholder="Geslo">
                     </mat-form-field>
                 </div>
             </div>
@@ -29,7 +28,13 @@
             </div>
             <div fxFlex  fxLayout="row" fxLayout.lt-md="column">
                 <div fxFlexFill>
-                    <button mat-raised-button color="primary" class="w-100" (click)="onLogin()">Prijava</button>
+<!--
+                    <button mat-raised-button color="primary" class="w-100" (click)="authService.SignIn(userName.value, userPassword.value)">Prijava</button>
+-->
+                    <label for="prijava" class="customButton w-100">
+                      Prijava
+                    </label>
+                    <input id="prijava" type="button" class="w-100" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
                 </div>
             </div>
 

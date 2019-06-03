@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DialogOverviewComponent } from './dialog-overview.component';
+import { DodajUComponent } from './dodajU.component';
 
 describe('DodajUComponent', () => {
-    let component: DialogOverviewComponent;
-    let fixture: ComponentFixture<DialogOverviewComponent>;
+    let component: DodajUComponent;
+    let fixture: ComponentFixture<DodajUComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [DialogOverviewComponent]
+            declarations: [DodajUComponent]
         }).compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(DialogOverviewComponent);
+        fixture = TestBed.createComponent(DodajUComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
