@@ -19,7 +19,7 @@
             <span>{{ 'Nastavitve' | translate }}</span>
         </button>
     </mat-menu>
-    <button mat-icon-button (click)="onLoggedout()">
+    <button mat-icon-button (click)="authService.SignOut()">
         <mat-icon>exit_to_app</mat-icon>
     </button>
 </mat-toolbar>

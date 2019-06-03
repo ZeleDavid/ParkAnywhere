@@ -14,6 +14,14 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+// Firebase services + enviorment module
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+// import service
+import { AuthService } from './shared/services/auth.service';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // AoT requires an exported function for factories
@@ -35,6 +43,10 @@ export const createTranslateLoader = (http: HttpClient) => {
         BrowserAnimationsModule,
         LayoutModule,
         OverlayModule,
+        AngularFireAuthModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireModule,
+        AngularFirestoreModule,
         HttpClientModule,
         TranslateModule.forRoot({
             loader: {
@@ -44,7 +56,7 @@ export const createTranslateLoader = (http: HttpClient) => {
             }
         })
     ],
-    providers: [],
+    providers: [AuthService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

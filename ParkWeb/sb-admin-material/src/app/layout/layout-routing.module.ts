@@ -38,6 +38,10 @@ const routes: Routes = [
                 loadChildren: './tables/tables.module#TablesModule'
             },
             {
+              path: 'uporabniki',
+              loadChildren: './uporabniki/uporabniki.module#UporabnikiModule'
+            },
+            {
                 path: 'blank-page',
                 loadChildren: './blank-page/blank-page.module#BlankPageModule'
             }
