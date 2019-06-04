@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import * as _ from 'lodash';
+import * as firebase from 'firebase';
 declare let L;
 
 
@@ -46,7 +47,7 @@ export class DashboardComponent implements OnInit {
     displayedColumns = ['position', 'name', 'weight', 'symbol'];
     dataSource = new MatTableDataSource(ELEMENT_DATA);
     places: Array<any> = [];
-	parkirneHise$: Observable<ParkirnaHisa[]>;
+    parkirneHise$: Observable<ParkirnaHisa[]>;
 
     applyFilter(filterValue: string) {
         filterValue = filterValue.trim(); // Remove whitespace
@@ -56,7 +57,7 @@ export class DashboardComponent implements OnInit {
 
     constructor(private http: HttpClient ) {
         this.parkirneHise$ = this.http
-        .get<ParkirnaHisa[]>('http://localhost:8080/Docker_rest/REST/parkirneHise')
+        .get<ParkirnaHisa[]>('http://45.77.58.205:8000/parkchain/location/' + firebase.auth().currentUser.uid)
           .pipe(map(data => _.values(data)))
         ;
         this.places = [
@@ -91,7 +92,7 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
-      const map1 =L.map('map').setView([46.560630, 15.632039], 15);
+      const map1 = L.map('map').setView([46.560630, 15.632039], 15);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map1);
@@ -110,14 +111,14 @@ export class DashboardComponent implements OnInit {
           L.marker([podatki.lat, podatki.lng],  {icon: Icon}
 		  ).addTo(map1)
             .bindPopup(
-              '<p><b>'+podatki.naziv+'</b></br>'+
-              podatki.naslov+'<p>'+
-              '<p><b>Lastnik: </b>'+podatki.lastnik+'</p>'+
-              '<p>Število parkrnih mest:'+podatki.stVsehMest+' </br>'+
-              'Število zasedenih mest: '+podatki.stZasedenihMest+'</p>'
+              '<p><b>' + podatki.naziv + '</b></br>' +
+              podatki.naslov + '<p>' +
+              '<p><b>Lastnik: </b>' + podatki.lastnik + '</p>' +
+              '<p>Število parkrnih mest:' + podatki.stVsehMest + ' </br>' +
+              'Število zasedenih mest: ' + podatki.stZasedenihMest + '</p>'
             );
-        })
-      })
+        });
+      });
 
     }
 }

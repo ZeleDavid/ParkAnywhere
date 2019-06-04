@@ -4,9 +4,7 @@ import {Observable} from 'rxjs';
 import {map, filter, switchMap, tap} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import * as _ from 'lodash';
-import {DodajComponent} from '../dodaj/dodaj.component';
-import {Router} from '@angular/router';
-import {AuthService} from '../../shared/services/auth.service';
+import {DodajUComponent} from '../dodajU/dodajU.component';
 import * as firebase from 'firebase';
 
 interface ParkirnaHisa {
@@ -23,10 +21,10 @@ interface ParkirnaHisa {
 
 @Component({
     selector: 'app-tables',
-    templateUrl: './tables.component.html',
-    styleUrls: ['./tables.component.scss']
+    templateUrl: './uporabniki.component.html',
+    styleUrls: ['./uporabniki.component.scss']
 })
-export class TablesComponent implements OnInit {
+export class UporabnikiComponent implements OnInit {
     displayedColumns = ['naziv', 'naslov', 'cenaNaUro', 'stZasedenihMest', 'stVsehMest', 'zasedenost', 'lastnik', 'izbrisi'];
     dataSource: MatTableDataSource<ParkirnaHisa>;
     parkirneHise$: Observable<ParkirnaHisa[]>;
@@ -36,24 +34,14 @@ export class TablesComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
 
-    constructor(private http: HttpClient, public dialog: MatDialog, public authService: AuthService) {
+    constructor(private http: HttpClient, public dialog: MatDialog) {
       let parkHise: ParkirnaHisa[] = new Array();
-      /*this.http
-        .get('http://localhost:8080/Docker_rest/REST/parkirneHise')
-        .pipe(
-          map(data => _.values(data)),
-          tap(parkirneHise => {this.dataSource = new MatTableDataSource(parkirneHise); this.dataSource.paginator = this.paginator;
-             this.dataSource.sort = this.sort; } )
-        )
-        .subscribe(parkirneHise => parkHise = parkirneHise);*/
-      // console.log(authService.userData.uid);
-      // console.log(firebase.auth().currentUser.uid);
       this.http
         .get('http://45.77.58.205:8000/parkchain/location/' + firebase.auth().currentUser.uid)
         .pipe(
           map(data => _.values(data)),
           tap(parkirneHise => {this.dataSource = new MatTableDataSource(parkirneHise); this.dataSource.paginator = this.paginator;
-            this.dataSource.sort = this.sort; } )
+             this.dataSource.sort = this.sort; } )
         )
         .subscribe(parkirneHise => parkHise = parkirneHise);
     }
@@ -73,7 +61,7 @@ export class TablesComponent implements OnInit {
     }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DodajComponent, {
+    const dialogRef = this.dialog.open(DodajUComponent, {
       width: '250px',
       data: { name: 'ime', animal: this.animal }
     });

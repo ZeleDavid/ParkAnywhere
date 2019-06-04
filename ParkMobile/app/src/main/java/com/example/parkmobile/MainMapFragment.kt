@@ -1,10 +1,7 @@
 package com.example.parkmobile
 
 import android.app.AlertDialog
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.content.Context
-import android.content.Context.NOTIFICATION_SERVICE
 import android.content.DialogInterface
 import android.net.Uri
 import android.os.Bundle
@@ -19,11 +16,9 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Color
 import android.location.Location
-import android.os.Build
 import android.os.Looper
 import android.util.Log
 import android.view.animation.AnimationUtils
@@ -33,12 +28,10 @@ import android.widget.ListView
 import androidx.core.content.ContextCompat
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.navigation.Navigation
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.*
-import com.google.android.gms.vision.barcode.BarcodeDetector
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
@@ -62,8 +55,10 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener, GoogleMap.O
     private lateinit var mapFrag: SupportMapFragment
     private lateinit var mLocationRequest: LocationRequest
     private lateinit var mLastLocation: Location
-    private lateinit var mCurrLocationMarker: Marker
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
+
+    //seznam lokacij
+    var parkingLocations= ArrayList<Parkirisce>()
 
     //retrofit
     val apiInterface by lazy {
@@ -97,52 +92,52 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener, GoogleMap.O
                     { error -> Toast.makeText(context, "Prišlo je do napake pri prenosu podatkov "+error.message, Toast.LENGTH_SHORT).show()}
                 )
     }
-    private fun navigirajNajblizjeParkirisce(){
+    private fun naloziParkirisca(){
         disposable =
             apiInterface.vrniVsaParkirisca()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                     { result ->
-                        var najblizje = result[0]
-                        val temp_distance = FloatArray(1)
-                        Location.distanceBetween(result[0].lat, result[0].lat, mLastLocation.latitude, mLastLocation.longitude, temp_distance)
-                        var minRazdalja = temp_distance[0]
-                        for(parkirisce:Parkirisce in result){
-                            if(parkirisce.stVsehMest-parkirisce.stZasedenihMest>0){
-                                val distance_result = FloatArray(1)
-                                Location.distanceBetween(parkirisce.lat, parkirisce.lng, mLastLocation.latitude, mLastLocation.longitude, distance_result)
-                                if(distance_result[0]<minRazdalja){
-                                    minRazdalja = distance_result[0]
-                                    najblizje = parkirisce
-                                }
-                            }
-                            else{
-                                continue
-                            }
-                        }
-                        val myLocation = Location("myLocation")
-                        myLocation.latitude = mLastLocation.latitude
-                        myLocation.longitude = mLastLocation.longitude
-                        val nearestLocation = Location("nearestLocation")
-                        nearestLocation.latitude = najblizje.lat
-                        nearestLocation.longitude = najblizje.lng
-                        val distance = myLocation.distanceTo(nearestLocation)/1000
-                        MaterialAlertDialogBuilder(context)
-                            .setTitle("Najbližje parkirišče: ${najblizje.naziv}, $distance km")
-                            .setMessage("Ali želite navigacijo do izbranega parkirišča?\nŠtevilo prostih mest: ${najblizje.stVsehMest-najblizje.stZasedenihMest}\nCena na uro: ${najblizje.cenaNaUro}")
-                            .setPositiveButton("Navigiraj", DialogInterface.OnClickListener { dialog, id ->
-                                val gmmIntentUri = Uri.parse("google.navigation:q=${najblizje.lat},${najblizje.lng}")
-                                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-                                mapIntent.setPackage("com.google.android.apps.maps")
-                                startActivity(mapIntent)
-                            })
-                            .setNegativeButton("Prekini", null)
-                            .show()
-
+                        parkingLocations = ArrayList<Parkirisce>(result)
                     },
                     { error -> Toast.makeText(context, "Prišlo je do napake pri prenosu podatkov "+error.message, Toast.LENGTH_SHORT).show()}
                 )
+    }
+    private fun vrniNajblizjeParkirisce():Parkirisce{
+        if(parkingLocations.size==0){
+            naloziParkirisca()
+        }
+        var najblizje = parkingLocations[0]
+        val temp_distance = FloatArray(1)
+        Location.distanceBetween(najblizje.lat, najblizje.lat, mLastLocation.latitude, mLastLocation.longitude, temp_distance)
+        var minRazdalja = temp_distance[0]
+        for(parkirisce:Parkirisce in parkingLocations){
+            if(parkirisce.stVsehMest-parkirisce.stZasedenihMest>0){
+                val distance_result = FloatArray(1)
+                Location.distanceBetween(parkirisce.lat, parkirisce.lng, mLastLocation.latitude, mLastLocation.longitude, distance_result)
+                if(distance_result[0]<minRazdalja){
+                    minRazdalja = distance_result[0]
+                    najblizje = parkirisce
+                }
+            }
+            else{
+                continue
+            }
+        }
+        return najblizje
+    }
+
+    private fun oddaljenostParkirisca(parkirisce: Parkirisce): Float{
+        val myLocation = Location("myLocation")
+        myLocation.latitude = mLastLocation.latitude
+        myLocation.longitude = mLastLocation.longitude
+        val nearestLocation = Location("nearestLocation")
+        nearestLocation.latitude = parkirisce.lat
+        nearestLocation.longitude = parkirisce.lng
+        var distance = myLocation.distanceTo(nearestLocation) / 100
+        distance = (Math.round(distance)/10).toFloat()
+        return distance
     }
 
     override fun onMapReady(mMap: GoogleMap) {
@@ -181,18 +176,19 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener, GoogleMap.O
                 Log.i("MapsActivity", "Location: " + location.latitude + " " + location.longitude)
 
                 if (!this@MainMapFragment::mLastLocation.isInitialized) {
-                    val latlng = LatLng(location.latitude, location.longitude)
-                    val googlePlex = CameraPosition.builder()
-                        .target(latlng)
-                        .zoom(17f)
-                        .bearing(0f)
-                        .build()
-
-                    mGoogleMap.animateCamera(CameraUpdateFactory.newCameraPosition(googlePlex), 50, null)
+                    premakniKamero(LatLng(location.latitude, location.longitude))
                 }
                 mLastLocation = location
             }
         }
+    }
+    fun premakniKamero(latLng: LatLng){
+        val googlePlex = CameraPosition.builder()
+            .target(latLng)
+            .zoom(17f)
+            .bearing(0f)
+            .build()
+        mGoogleMap.animateCamera(CameraUpdateFactory.newCameraPosition(googlePlex), 50, null)
     }
 
     val MY_PERMISSIONS_REQUEST_LOCATION = 99
@@ -211,7 +207,7 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener, GoogleMap.O
                 AlertDialog.Builder(context)
                     .setTitle("Potrebno je dovoljenje za dostop do vaše lokacije")
                     .setMessage("Aplikacija ParkAnywhere potrebuje dostop do vaše lokacije za delovanje zato vas prosimo da to omogočite.")
-                    .setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which ->
+                    .setPositiveButton("OK", DialogInterface.OnClickListener { _, _ ->
                         requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
                             MY_PERMISSIONS_REQUEST_LOCATION)
                     })
@@ -257,13 +253,13 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener, GoogleMap.O
         MaterialAlertDialogBuilder(context)
             .setTitle(marker.title)
             .setMessage("Prosta mesta: 50\nCena na uro: 1,5€")
-            .setPositiveButton("Navigiraj", DialogInterface.OnClickListener { dialog, id ->
+            .setPositiveButton("Navigiraj", DialogInterface.OnClickListener { _, _ ->
                 val gmmIntentUri = Uri.parse("google.navigation:q=${marker.position.latitude},${marker.position.longitude}")
                 val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
                 mapIntent.setPackage("com.google.android.apps.maps")
                 startActivity(mapIntent)
             })
-            .setPositiveButton("Rezerviraj", DialogInterface.OnClickListener{ dialog, id ->
+            .setPositiveButton("Rezerviraj", DialogInterface.OnClickListener{ _, _ ->
 
             })
             .setNegativeButton("Prekini", null)
@@ -272,6 +268,7 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener, GoogleMap.O
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        naloziParkirisca()
     }
 
     override fun onCreateView(
@@ -301,110 +298,118 @@ class MainMapFragment : Fragment(), GoogleMap.OnMarkerClickListener, GoogleMap.O
         val fab = findPark
         fab.setColorFilter(Color.WHITE)
         fab.setOnClickListener {
-            parkirajNajblizjeParkirisce()
             val animation = AnimationUtils.loadAnimation(context, R.anim.beacon_found_animation)
             fab.startAnimation(animation)
+            if(parkingLocations.size>0){
+                parkirajNajblizjeParkirisce()
+            }
+            else{
+                naloziParkirisca()
+            }
 
         }
-        bottom_bar_near_me.setOnClickListener{
-            navigirajNajblizjeParkirisce()
+        bottom_bar_directions.setOnClickListener{
+            if(parkingLocations.size>0){
+                val najblizje = vrniNajblizjeParkirisce()
+                premakniKamero(LatLng(najblizje.lat, najblizje.lng))
+                MaterialAlertDialogBuilder(context)
+                    .setTitle("Najbližje parkirišče: ${najblizje.naziv}, ${oddaljenostParkirisca(najblizje)} km")
+                    .setMessage("Ali želite navigacijo do izbranega parkirišča?\nŠtevilo prostih mest: ${najblizje.stVsehMest-najblizje.stZasedenihMest}\nCena na uro: ${najblizje.cenaNaUro}")
+                    .setPositiveButton("Navigiraj", DialogInterface.OnClickListener { _, _ ->
+                        val gmmIntentUri = Uri.parse("google.navigation:q=${najblizje.lat},${najblizje.lng}")
+                        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                        mapIntent.setPackage("com.google.android.apps.maps")
+                        startActivity(mapIntent)
+                    })
+                    .setNegativeButton("Prekini", null)
+                    .show()
+            }
+            else{
+                naloziParkirisca()
+            }
         }
         bottom_bar_car.setOnClickListener(View.OnClickListener {
             //inflate view za bottom sheet kjer je seznam avtov
-            val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
+            val sheetView = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
             val dialog = BottomSheetDialog(context!!)
-            dialog.setContentView(view)
+            dialog.setContentView(sheetView)
             dialog.show()
             //adapter za prikaz avtov v listView
-            val arrayAdapter = ArrayAdapter<String>(context, R.layout.bottom_sheet_list_row, R.id.bottom_list_text, values)
-            view.findViewById<ListView>(R.id.car_list).adapter = arrayAdapter
+            val arrayAdapter = ArrayAdapter<String>(context!!, R.layout.bottom_sheet_list_row, R.id.bottom_list_text, values)
+            sheetView.findViewById<ListView>(R.id.car_list).adapter = arrayAdapter
             //gumb pod seznamom, ki doda avto
-            val car_button = view.findViewById<Button>(R.id.add_car_button)
+            val car_button = sheetView.findViewById<Button>(R.id.add_car_button)
             car_button.setOnClickListener {
-                //inflater za dialog kamor uporabnik vpiše registersko
-                val alertView = LayoutInflater.from(context).inflate(R.layout.add_car_dialog, getView() as ViewGroup, false)
-                val car_dialog = MaterialAlertDialogBuilder(context).create()
-                car_dialog.setTitle("Dodajanje avta")
-                car_dialog.setMessage("Vpišite registrsko tablico avta, ki ga želite dodati")
-                car_dialog.setView(alertView)
-                car_dialog.setOnDismissListener {
-                    val parent = alertView.parent as ViewGroup
-                    parent.removeView(alertView)
-                }
-                val potrdi_button = alertView.findViewById<Button>(R.id.potrdi_car_button)
-                potrdi_button.setOnClickListener {
-                    val add_car_string = alertView.findViewById<TextInputEditText>(R.id.add_car_input).text.toString()
-                    if(!add_car_string.isBlank()){
-                        values.add(add_car_string)
-                        car_dialog.dismiss()
-                    }
-                    else{
-                        add_car_input.error = "Polje ne sme biti prazno"
-                    }
-                }
-                val prekini_button = alertView.findViewById<Button>(R.id.prekini_car_button)
-                prekini_button.setOnClickListener {
-                    add_car_input.text?.clear()
-                    car_dialog.dismiss()
-                }
-                car_dialog.show()
+                dodajanjeAvta()
             }
         })
         bottom_bar_user.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_testFragment_to_profileFragment)
         }
-        bottom_bar_setings.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_testFragment_to_settingsFragment)
+        bottom_bar_list.setOnClickListener {
+            val location_list_view = layoutInflater.inflate(R.layout.location_bottom_sheet, null)
+            val dialog = BottomSheetDialog(context!!)
+            dialog.setContentView(location_list_view)
+            dialog.show()
+            //adapter za prikaz avtov v listView
+            val array = ArrayList<Parkirisce>()
+            array.add(Parkirisce(1.5, "15", "Luka", 46.53566, 15.5468, "Zofke kvedrove 15", "Pod gradom", 150, 15))
+            array.add(Parkirisce(2.5, "16", "Luka", 46.45566, 15.5558, "Zofke kvedrove 15", "Pod tvojo garažo", 150, 15))
+            array.add(Parkirisce(3.5, "17", "Luka", 46.55896, 15.5568, "Zofke kvedrove 15", "Pred feri", 150, 15))
+            val locationList = location_list_view.findViewById<ListView>(R.id.location_list)
+            locationList.adapter = ParkirisceAdapter(location_list_view.context, array)
+            locationList.setOnItemClickListener { adapterView, view, position: Int, id: Long ->
+                Log.i("CLICK", "CLICKED LIST")
+                Toast.makeText(context!!, "Clivked", Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
+
+    private fun dodajanjeAvta() {
+        val alertView = LayoutInflater.from(context).inflate(R.layout.add_car_dialog, getView() as ViewGroup, false)
+        val car_dialog = MaterialAlertDialogBuilder(context).create()
+        car_dialog.setTitle("Dodajanje avta")
+        car_dialog.setMessage("Vpišite registrsko tablico avta, ki ga želite dodati")
+        car_dialog.setView(alertView)
+        car_dialog.setOnDismissListener {
+            val parent = alertView.parent as ViewGroup
+            parent.removeView(alertView)
+        }
+        val potrdi_button = alertView.findViewById<Button>(R.id.potrdi_car_button)
+        potrdi_button.setOnClickListener {
+            val add_car_string = alertView.findViewById<TextInputEditText>(R.id.add_car_input).text.toString()
+            if (!add_car_string.isBlank()) {
+                values.add(add_car_string)
+                car_dialog.dismiss()
+            } else {
+                add_car_input.error = "Polje ne sme biti prazno"
+            }
+        }
+        val prekini_button = alertView.findViewById<Button>(R.id.prekini_car_button)
+        prekini_button.setOnClickListener {
+            add_car_input.text?.clear()
+            car_dialog.dismiss()
+        }
+        car_dialog.show()
+    }
+
     private fun parkirajNajblizjeParkirisce(){
-        disposable =
-            apiInterface.vrniVsaParkirisca()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                    { result ->
-                        var najblizje = result[0]
-                        val temp_distance = FloatArray(1)
-                        Location.distanceBetween(result[0].lat, result[0].lat, mLastLocation.latitude, mLastLocation.longitude, temp_distance)
-                        var minRazdalja = temp_distance[0]
-                        for(parkirisce:Parkirisce in result){
-                            if(parkirisce.stVsehMest-parkirisce.stZasedenihMest>0){
-                                val distance_result = FloatArray(1)
-                                Location.distanceBetween(parkirisce.lat, parkirisce.lng, mLastLocation.latitude, mLastLocation.longitude, distance_result)
-                                if(distance_result[0]<minRazdalja){
-                                    minRazdalja = distance_result[0]
-                                    najblizje = parkirisce
-                                }
-                            }
-                            else{
-                                continue
-                            }
-                        }
-                        val myLocation = Location("myLocation")
-                        myLocation.latitude = mLastLocation.latitude
-                        myLocation.longitude = mLastLocation.longitude
-                        val nearestLocation = Location("nearestLocation")
-                        nearestLocation.latitude = najblizje.lat
-                        nearestLocation.longitude = najblizje.lng
-                        val distance = myLocation.distanceTo(nearestLocation)
-                        if(distance<50){
-                            MaterialAlertDialogBuilder(context)
-                                .setTitle("Ali je to vaše parkirišče: ${najblizje.naziv}")
-                                .setMessage("Ali želite parkirati? (${najblizje.id})")
-                                .setPositiveButton("Parkiraj", DialogInterface.OnClickListener { dialog, id ->
+        val najblizje = vrniNajblizjeParkirisce()
+        val distance = oddaljenostParkirisca(najblizje)
+        if(distance<50){
+            MaterialAlertDialogBuilder(context)
+                .setTitle("Ali je to vaše parkirišče: ${najblizje.naziv}")
+                .setMessage("Ali želite parkirati? (${najblizje.id})")
+                .setPositiveButton("Parkiraj", DialogInterface.OnClickListener { _, _ ->
 
-                                })
-                                .setNegativeButton("Prekini", null)
-                                .show()
-                        }
-                        else{
-                            Toast.makeText(context, "Niste v bližini parkirišča", Toast.LENGTH_SHORT).show()
-                        }
-
-                    },
-                    { error -> Toast.makeText(context, "Prišlo je do napake pri prenosu podatkov "+error.message, Toast.LENGTH_SHORT).show()}
-                )
+                })
+                .setNegativeButton("Prekini", null)
+                .show()
+        }
+        else{
+            Toast.makeText(context, "Niste v bližini parkirišča", Toast.LENGTH_SHORT).show()
+        }
     }
 
 }
