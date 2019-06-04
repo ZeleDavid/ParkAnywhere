@@ -21,25 +21,6 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE)
-        if(sharedPreferences.getBoolean("dark_mode", false))
-            dark_theme_switch.isChecked = true
-        super.onViewCreated(view, savedInstanceState)
-        dark_theme_switch.setOnClickListener {
-
-            if(dark_theme_switch.isChecked){
-                sharedPreferences
-                    .edit()
-                    .putBoolean("dark_mode", true)
-                    .apply()
-            }
-            else{
-                sharedPreferences
-                    .edit()
-                    .putBoolean("dark_mode", false)
-                    .apply()
-            }
-        }
     }
 
 

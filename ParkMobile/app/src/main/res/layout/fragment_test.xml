@@ -27,8 +27,7 @@
                 android:id="@+id/bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                app:hideOnScroll="true">
+                android:layout_gravity="bottom">
             <include layout="@layout/bottom_bar"/>
         </com.google.android.material.bottomappbar.BottomAppBar>
         <com.google.android.material.floatingactionbutton.FloatingActionButton

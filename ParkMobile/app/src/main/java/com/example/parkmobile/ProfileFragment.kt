@@ -28,6 +28,25 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE)
+        if(sharedPreferences.getBoolean("dark_mode", false))
+            dark_theme_switch.isChecked = true
+        super.onViewCreated(view, savedInstanceState)
+        dark_theme_switch.setOnClickListener {
+
+            if(dark_theme_switch.isChecked){
+                sharedPreferences
+                    .edit()
+                    .putBoolean("dark_mode", true)
+                    .apply()
+            }
+            else{
+                sharedPreferences
+                    .edit()
+                    .putBoolean("dark_mode", false)
+                    .apply()
+            }
+        }
+
         wallet_name.text = sharedPreferences.getString("wallet_name", "Ime vaše ARK denarnice")
         wallet_balance.text = sharedPreferences.getString("wallet_code", "Stanje vaše denarnice")
         val alertView = LayoutInflater.from(context).inflate(R.layout.edit_wallet_layout, getView() as ViewGroup, false)
@@ -70,6 +89,7 @@ class ProfileFragment : Fragment() {
 
             dialog.show()
         }
+
     }
     fun countWords(string:String):Int{
         val trim = string.trim()
