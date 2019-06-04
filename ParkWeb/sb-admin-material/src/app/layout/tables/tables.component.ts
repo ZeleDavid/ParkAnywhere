@@ -5,6 +5,9 @@ import {map, filter, switchMap, tap} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import * as _ from 'lodash';
 import {DodajComponent} from '../dodaj/dodaj.component';
+import {Router} from '@angular/router';
+import {AuthService} from '../../shared/services/auth.service';
+import * as firebase from 'firebase';
 
 interface ParkirnaHisa {
   cenaNaUro: string;
@@ -33,14 +36,24 @@ export class TablesComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
 
-    constructor(private http: HttpClient, public dialog: MatDialog) {
+    constructor(private http: HttpClient, public dialog: MatDialog, public authService: AuthService) {
       let parkHise: ParkirnaHisa[] = new Array();
-      this.http
+      /*this.http
         .get('http://localhost:8080/Docker_rest/REST/parkirneHise')
         .pipe(
           map(data => _.values(data)),
           tap(parkirneHise => {this.dataSource = new MatTableDataSource(parkirneHise); this.dataSource.paginator = this.paginator;
              this.dataSource.sort = this.sort; } )
+        )
+        .subscribe(parkirneHise => parkHise = parkirneHise);*/
+      // console.log(authService.userData.uid);
+      // console.log(firebase.auth().currentUser.uid);
+      this.http
+        .get('http://45.77.58.205:8000/parkchain/location/' + firebase.auth().currentUser.uid)
+        .pipe(
+          map(data => _.values(data)),
+          tap(parkirneHise => {this.dataSource = new MatTableDataSource(parkirneHise); this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort; } )
         )
         .subscribe(parkirneHise => parkHise = parkirneHise);
     }

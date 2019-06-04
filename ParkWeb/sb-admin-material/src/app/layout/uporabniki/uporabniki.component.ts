@@ -5,6 +5,7 @@ import {map, filter, switchMap, tap} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import * as _ from 'lodash';
 import {DodajUComponent} from '../dodajU/dodajU.component';
+import * as firebase from 'firebase';
 
 interface ParkirnaHisa {
   cenaNaUro: string;
@@ -36,7 +37,7 @@ export class UporabnikiComponent implements OnInit {
     constructor(private http: HttpClient, public dialog: MatDialog) {
       let parkHise: ParkirnaHisa[] = new Array();
       this.http
-        .get('http://localhost:8080/Docker_rest/REST/parkirneHise')
+        .get('http://45.77.58.205:8000/parkchain/location/' + firebase.auth().currentUser.uid)
         .pipe(
           map(data => _.values(data)),
           tap(parkirneHise => {this.dataSource = new MatTableDataSource(parkirneHise); this.dataSource.paginator = this.paginator;
