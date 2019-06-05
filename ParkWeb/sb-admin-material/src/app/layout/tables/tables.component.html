@@ -49,7 +49,7 @@
 
         <ng-container matColumnDef="izbrisi">
           <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let row"> <button mat-raised-button color="warn" (click)="izbrisi()">Izbriši</button> </td>
+          <td mat-cell *matCellDef="let row"> <button mat-raised-button color="warn" (click)="izbrisi(row.naziv)">Izbriši</button> </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
