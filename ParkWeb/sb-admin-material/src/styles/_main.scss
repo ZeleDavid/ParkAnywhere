@@ -17,3 +17,51 @@ body {
 .mb-20 {
     margin-bottom: 20px;
 }
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+$bv-brand: (
+    50: #e8eaf6,
+  100: #c5cae9,
+  200: #9fa8da,
+  300: #7986cb,
+  400: #5c6bc0,
+  500: #3f51b5,
+  600: #3949ab,
+  700: #303f9f,
+  800: #283593,
+  900: #1a237e,
+  A100: #8c9eff,
+  A200: #020b42,
+  A400: #AD1030,
+  A700: #304ffe,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+  );
+
+
+// mandatory stuff for theming
+$bv-palette-primary: mat-palette($bv-brand, A200);
+$bv-palette-accent:  mat-palette($bv-brand, A200);
+$bv-palette-warn:  mat-palette($bv-brand, A400);
+
+// include the custom theme components into a theme object
+$bv-theme: mat-light-theme($bv-palette-primary, $bv-palette-accent, $bv-palette-warn);
+
+// include the custom theme object into the angular material theme
+@include angular-material-theme($bv-theme);

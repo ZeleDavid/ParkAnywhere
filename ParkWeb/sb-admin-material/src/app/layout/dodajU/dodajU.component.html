@@ -1,29 +1,19 @@
-<h1 mat-dialog-title>Nova parkirna hiša</h1>
+<h1 mat-dialog-title>Nov uporabnik</h1>
 <div mat-dialog-content>
   <div layout="row" layout-xs="column">
     <div flex="">
       <mat-form-field>
-        <input matInput [(ngModel)]="data.animal" placeholder="Naziv">
+        <input matInput [(ngModel)]="data.animal" placeholder="Email">
       </mat-form-field>
     </div>
     <div flex="">
       <mat-form-field>
-        <input matInput [(ngModel)]="data.animal" placeholder="Naslov">
-      </mat-form-field>
-    </div>
-    <div flex="">
-      <mat-form-field>
-        <input matInput [(ngModel)]="data.animal" placeholder="Cena na uro">
-      </mat-form-field>
-    </div>
-    <div flex="">
-      <mat-form-field>
-        <input matInput [(ngModel)]="data.animal" placeholder="Št. vseh parkirnih mest">
+        <input matInput [(ngModel)]="data.animal" placeholder="Geslo">
       </mat-form-field>
     </div>
   </div>
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Prekliči</button>
-    <button mat-raised-button [mat-dialog-close]="data.animal" cdkFocusInitial>Dodaj vpis</button>
+    <button mat-raised-button [mat-dialog-close]="data.animal" cdkFocusInitial>Dodaj uporabnika</button>
 </div>

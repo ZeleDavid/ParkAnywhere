@@ -84,8 +84,10 @@ export class TablesComponent implements OnInit {
     });
   }
 
-  izbrisi() {
-
+  izbrisi(naziv: any) {
+    if (confirm('Res želite izbrisati parkirno hišo: ' + naziv + '?')) {
+      console.log('Implement delete functionality here');
+    }
   }
 }
 
