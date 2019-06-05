@@ -1,4 +1,4 @@
-package com.example.parkmobile
+package com.example.parkmobile.Beacons
 
 import android.content.Context
 import android.util.Log
@@ -8,7 +8,8 @@ import com.google.android.gms.nearby.messages.*
 private const val LOG_TAG = "BeaconScanner"
 
 class BeaconScanner(private val context: Context,
-                    private val listener: Listener) : MessageListener() {
+                    private val listener: Listener
+) : MessageListener() {
 
     fun start() {
         getClient(context).subscribe(this, buildOptions())

@@ -1,4 +1,4 @@
-package com.example.parkmobile
+package com.example.parkmobile.Fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import com.example.parkmobile.R
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -66,7 +67,7 @@ class ProfileFragment : Fragment() {
             potrdi_button.setOnClickListener {
                 val wallet_name_string = wallet_name_field.text.toString()
                 val wallet_code_string = wallet_code_field.text.toString()
-                if(wallet_name_string!=null && countWords(wallet_code_string)==20){
+                if(countWords(wallet_code_string)==12){
                     sharedPreferences
                         .edit()
                         .putString("wallet_name", wallet_name_string)

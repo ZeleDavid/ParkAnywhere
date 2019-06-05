@@ -4,7 +4,7 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav"
             app:startDestination="@id/testFragment">
 
-    <fragment android:id="@+id/testFragment" android:name="com.example.parkmobile.MainMapFragment"
+    <fragment android:id="@+id/testFragment" android:name="com.example.parkmobile.Fragments.MainMapFragment"
               android:label="fragment_test" tools:layout="@layout/fragment_test">
         <action android:id="@+id/action_testFragment_to_profileFragment" app:destination="@id/profileFragment"
                 app:enterAnim="@anim/fade_in" app:exitAnim="@anim/fade_out"
@@ -13,8 +13,8 @@
                 app:enterAnim="@anim/fade_in" app:exitAnim="@anim/fade_out" app:popEnterAnim="@anim/fade_in"
                 app:popExitAnim="@anim/fade_out" app:launchSingleTop="false"/>
     </fragment>
-    <fragment android:id="@+id/profileFragment" android:name="com.example.parkmobile.ProfileFragment"
+    <fragment android:id="@+id/profileFragment" android:name="com.example.parkmobile.Fragments.ProfileFragment"
               android:label="fragment_profile" tools:layout="@layout/fragment_profile"/>
-    <fragment android:id="@+id/settingsFragment" android:name="com.example.parkmobile.SettingsFragment"
+    <fragment android:id="@+id/settingsFragment" android:name="com.example.parkmobile.Fragments.SettingsFragment"
               android:label="fragment_settings" tools:layout="@layout/fragment_settings"/>
 </navigation>

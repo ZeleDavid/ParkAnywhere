@@ -1,7 +1,7 @@
-package com.example.parkmobile
+package com.example.parkmobile.Retrofit
 
+import com.example.parkmobile.DataClass.Parkirisce
 import retrofit2.http.*
-import java.util.*
 import io.reactivex.Observable
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -13,7 +13,7 @@ interface ApiInterface {
     fun vrniVsaParkirisca():Observable<List<Parkirisce>>
 
     companion object{
-        fun create(): ApiInterface{
+        fun create(): ApiInterface {
             val retrofit = Retrofit.Builder()
                 .addCallAdapterFactory(
                     RxJava2CallAdapterFactory.create())

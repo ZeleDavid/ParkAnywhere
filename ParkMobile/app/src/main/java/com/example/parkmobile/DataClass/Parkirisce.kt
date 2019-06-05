@@ -1,4 +1,4 @@
-package com.example.parkmobile
+package com.example.parkmobile.DataClass
 
 
 import android.content.Context
@@ -7,9 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.example.parkmobile.R
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.synthetic.main.location_list_row.view.*
 
 data class Parkirisce(
+    @SerializedName("uid")
+    val uid: String,
     @SerializedName("cenaNaUro")
     val cenaNaUro: Double,
     @SerializedName("id")
@@ -57,4 +62,29 @@ class ParkirisceAdapter(context: Context, seznam:List<Parkirisce>) : BaseAdapter
     override fun getCount(): Int {
         return seznamParkirisc.size
     }
+}
+class ParkirisceRecyclerAdapter(seznam: List<Parkirisce>): RecyclerView.Adapter<CustomViewHolder>(){
+    val seznamParkirisc = seznam
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
+        val layoutInflater = LayoutInflater.from(parent?.context)
+        val cellForRow = layoutInflater.inflate(R.layout.location_list_row, parent, false)
+        return CustomViewHolder(cellForRow)
+    }
+
+    override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
+        holder.view.location_list_text?.text = seznamParkirisc[position].naziv
+        holder.view.location_list_adress?.text = seznamParkirisc[position].naslov
+        holder.view.location_list_spots?.text = (seznamParkirisc[position].stVsehMest - seznamParkirisc[position].stZasedenihMest).toString()
+
+    }
+
+    override fun getItemCount(): Int {
+        return seznamParkirisc.size
+    }
+
+
+}
+class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view){
+
 }

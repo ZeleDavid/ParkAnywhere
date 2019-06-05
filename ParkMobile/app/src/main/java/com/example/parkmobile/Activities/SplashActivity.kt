@@ -1,4 +1,4 @@
-package com.example.parkmobile
+package com.example.parkmobile.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

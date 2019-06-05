@@ -3,7 +3,7 @@
              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context=".MainMapFragment" android:id="@+id/frameLayout">
+             tools:context=".Fragments.MainMapFragment" android:id="@+id/frameLayout">
 
     <!--<com.google.android.material.button.MaterialButton-->
     <!--android:id="@+id/button"-->
@@ -37,7 +37,7 @@
                 app:layout_anchor="@id/bar"
                 app:rippleColor="#71B5EE"
                 android:src="@drawable/ic_local_parking_black_24dp"
-                android:backgroundTint="@color/colorPrimary">
+                android:backgroundTint="@color/colorAccent">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
