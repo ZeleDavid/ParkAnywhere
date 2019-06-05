@@ -7,16 +7,8 @@ import * as _ from 'lodash';
 import {DodajUComponent} from '../dodajU/dodajU.component';
 import * as firebase from 'firebase';
 
-interface ParkirnaHisa {
-  cenaNaUro: string;
-  idParkirnaHisa: string;
-  lastnik: string;
-  lat: string;
-  lng: string;
-  naslov: string;
-  naziv: string;
-  stVsehMest: string;
-  stZasedenihMest: string;
+interface User {
+  email: string;
 }
 
 @Component({
@@ -25,9 +17,9 @@ interface ParkirnaHisa {
     styleUrls: ['./uporabniki.component.scss']
 })
 export class UporabnikiComponent implements OnInit {
-    displayedColumns = ['naziv', 'naslov', 'cenaNaUro', 'stZasedenihMest', 'stVsehMest', 'zasedenost', 'lastnik', 'izbrisi'];
-    dataSource: MatTableDataSource<ParkirnaHisa>;
-    parkirneHise$: Observable<ParkirnaHisa[]>;
+    displayedColumns = ['email', 'izbrisi'];
+    dataSource: MatTableDataSource<User>;
+    users$: Observable<User[]>;
     animal: string;
     name: string;
 
@@ -35,15 +27,15 @@ export class UporabnikiComponent implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
 
     constructor(private http: HttpClient, public dialog: MatDialog) {
-      let parkHise: ParkirnaHisa[] = new Array();
+      let userji: User[] = new Array();
       this.http
-        .get('http://45.77.58.205:8000/parkchain/location/' + firebase.auth().currentUser.uid)
+        .get('http://45.77.58.205:8000/parkchain/users')
         .pipe(
           map(data => _.values(data)),
-          tap(parkirneHise => {this.dataSource = new MatTableDataSource(parkirneHise); this.dataSource.paginator = this.paginator;
+          tap(users => {this.dataSource = new MatTableDataSource(users[0]); this.dataSource.paginator = this.paginator;
              this.dataSource.sort = this.sort; } )
         )
-        .subscribe(parkirneHise => parkHise = parkirneHise);
+        .subscribe(users => userji = users);
     }
 
     ngOnInit() {
@@ -62,7 +54,7 @@ export class UporabnikiComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DodajUComponent, {
-      width: '250px',
+      width: '300px',
       data: { name: 'ime', animal: this.animal }
     });
 
@@ -72,8 +64,10 @@ export class UporabnikiComponent implements OnInit {
     });
   }
 
-  izbrisi() {
-
+  izbrisi(ime: any) {
+    if (confirm('Res želite izbrisati uporabnika z emailom: ' + ime + '?')) {
+      console.log('Implement delete functionality here');
+    }
   }
 }
 
