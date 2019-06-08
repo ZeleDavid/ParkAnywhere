@@ -1,53 +1,58 @@
-﻿ParkingChain API 1.0 dokumentacija
+﻿ParkingChain API 2.0 dokumentacija
 
-/parkingchain
-1./parkchain/locations
-	1.1 GET - vrne seznam vseh parkirišč (za json parkirišča glej 1.2)
-	1.2 POST - doda novo lokacijo parkirišča, prejme sledeči json:
-		{
-		"idParkirnaHisa": "word word word word",
-		"naziv": "Parkirisce pod gradom",
-		"naslov": "Pod gradom 15",
-		"stVsehMest": 300,
-		"stZasedenihMest": 215,
-		"cenaNaUro": 1.5,
-		"lat": 46.00000,
-		"lng": 55.0000,
-		"lastnik": "David"
-		}
-	1.3 DELETE(/idParkirnaHisa) - izbriše se parkirna hiša z poslanim id
-	1.4 GET(/idParkirnaHisa) - vrnejo se podatki o parkirni hiši z ustreznim id-jem (za json glej 1.2)
-	1.5 GET(/lastnik) - vrne seznam vseh parkirišč od ustreznega lastnika (za json glej 1.2)
-2./parkchain/park
-	2.1 POST - ko uporabnik parkira se pošlje json objekt, ki vsebuje podatke o parkirni hiši, času, uporabniku,...
-		{
-		"idUporabnik": "word word word word...",
-		"idParkirnaHisa": "word word word"
-		"datum": "2012-04-23T18:25:43.511Z", //pri formatu za čas znajo bit probleme ampak ni nujno da mamo pri vpisu tudi čas
-		"tablica": "CE05158"
-		}
-	//rabimo nek identifikator
-	2.2 GET(/idParkiranja) - vrne json z informacijami o parkiranju z ustreznim id
-		{
-		"idParkiranja": "word word word...",
-		"idUporabnik": "word word word word...",
-		"idParkirnaHisa": "word word word"
-		"datum": "2012-04-23T18:25:43.511Z", //pri formatu za čas znajo bit probleme ampak ni nujno da mamo pri vpisu tudi čas
-		"tablica": "CE05158"
-		}
-	2.3 PUT/GET/???(idParkiranja) - endpoint za končanje parkiranja. Js sem si zamislu da bi samo podal id parkiranja in se podatki iz prejšnje transakcije uporabijo za plačilo...
-	2.4 GET(/user/idUser/history) - podatki o preteklih parkiranjih uporabnika
-	2.5 GET(/user/idUser/current) - podatki o trenutnem aktivnem parkiranju
-	2.6 GET(/location/idLocation/history) - podatki o parkiranjih na parkirišču
-3./parkchain/reservations
-	3.1 POST - nova rezervacija
-		{
-		"idUporabnik": "word word word word...",
-		"idParkirnaHisa": "word word word"
-		"zacetek": "2012-04-23T18:25:43.511Z", //pri formatu za čas znajo bit probleme ampak ni nujno da mamo pri vpisu tudi čas
-		"konec": "2012-04-23T18:25:43.511Z",		
-		"tablica": "CE05158"
-		}
-	3.2 GET(/user/idUser) - vrne uporabnikove rezervacije (json verjetno enak jsonu v 3.1)
-	3.3 GET(/location/idLocation) - vrne rezervacije za neko parkirno hišo (json verjetno enak 3.1)
-	
+GET
+/parkchain/locations
+
+
+POST 
+/parkchain/locations
+
+
+PUT
+/parkchain/location/{uid}
+
+
+DELETE
+/parkchain/location/{uid}/{parkhouseid}
+
+
+GET
+/parkchain/location/{uid}
+
+
+POST-ustvari uporabnika
+/parkchain/user
+npr:
+{
+    
+	"email": "user2@gmail.com",
+    
+	"password": "geslo123",
+    
+	"walletAddress": "PS8jxZ6gqekg5Aqo47UD355o9iieWYULdK"
+
+}
+
+
+
+
+GET-vrne vse uporabnike
+/parkchain/users
+
+GET-vrne enega uporabnika
+/parkchain/user/{uid}
+npr:
+http://45.77.58.205:8000/parkchain/user/oB7GK9KXTYNsNBPKBJYX75z2SFg1
+za user@gmail.com
+
+
+DELETE
+/parkchain/user/{uid}
+
+
+GET
+/starterpack/{address}
+
+
+GET
+/parkchain/wallet/{uid}
