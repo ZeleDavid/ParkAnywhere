@@ -19,8 +19,8 @@ data class Parkirisce(
     val cenaNaUro: Double,
     @SerializedName("id")
     val id: String,
-    @SerializedName("lastnik")
-    val lastnik: String,
+    @SerializedName("ParkHouseId")
+    val ParkHouseId: String,
     @SerializedName("lat")
     val lat: Double,
     @SerializedName("lng")
@@ -43,6 +43,20 @@ class CenaComparator{
     companion object: Comparator<Parkirisce>{
         override fun compare(o1: Parkirisce, o2: Parkirisce): Int {
             return (o1.cenaNaUro*10).toInt() - (o2.cenaNaUro*10).toInt()
+        }
+    }
+}
+class MestaComparator{
+    companion object: Comparator<Parkirisce>{
+        override fun compare(o1: Parkirisce, o2: Parkirisce): Int {
+            return (o1.stVsehMest-o1.stZasedenihMest) - (o2.stVsehMest-o2.stZasedenihMest)
+        }
+    }
+}
+class NazivComparator{
+    companion object: Comparator<Parkirisce>{
+        override fun compare(o1: Parkirisce, o2: Parkirisce): Int {
+            return o1.naziv.compareTo(o2.naziv)
         }
     }
 }

@@ -35,9 +35,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parkmobile.Beacons.BeaconScanner
-import com.example.parkmobile.DataClass.CenaComparator
-import com.example.parkmobile.DataClass.Parkirisce
-import com.example.parkmobile.DataClass.ParkirisceRecyclerAdapter
+import com.example.parkmobile.DataClass.*
 import com.example.parkmobile.R
 import com.example.parkmobile.Retrofit.ApiInterface
 import com.example.parkmobile.Transaction.ParkNet
@@ -174,17 +172,48 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
             locationList.layoutManager = LinearLayoutManager(context)
             var arraylist = ArrayList<Parkirisce>()
             arraylist.add(Parkirisce("0", 1.5, "1", "Luka", 46.55556, 15.5568, "Zofke Kvedrove 2b", "Pred hišo", 5, 2))
-            arraylist.add(Parkirisce("1", 3.5, "2", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
-            arraylist.add(Parkirisce("2", 2.0, "3", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
-            arraylist.add(Parkirisce("3", 1.5, "4", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
-            arraylist.add(Parkirisce("4", 2.3, "5", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
-            arraylist.add(Parkirisce("5", 0.5, "6", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
-            arraylist.add(Parkirisce("6", 5.5, "7", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
-            arraylist.add(Parkirisce("7", 1.2, "8", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
-            arraylist.add(Parkirisce("8", 2.2, "9", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
-            arraylist.add(Parkirisce("9", 3.4, "10", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
-            val adapter = ParkirisceRecyclerAdapter(arraylist.sortedWith(CenaComparator), { parkirisce: Parkirisce -> parkirisceItemClickedParkiraj(parkirisce)}, { parkirisce: Parkirisce -> parkirisceItemClickedNavigiraj(parkirisce)})
+            arraylist.add(Parkirisce("1", 3.5, "2", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Okoli hiše", 15, 7))
+            arraylist.add(Parkirisce("2", 2.0, "3", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "A garažo", 25, 7))
+            arraylist.add(Parkirisce("3", 1.5, "4", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Ga blokom", 65, 7))
+            arraylist.add(Parkirisce("4", 2.3, "5", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Sa gostilno", 25, 7))
+            arraylist.add(Parkirisce("5", 0.5, "6", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Ša šolo", 13, 7))
+            arraylist.add(Parkirisce("6", 5.5, "7", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 11, 7))
+            arraylist.add(Parkirisce("7", 1.2, "8", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 56, 7))
+            arraylist.add(Parkirisce("8", 2.2, "9", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 19, 7))
+            arraylist.add(Parkirisce("9", 3.4, "10", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 18, 7))
+            val adapter = ParkirisceRecyclerAdapter(parkingLocations, { parkirisce: Parkirisce -> parkirisceItemClickedParkiraj(parkirisce)}, { parkirisce: Parkirisce -> parkirisceItemClickedNavigiraj(parkirisce)})
             locationList.adapter = adapter
+            val sortButton = location_list_view.findViewById<Button>(R.id.sort_locations_button)
+            sortButton.setOnClickListener {
+                val popup = PopupMenu(context, sortButton)
+                popup.menuInflater.inflate(R.menu.sort_locations_menu, popup.menu)
+                popup.setOnMenuItemClickListener {selectedItem ->
+                    when (selectedItem.title){
+                        "Abecedi" -> {
+                            val abecedaArray = arraylist
+                            abecedaArray.sortedWith(NazivComparator)
+                            Toast.makeText(context, abecedaArray[0].naziv, Toast.LENGTH_SHORT).show()
+                            arraylist.clear()
+                            arraylist.addAll(abecedaArray)
+
+                            adapter.notifyDataSetChanged()
+                        }
+                        "Ceni" -> {
+                            Toast.makeText(context, "Ceni item", Toast.LENGTH_SHORT).show()
+                        }
+                        "Prostih mestih" -> {
+                            val mestaArray = arraylist
+                            mestaArray.sortedWith(MestaComparator)
+                            Toast.makeText(context, mestaArray[0].naziv, Toast.LENGTH_SHORT).show()
+                        }
+                        "Razdalji" -> {
+                            Toast.makeText(context, "Razdalji item", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    true
+                }
+                popup.show()
+            }
 
         }
     }
