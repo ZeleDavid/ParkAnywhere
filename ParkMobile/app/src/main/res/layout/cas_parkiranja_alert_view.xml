@@ -6,13 +6,13 @@
                                                    android:layout_height="match_parent" android:id="@+id/linearLayout4">
 
     <Spinner
-            android:layout_width="60dp"
+            android:layout_width="70dp"
             android:layout_height="wrap_content" android:id="@+id/cas_parkiranja_spinner"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="24dp"/>
+            android:layout_marginStart="32dp"/>
     <TextView
             android:text="Čas v urah"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView9"
             app:layout_constraintTop_toBottomOf="@+id/cas_parkiranja_spinner"

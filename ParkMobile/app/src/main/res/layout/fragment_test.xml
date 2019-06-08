@@ -30,15 +30,22 @@
                 android:layout_gravity="bottom">
             <include layout="@layout/bottom_bar"/>
         </com.google.android.material.bottomappbar.BottomAppBar>
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <!--com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/findPark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_anchor="@id/bar"
-                app:rippleColor="#71B5EE"
+                app:rippleColor="#BE6977"
                 android:src="@drawable/ic_local_parking_black_24dp"
                 android:backgroundTint="@color/colorAccent">
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+        </com.google.android.material.floatingactionbutton.FloatingActionButton-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/findPark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_local_parking_black_24dp"
+                app:layout_anchor="@id/bar"
+                app:backgroundTint="@color/colorAccent"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

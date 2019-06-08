@@ -39,32 +39,16 @@ data class Parkirisce(
         return "Parkirisce(naziv='$naziv')"
     }
 }
-class ParkirisceAdapter(context: Context, seznam:List<Parkirisce>) : BaseAdapter(){
-    private val mContext: Context = context
-    private val seznamParkirisc = seznam
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val layoutInflater = LayoutInflater.from(mContext)
-        val row = layoutInflater.inflate(R.layout.location_list_row, parent, false)
-        row.findViewById<TextView>(R.id.location_list_text).text = seznamParkirisc[position].naziv
-        row.findViewById<TextView>(R.id.location_list_adress).text = seznamParkirisc[position].naslov
-        row.findViewById<TextView>(R.id.location_list_spots).text = (seznamParkirisc[position].stVsehMest - seznamParkirisc[position].stZasedenihMest).toString()
-        return row
-    }
-
-    override fun getItem(position: Int): Any {
-        return seznamParkirisc[position]
-    }
-
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
-
-    override fun getCount(): Int {
-        return seznamParkirisc.size
+class CenaComparator{
+    companion object: Comparator<Parkirisce>{
+        override fun compare(o1: Parkirisce, o2: Parkirisce): Int {
+            return (o1.cenaNaUro*10).toInt() - (o2.cenaNaUro*10).toInt()
+        }
     }
 }
-class ParkirisceRecyclerAdapter(seznam: List<Parkirisce>): RecyclerView.Adapter<CustomViewHolder>(){
+class ParkirisceRecyclerAdapter(seznam: List<Parkirisce>, val clickListenerParkiraj: (Parkirisce)->Unit, val clickListenerNavigiraj: (Parkirisce)->Unit): RecyclerView.Adapter<CustomViewHolder>(){
     val seznamParkirisc = seznam
+    var mExpandedPosition = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val layoutInflater = LayoutInflater.from(parent?.context)
@@ -73,10 +57,14 @@ class ParkirisceRecyclerAdapter(seznam: List<Parkirisce>): RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        holder.view.location_list_text?.text = seznamParkirisc[position].naziv
-        holder.view.location_list_adress?.text = seznamParkirisc[position].naslov
-        holder.view.location_list_spots?.text = (seznamParkirisc[position].stVsehMest - seznamParkirisc[position].stZasedenihMest).toString()
-
+        (holder as CustomViewHolder).bind(seznamParkirisc[position], clickListenerParkiraj, clickListenerNavigiraj)
+        val isExpanded = position == mExpandedPosition
+        holder.view.location_list_expandable. visibility = if(isExpanded) View.VISIBLE else View.GONE
+        holder.itemView.isActivated = isExpanded
+        holder.itemView.setOnClickListener {
+            mExpandedPosition = if(isExpanded) -1 else position
+            notifyItemChanged(position)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -86,5 +74,12 @@ class ParkirisceRecyclerAdapter(seznam: List<Parkirisce>): RecyclerView.Adapter<
 
 }
 class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view){
-
+    fun bind(parkirisce: Parkirisce, clickListenerParkiraj: (Parkirisce) -> Unit, clickListenerNavigiraj: (Parkirisce) -> Unit){
+        view.location_list_text?.text = parkirisce.naziv
+        view.location_list_adress?.text = parkirisce.naslov
+        view.location_list_spots?.text = (parkirisce.stVsehMest - parkirisce.stZasedenihMest).toString()
+        view.location_list_cena?.text = parkirisce.cenaNaUro.toString()
+        view.location_list_show.setOnClickListener { clickListenerParkiraj(parkirisce) }
+        view.location_list_navigate.setOnClickListener { clickListenerNavigiraj(parkirisce) }
+    }
 }

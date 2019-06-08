@@ -6,7 +6,8 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
-        android:id="@+id/linearLayout3">
+        android:id="@+id/linearLayout3"
+        android:animateLayoutChanges="true">
 
     <TextView
             android:id="@+id/location_list_text"
@@ -21,7 +22,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/location_list_adress"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/location_list_text"
             app:layout_constraintEnd_toStartOf="@+id/location_list_spots" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"/>
@@ -30,13 +30,62 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/location_list_spots"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@+id/textView11"
-            android:layout_marginEnd="4dp" android:textSize="24dp" android:textColor="@android:color/black"/>
+            app:layout_constraintTop_toTopOf="@+id/location_list_text"
+            app:layout_constraintEnd_toStartOf="@+id/textView11"
+            android:layout_marginEnd="4dp" android:textSize="24dp" android:textColor="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/location_list_adress" android:layout_marginBottom="8dp"/>
     <TextView
             android:text="prostih\nmest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView11" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/location_list_spots" android:textSize="12dp"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/location_list_expandable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/location_list_adress" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="8dp">
+
+        <Button
+                android:text="Pokaži"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/location_list_show" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                style="@style/Widget.MaterialComponents.Button"/>
+        <Button
+                android:text="Navigiraj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/location_list_navigate" app:layout_constraintEnd_toStartOf="@+id/location_list_show"
+                android:layout_marginEnd="16dp" app:layout_constraintTop_toTopOf="@+id/location_list_show"
+                app:layout_constraintBottom_toBottomOf="@+id/location_list_show"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+        <TextView
+                android:text="2.5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/location_list_cena" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:textSize="24dp" android:textColor="@android:color/black"/>
+        <TextView
+                android:text="na uro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView12"
+                app:layout_constraintTop_toTopOf="@+id/location_list_cena"
+                app:layout_constraintBottom_toBottomOf="@+id/location_list_cena"
+                app:layout_constraintVertical_bias="0.615" app:layout_constraintStart_toEndOf="@+id/imageView4"
+        />
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/ic_local_parking_black_24dp"
+                android:id="@+id/imageView4" app:layout_constraintStart_toEndOf="@+id/location_list_cena"
+                app:layout_constraintTop_toTopOf="@+id/location_list_cena"
+                app:layout_constraintBottom_toBottomOf="@+id/location_list_cena"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

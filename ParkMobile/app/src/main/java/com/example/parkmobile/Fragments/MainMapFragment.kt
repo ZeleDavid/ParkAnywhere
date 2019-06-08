@@ -35,6 +35,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parkmobile.Beacons.BeaconScanner
+import com.example.parkmobile.DataClass.CenaComparator
 import com.example.parkmobile.DataClass.Parkirisce
 import com.example.parkmobile.DataClass.ParkirisceRecyclerAdapter
 import com.example.parkmobile.R
@@ -63,7 +64,9 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
     private lateinit var mLocationRequest: LocationRequest
     private lateinit var mLastLocation: Location
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
-    private val PARKING_DISTANCE_KM = 0.5
+    private val PARKING_DISTANCE_KM = 0.05
+    private lateinit var parkirisceBeacon: Parkirisce
+    private var beaconCurrentlyDetected = false
 
     //seznam lokacij
     private var parkingLocations= ArrayList<Parkirisce>()
@@ -77,7 +80,7 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
     }
     var disposable: Disposable? = null
     //methods -------------------
-
+    private lateinit var location_bottom_sheet_dialog: BottomSheetDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         naloziParkirisca()
@@ -98,24 +101,28 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
         val fab = findPark
         fab.setColorFilter(Color.WHITE)
         fab.setOnClickListener {
-
             val animation = AnimationUtils.loadAnimation(context, R.anim.beacon_found_animation)
             fab.startAnimation(animation)
-            if(parkingLocations.size>0){
-                parkirajNajblizjeParkirisce()
+            if(beaconCurrentlyDetected){
+                Toast.makeText(context, "Parkiraj z beaconom", Toast.LENGTH_SHORT).show()
             }
             else{
-                naloziParkirisca()
+                if(parkingLocations.size>0){
+                    parkirajNajblizjeParkirisce()
+                }
+                else{
+                    naloziParkirisca()
+                }
             }
-
         }
         bottom_bar_directions.setOnClickListener{
             if(parkingLocations.size>0){
                 val najblizje = vrniNajblizjeParkirisce()
-                premakniKamero(LatLng(najblizje.lat, najblizje.lng))
+                premakniKamero(LatLng(najblizje.lat, najblizje.lng), 300)
+                Thread.sleep(300)
                 MaterialAlertDialogBuilder(context)
                     .setTitle("Najbližje parkirišče: ${najblizje.naziv}, ${oddaljenostParkirisca(najblizje)} km")
-                    .setMessage("Ali želite navigacijo do izbranega parkirišča?\nŠtevilo prostih mest: ${najblizje.stVsehMest-najblizje.stZasedenihMest}\nCena na uro: ${najblizje.cenaNaUro}")
+                    .setMessage("Ali želite navigacijo do izbranega parkirišča?\nŠtevilo prostih mest: ${najblizje.stVsehMest-najblizje.stZasedenihMest}\nCena na uro: ${najblizje.cenaNaUro}P")
                     .setPositiveButton("Navigiraj", DialogInterface.OnClickListener { _, _ ->
                         val gmmIntentUri = Uri.parse("google.navigation:q=${najblizje.lat},${najblizje.lng}")
                         val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
@@ -155,17 +162,48 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
         bottom_bar_user.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_testFragment_to_profileFragment)
         }
+        //gumb ki pokaže bottom sheet kjer je recycle view vseh parkirisc
         bottom_bar_list.setOnClickListener {
             naloziParkirisca()
             val location_list_view = layoutInflater.inflate(R.layout.location_bottom_sheet, null)
             val dialog = BottomSheetDialog(context!!)
             dialog.setContentView(location_list_view)
             dialog.show()
+            location_bottom_sheet_dialog = dialog
             val locationList = location_list_view.findViewById<RecyclerView>(R.id.location_list_recycler)
             locationList.layoutManager = LinearLayoutManager(context)
-            locationList.adapter = ParkirisceRecyclerAdapter(parkingLocations)
+            var arraylist = ArrayList<Parkirisce>()
+            arraylist.add(Parkirisce("0", 1.5, "1", "Luka", 46.55556, 15.5568, "Zofke Kvedrove 2b", "Pred hišo", 5, 2))
+            arraylist.add(Parkirisce("1", 3.5, "2", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
+            arraylist.add(Parkirisce("2", 2.0, "3", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
+            arraylist.add(Parkirisce("3", 1.5, "4", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
+            arraylist.add(Parkirisce("4", 2.3, "5", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
+            arraylist.add(Parkirisce("5", 0.5, "6", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
+            arraylist.add(Parkirisce("6", 5.5, "7", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
+            arraylist.add(Parkirisce("7", 1.2, "8", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
+            arraylist.add(Parkirisce("8", 2.2, "9", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
+            arraylist.add(Parkirisce("9", 3.4, "10", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Za hišo", 15, 7))
+            val adapter = ParkirisceRecyclerAdapter(arraylist.sortedWith(CenaComparator), { parkirisce: Parkirisce -> parkirisceItemClickedParkiraj(parkirisce)}, { parkirisce: Parkirisce -> parkirisceItemClickedNavigiraj(parkirisce)})
+            locationList.adapter = adapter
 
         }
+    }
+    //Recycleview on item click function
+    fun parkirisceItemClickedParkiraj(parkirisce: Parkirisce) {
+        Log.i("RECYCLER", "On click park")
+        location_bottom_sheet_dialog.dismiss()
+        premakniKamero(LatLng(parkirisce.lat, parkirisce.lng), 600)
+        //pokaziPodrobnostiParkiriscaDialog(parkirisce)
+
+    }
+    //Recycleview on item click function
+    fun parkirisceItemClickedNavigiraj(parkirisce: Parkirisce) {
+        Log.i("RECYCLER", "On click nav")
+        val gmmIntentUri =
+            Uri.parse("google.navigation:q=${parkirisce.lat},${parkirisce.lng}")
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+        startActivity(mapIntent)
     }
 
     //Location, Google Maps-------------------------------------
@@ -279,70 +317,76 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
                 Log.i("MapsActivity", "Location: " + location.latitude + " " + location.longitude)
 
                 if (!this@MainMapFragment::mLastLocation.isInitialized) {
-                    premakniKamero(LatLng(location.latitude, location.longitude))
+                    premakniKamero(LatLng(location.latitude, location.longitude), 50)
                 }
                 mLastLocation = location
             }
         }
     }
-    fun premakniKamero(latLng: LatLng){
+    fun premakniKamero(latLng: LatLng, duration: Int){
         val googlePlex = CameraPosition.builder()
             .target(latLng)
             .zoom(17f)
             .bearing(0f)
             .build()
-        mGoogleMap.animateCamera(CameraUpdateFactory.newCameraPosition(googlePlex), 50, null)
+        mGoogleMap.animateCamera(CameraUpdateFactory.newCameraPosition(googlePlex), duration, null)
     }
     override fun onInfoWindowClick(marker: Marker) {
 
         val parkirisce = najdiParkirisce(marker.position)
         if(parkirisce!=null){
-            val casParkiranjaView = LayoutInflater.from(context).inflate(R.layout.cas_parkiranja_alert_view, getView() as ViewGroup, false)
-            val spinner = casParkiranjaView.findViewById<Spinner>(R.id.cas_parkiranja_spinner)
-            val list = ArrayList<String>()
-            list.add("0.5")
-            list.add("1")
-            list.add("2")
-            list.add("3")
-            list.add("4")
-            val dataAdapter = ArrayAdapter<String>(context, R.layout.support_simple_spinner_dropdown_item, list)
-            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = dataAdapter
-            val prostaMesta = parkirisce.stVsehMest - parkirisce.stZasedenihMest
-            MaterialAlertDialogBuilder(context)
-                .setTitle(parkirisce.naziv)
-                .setMessage("Prosta mesta: $prostaMesta\nCena na uro: ${parkirisce.cenaNaUro}P")
-                .setNeutralButton("Plačaj", DialogInterface.OnClickListener{ _, _ ->
-                    val cas = spinner.selectedItem.toString().toDouble()
-                    val sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE)
-                    val registerska = sharedPreferences.getString("registerska", null)
-                    val racun = sharedPreferences.getString("wallet_code", null)
-                    if(registerska!=null){
-                        if(racun!=null){
-                            parkiraj(parkirisce, registerska, cas, racun)
-                        }
-                        else{
-                            Navigation.findNavController(this.view!!).navigate(R.id.action_testFragment_to_profileFragment)
-                        }
-                    }
-                    else{
-                        dodajanjeAvta()
-                    }
-                })
-                .setPositiveButton("Navigiraj", DialogInterface.OnClickListener { _, _ ->
-                    val gmmIntentUri = Uri.parse("google.navigation:q=${marker.position.latitude},${marker.position.longitude}")
-                    val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-                    mapIntent.setPackage("com.google.android.apps.maps")
-                    startActivity(mapIntent)
-                })
-                .setView(casParkiranjaView)
-                .setOnDismissListener {
-                    val parent = casParkiranjaView.parent as ViewGroup
-                    parent.removeView(casParkiranjaView)
-                }
-                .show()
+            pokaziPodrobnostiParkiriscaDialog(parkirisce)
         }
     }
+
+    private fun pokaziPodrobnostiParkiriscaDialog(parkirisce: Parkirisce) {
+        val casParkiranjaView =
+            LayoutInflater.from(context).inflate(R.layout.cas_parkiranja_alert_view, getView() as ViewGroup, false)
+        val spinner = casParkiranjaView.findViewById<Spinner>(R.id.cas_parkiranja_spinner)
+        val list = ArrayList<String>()
+        list.add("0.5")
+        list.add("1")
+        list.add("2")
+        list.add("3")
+        list.add("4")
+        val dataAdapter = ArrayAdapter<String>(context, R.layout.support_simple_spinner_dropdown_item, list)
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = dataAdapter
+        spinner.setSelection(0)
+        val prostaMesta = parkirisce.stVsehMest - parkirisce.stZasedenihMest
+        MaterialAlertDialogBuilder(context)
+            .setTitle(parkirisce.naziv)
+            .setMessage("Prosta mesta: $prostaMesta\nCena na uro: ${parkirisce.cenaNaUro}P")
+            .setNeutralButton("Plačaj", DialogInterface.OnClickListener { _, _ ->
+                val cas = spinner.selectedItem.toString().toDouble()
+                val sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE)
+                val registerska = sharedPreferences.getString("registerska", null)
+                val racun = sharedPreferences.getString("wallet_code", null)
+                if (registerska != null) {
+                    if (racun != null) {
+                        parkiraj(parkirisce, registerska, cas, racun)
+                    } else {
+                        Navigation.findNavController(this.view!!).navigate(R.id.action_testFragment_to_profileFragment)
+                    }
+                } else {
+                    dodajanjeAvta()
+                }
+            })
+            .setPositiveButton("Navigiraj", DialogInterface.OnClickListener { _, _ ->
+                val gmmIntentUri =
+                    Uri.parse("google.navigation:q=${parkirisce.lat},${parkirisce.lng}")
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.setPackage("com.google.android.apps.maps")
+                startActivity(mapIntent)
+            })
+            .setView(casParkiranjaView)
+            .setOnDismissListener {
+                val parent = casParkiranjaView.parent as ViewGroup
+                parent.removeView(casParkiranjaView)
+            }
+            .show()
+    }
+
     //metoda, ki pretvori sliko v ikono za google maps
     private fun bitmapDescriptorFromVector(context: Context, vectorResId: Int): BitmapDescriptor {
         val vectorDrawable = ContextCompat.getDrawable(context, vectorResId)
@@ -451,13 +495,14 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
                 try
                 {
                     ParkTransaction.CreateParkTransaction(amount, "PS4ySsmTU4yTyyFfWQBFi59ENyQbpzBUPj", racun)
-                    Toast.makeText(context, "Plačilo je bilo uspešno izvedeno", Toast.LENGTH_SHORT).show()
+
                 }
                 catch (e:IOException) {
-                    Toast.makeText(context, "Prišlo je do napake pri plačilu", Toast.LENGTH_SHORT).show()
+
                 }
             }
         }.start()
+        Toast.makeText(context, "Plačilo je bilo uspešno izvedeno", Toast.LENGTH_SHORT).show()
     }
     //-----------------------------------------
     private fun parkirajNajblizjeParkirisce(){
@@ -466,8 +511,8 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
         val distance = oddaljenostParkirisca(najblizje)
         if(distance<PARKING_DISTANCE_KM){
             MaterialAlertDialogBuilder(context)
-                .setTitle("Ali je to vaše parkirišče: ${najblizje.naziv}")
-                .setMessage("Ali želite parkirati? (${najblizje.id})")
+                .setTitle("Plačajte parkirnino za parkirišče ${najblizje.naziv}")
+                .setMessage("Izberite čas parkiranja")
                 .setPositiveButton("Plačaj", DialogInterface.OnClickListener { _, _ ->
                     val idParkirisca = najblizje.id
                     val registerska = sharedPreferences.getString("registerska", null)
@@ -493,9 +538,6 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
             //klic za qr kodo
         }
     }
-    private fun offlineWarning(){
-        //TODO implement snackbar warning with go online button
-    }
 
     override fun onStart() {
         scanner = BeaconScanner(context!!, this)
@@ -509,6 +551,8 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
     }
 
     override fun onBeaconFound(data: String) {
+        beaconCurrentlyDetected = true
+
         val n = Intent(context, MainMapFragment::class.java)
         n.putExtra("id",data)
         val contentIntent = PendingIntent.getActivity(context, 0, n, 0)
@@ -526,6 +570,7 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
     }
 
     override fun onBeaconLost(data: String) {
+        beaconCurrentlyDetected = false
         Log.i("BEACON", "Lost")
         val ns = Context.NOTIFICATION_SERVICE
         val nMgr = context!!.getSystemService(ns) as NotificationManager
