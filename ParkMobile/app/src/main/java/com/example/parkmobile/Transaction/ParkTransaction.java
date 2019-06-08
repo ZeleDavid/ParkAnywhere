@@ -27,6 +27,7 @@ public class ParkTransaction {
         Transaction actual = new Transfer()
                 .recipient(recipientAddress)
                 .amount(amount)
+                //.vendorField()<------- tu not zapakiraj json, kateri se bo videl v transakciji
                 .sign(passphrase1)
                 .transaction;
 
