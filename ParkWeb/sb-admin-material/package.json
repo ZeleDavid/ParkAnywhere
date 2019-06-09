@@ -3,8 +3,8 @@
     "version": "7.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve --progress",
-        "build": "ng build --prod",
+        "start": "ng serve --progress --proxy-config proxy.conf.json",
+        "build": "ng build --prod ",
         "gitbuild": "ng build --prod --base-href /start-javascript/sb-admin-material/master/dist/",
         "test": "ng test",
         "lint": "ng lint",
@@ -32,6 +32,7 @@
         "firebase": "^6.1.0",
         "hammerjs": "2.0.8",
         "ng2-charts": "1.6.0",
+        "node-sass": "^4.12.0",
         "rxjs": "6.3.3",
         "web-animations-js": "2.3.1",
         "zone.js": "0.8.26"

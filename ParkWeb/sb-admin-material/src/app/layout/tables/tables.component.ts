@@ -25,7 +25,7 @@ interface ParkirnaHisa {
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Authorization': 'Bearer ' + firebase.auth().currentUser.getIdToken()
+    'Authorization': 'Bearer ' + firebase.auth().currentUser.getIdToken(),
   })
 };
 
