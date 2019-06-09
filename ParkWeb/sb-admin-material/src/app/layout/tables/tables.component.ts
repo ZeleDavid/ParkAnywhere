@@ -12,8 +12,8 @@ import { HttpHeaders } from '@angular/common/http';
 
 interface ParkirnaHisa {
   cenaNaUro: string;
-  idParkirnaHisa: string;
-  lastnik: string;
+  ParkHouseId: string;
+  uid: string;
   lat: string;
   lng: string;
   naslov: string;
@@ -35,7 +35,7 @@ const httpOptions = {
     styleUrls: ['./tables.component.scss']
 })
 export class TablesComponent implements OnInit {
-    displayedColumns = ['naziv', 'naslov', 'cenaNaUro', 'stZasedenihMest', 'stVsehMest', 'zasedenost', 'lastnik', 'izbrisi'];
+    displayedColumns = ['naziv', 'naslov', 'cenaNaUro', 'stZasedenihMest', 'stVsehMest', 'zasedenost', 'izbrisi'];
     dataSource: MatTableDataSource<ParkirnaHisa>;
     parkirneHise$: Observable<ParkirnaHisa[]>;
     cenaNaUro: number;
@@ -46,17 +46,16 @@ export class TablesComponent implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
 
     constructor(private http: HttpClient, public dialog: MatDialog, public authService: AuthService) {
+      this.naloziPodatke();
+    }
+
+    ngOnInit() {
+
+
+    }
+
+    naloziPodatke() {
       let parkHise: ParkirnaHisa[] = new Array();
-      /*this.http
-        .get('http://localhost:8080/Docker_rest/REST/parkirneHise')
-        .pipe(
-          map(data => _.values(data)),
-          tap(parkirneHise => {this.dataSource = new MatTableDataSource(parkirneHise); this.dataSource.paginator = this.paginator;
-             this.dataSource.sort = this.sort; } )
-        )
-        .subscribe(parkirneHise => parkHise = parkirneHise);*/
-      // console.log(authService.userData.uid);
-      // console.log(firebase.auth().currentUser.uid);
       this.http
         .get('http://45.77.58.205:8000/parkchain/location/' + firebase.auth().currentUser.uid)
         .pipe(
@@ -65,11 +64,6 @@ export class TablesComponent implements OnInit {
             this.dataSource.sort = this.sort; } )
         )
         .subscribe(parkirneHise => parkHise = parkirneHise);
-    }
-
-    ngOnInit() {
-
-
     }
 
     applyFilter(filterValue: string) {
@@ -91,10 +85,10 @@ export class TablesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      result = { uid: firebase.auth().currentUser.uid, naziv: '', naslov: '', stVsehMest: 400,
-        stZasedenihMest: 0, cenaNaUro: 4.5, lat: 46.559839, lng: 15.638941};
+      // result = { uid: firebase.auth().currentUser.uid, naziv: '', naslov: '', stVsehMest: 400,
+        // stZasedenihMest: 0, cenaNaUro: 4.5, lat: 46.559839, lng: 15.638941};
       this.dodaj(result)
-        .subscribe(odg => console.log(odg));
+        .subscribe( odg => this.naloziPodatke());
     });
   }
 
@@ -106,11 +100,19 @@ export class TablesComponent implements OnInit {
       console.log(httpOptions);
   }
 
+  brisiParkHiso (id: number, uid: number): Observable<{}> {
+    const url = 'http://45.77.58.205:8000/parkchain/location/' + uid + '/' + id;
+    return this.http.delete(url, httpOptions)
+      .pipe(
+      );
+  }
 
 
-  izbrisi(naziv: any) {
-    if (confirm('Res želite izbrisati parkirno hišo: ' + naziv + '?')) {
-      console.log('Implement delete functionality here');
+
+  izbrisi(obj: any) {
+    if (confirm('Res želite izbrisati parkirno hišo: ' + obj.naziv + '?')) {
+      console.log(obj.ParkHouseId);
+      this.brisiParkHiso(obj.ParkHouseId, obj.uid).subscribe( odg => this.naloziPodatke());
     }
   }
 }

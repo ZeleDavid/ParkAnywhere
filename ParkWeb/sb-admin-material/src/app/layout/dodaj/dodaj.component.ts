@@ -16,8 +16,4 @@ export class DodajComponent implements OnInit {
     onNoClick(): void {
         this.dialogRef.close();
     }
-
-  dodajPark() {
-
-  }
 }

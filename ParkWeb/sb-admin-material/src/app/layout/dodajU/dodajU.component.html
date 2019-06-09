@@ -3,17 +3,17 @@
   <div layout="row" layout-xs="column">
     <div flex="">
       <mat-form-field>
-        <input matInput [(ngModel)]="data.animal" placeholder="Email">
+        <input matInput [(ngModel)]="data.email" placeholder="Email">
       </mat-form-field>
     </div>
     <div flex="">
       <mat-form-field>
-        <input matInput [(ngModel)]="data.animal" placeholder="Geslo">
+        <input matInput type='password' [(ngModel)]="data.password" placeholder="Geslo">
       </mat-form-field>
     </div>
     <div flex="">
       <mat-form-field>
-        <input matInput [(ngModel)]="data.animal" placeholder="Naslov denarnice">
+        <input matInput [(ngModel)]="data.walletAddress" placeholder="Naslov denarnice">
       </mat-form-field>
     </div>
     <br />
@@ -27,5 +27,5 @@
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Prekliči</button>
-    <button mat-raised-button [mat-dialog-close]="data.animal" cdkFocusInitial>Dodaj uporabnika</button>
+    <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial>Dodaj uporabnika</button>
 </div>
