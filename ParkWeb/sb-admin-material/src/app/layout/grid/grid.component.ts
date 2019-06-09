@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {map, filter, switchMap, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import * as _ from 'lodash';
+import * as firebase from 'firebase';
+
+interface User {
+  email: string;
+}
 
 @Component({
     selector: 'app-grid',
@@ -6,7 +15,23 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./grid.component.scss']
 })
 export class GridComponent implements OnInit {
-    constructor() {}
+    userData: Observable<User[]>;
+    podatki: any;
+    constructor(private http: HttpClient) {
+      // this.podatki = this.getAll();
 
-    ngOnInit() {}
+    }
+
+  getAll() {
+    return this.http.get('http://45.77.58.205:8000/parkchain/user/' + firebase.auth().currentUser.uid).subscribe(data => {
+      console.log(data);
+      this.podatki = data;
+      return data;
+    });
+  }
+
+    ngOnInit() {
+      this.getAll();
+      console.log(this.podatki);
+    }
 }

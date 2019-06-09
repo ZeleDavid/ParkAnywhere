@@ -3,27 +3,27 @@
   <div layout="row" layout-xs="column">
     <div flex="">
       <mat-form-field>
-        <input matInput [(ngModel)]="data.animal" placeholder="Naziv">
+        <input matInput [(ngModel)]="data.naziv" placeholder="Naziv">
       </mat-form-field>
     </div>
     <div flex="">
       <mat-form-field>
-        <input matInput [(ngModel)]="data.animal" placeholder="Naslov">
+        <input matInput [(ngModel)]="data.naslov" placeholder="Naslov">
       </mat-form-field>
     </div>
     <div flex="">
       <mat-form-field>
-        <input matInput [(ngModel)]="data.animal" placeholder="Cena na uro">
+        <input matInput [(ngModel)]="data.cenaNaUro" placeholder="Cena na uro">
       </mat-form-field>
     </div>
     <div flex="">
       <mat-form-field>
-        <input matInput [(ngModel)]="data.animal" placeholder="Št. vseh parkirnih mest">
+        <input matInput [(ngModel)]="data.stVsehMest" placeholder="Št. vseh parkirnih mest">
       </mat-form-field>
     </div>
   </div>
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Prekliči</button>
-    <button mat-raised-button [mat-dialog-close]="data.animal" cdkFocusInitial>Dodaj vpis</button>
+    <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial>Dodaj vpis</button>
 </div>

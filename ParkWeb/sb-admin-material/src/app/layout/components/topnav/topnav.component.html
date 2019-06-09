@@ -10,11 +10,11 @@
         <mat-icon>account_circle</mat-icon>
     </button>
     <mat-menu #profile="matMenu">
-        <button mat-menu-item>
+        <button mat-menu-item [routerLinkActive]="'active'" [routerLink]="['/profil']">
             <mat-icon>person</mat-icon>
             <span>{{ 'Profil' | translate }}</span>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item [routerLinkActive]="'active'" [routerLink]="['/forms']">
             <mat-icon>settings</mat-icon>
             <span>{{ 'Nastavitve' | translate }}</span>
         </button>

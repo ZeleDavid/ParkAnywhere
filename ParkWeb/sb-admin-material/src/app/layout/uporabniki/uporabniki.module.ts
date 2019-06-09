@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import {MatButtonModule, MatSortModule, MatTableModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatSlideToggleModule, MatSortModule, MatTableModule} from '@angular/material';
 import { MatFormFieldModule, MatPaginatorModule } from '@angular/material';
 import { MatInputModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material';
@@ -21,7 +21,9 @@ import {FormsModule} from '@angular/forms';
     MatButtonModule,
     MatSortModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatCheckboxModule,
+    MatSlideToggleModule
   ],
     declarations: [UporabnikiComponent,
       DodajUComponent],

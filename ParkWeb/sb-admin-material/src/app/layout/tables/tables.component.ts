@@ -1,13 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatDialog, MatPaginator, MatSort, MatTableDataSource, MatDialogRef } from '@angular/material';
 import {Observable} from 'rxjs';
-import {map, filter, switchMap, tap} from 'rxjs/operators';
+import {map, filter, switchMap, tap, catchError} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import * as _ from 'lodash';
 import {DodajComponent} from '../dodaj/dodaj.component';
 import {Router} from '@angular/router';
 import {AuthService} from '../../shared/services/auth.service';
 import * as firebase from 'firebase';
+import { HttpHeaders } from '@angular/common/http';
 
 interface ParkirnaHisa {
   cenaNaUro: string;
@@ -21,6 +22,13 @@ interface ParkirnaHisa {
   stZasedenihMest: string;
 }
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'Bearer ' + firebase.auth().currentUser.getIdToken()
+  })
+};
+
 @Component({
     selector: 'app-tables',
     templateUrl: './tables.component.html',
@@ -30,8 +38,9 @@ export class TablesComponent implements OnInit {
     displayedColumns = ['naziv', 'naslov', 'cenaNaUro', 'stZasedenihMest', 'stVsehMest', 'zasedenost', 'lastnik', 'izbrisi'];
     dataSource: MatTableDataSource<ParkirnaHisa>;
     parkirneHise$: Observable<ParkirnaHisa[]>;
-    animal: string;
+    cenaNaUro: number;
     name: string;
+    parkirnaHisaZaDodajo: ParkirnaHisa;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
@@ -75,14 +84,27 @@ export class TablesComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(DodajComponent, {
       width: '250px',
-      data: { name: 'ime', animal: this.animal }
+      data: { uid: firebase.auth().currentUser.uid, naziv: '', naslov: '', stVsehMest: '',
+        stZasedenihMest: 0, cenaNaUro: this.cenaNaUro, lat: 46.559839, lng: 15.638941}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
+      console.log(result);
+      result = { uid: firebase.auth().currentUser.uid, naziv: '', naslov: '', stVsehMest: 400,
+        stZasedenihMest: 0, cenaNaUro: 4.5, lat: 46.559839, lng: 15.638941};
+      this.dodaj(result)
+        .subscribe(odg => console.log(odg));
     });
   }
+
+  dodaj (data: Object): Observable<Object> {
+    return this.http.post<Object>('http://45.77.58.205:8000/parkchain/locations/', data, httpOptions)
+      .pipe(
+      );
+  }
+
+
 
   izbrisi(naziv: any) {
     if (confirm('Res želite izbrisati parkirno hišo: ' + naziv + '?')) {

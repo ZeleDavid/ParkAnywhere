@@ -10,10 +10,10 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: 'dashboard'
+                redirectTo: 'zemljevid'
             },
             {
-                path: 'dashboard',
+                path: 'zemljevid',
                 loadChildren: './dashboard/dashboard.module#DashboardModule'
             },
             {
@@ -30,11 +30,11 @@ const routes: Routes = [
                 loadChildren: './forms/forms.module#FormsModule'
             },
             {
-                path: 'grid',
+                path: 'profil',
                 loadChildren: './grid/grid.module#GridModule'
             },
             {
-                path: 'tables',
+                path: 'pregled',
                 loadChildren: './tables/tables.module#TablesModule'
             },
             {
