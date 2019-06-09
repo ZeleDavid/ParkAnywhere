@@ -99,9 +99,11 @@ export class TablesComponent implements OnInit {
   }
 
   dodaj (data: Object): Observable<Object> {
-    return this.http.post<Object>('http://45.77.58.205:8000/parkchain/locations/', data, httpOptions)
+    return this.http.post<Object>('http://45.77.58.205:8000/parkchain/locations', data, httpOptions)
       .pipe(
       );
+      console.log(data);
+      console.log(httpOptions);
   }
 
 

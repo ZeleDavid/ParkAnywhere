@@ -3,7 +3,7 @@
     "version": "7.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve --progress --proxy-config proxy.conf.json",
+        "start": "ng serve --progress",
         "build": "ng build --prod ",
         "gitbuild": "ng build --prod --base-href /start-javascript/sb-admin-material/master/dist/",
         "test": "ng test",
