@@ -63,11 +63,13 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
-      let map1 = L.map('map').setView([46.560630, 15.632039], 15);
-      if (this.parkirneHise$[0] != null) {
-        map1 = L.map('map').setView([this.parkirneHise$[0].lat, this.parkirneHise$[0].lng], 15);
-        console.log(this.parkirneHise$[0]);
-      }
+      const map1 = L.map('map');
+      map1.setView([46.560630, 15.632039], 15);
+      this.parkirneHise$.forEach(function (hisa) {
+        hisa.forEach(function (podatki) {
+          map1.setView([podatki.lat, podatki.lng], 15);
+        });
+      });
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map1);
