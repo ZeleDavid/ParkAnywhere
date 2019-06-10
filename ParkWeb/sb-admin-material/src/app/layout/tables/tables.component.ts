@@ -18,6 +18,8 @@ interface ParkirnaHisa {
   lng: string;
   naslov: string;
   naziv: string;
+  tip: string;
+  nacinPlacila: string;
   stVsehMest: string;
   stZasedenihMest: string;
 }
@@ -35,12 +37,9 @@ const httpOptions = {
     styleUrls: ['./tables.component.scss']
 })
 export class TablesComponent implements OnInit {
-    displayedColumns = ['naziv', 'naslov', 'cenaNaUro', 'stZasedenihMest', 'stVsehMest', 'zasedenost', 'izbrisi'];
+    displayedColumns = ['naziv', 'tip', 'naslov', 'cenaNaUro', 'nacinPlacila', 'stZasedenihMest', 'stVsehMest', 'zasedenost', 'izbrisi'];
     dataSource: MatTableDataSource<ParkirnaHisa>;
-    parkirneHise$: Observable<ParkirnaHisa[]>;
-    cenaNaUro: number;
     name: string;
-    parkirnaHisaZaDodajo: ParkirnaHisa;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
@@ -77,18 +76,28 @@ export class TablesComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DodajComponent, {
-      width: '250px',
+      width: '550px',
       data: { uid: firebase.auth().currentUser.uid, naziv: '', naslov: '', stVsehMest: '',
-        stZasedenihMest: 0, cenaNaUro: this.cenaNaUro, lat: 46.559839, lng: 15.638941}
+        stZasedenihMest: 0, cenaNaUro: '', lat: 0.0, lng: 0.0, tip: '', nacinPlacila: ''}
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.http
+        .get('https://eu1.locationiq.com/v1/search.php?key=ecd07a8f9f191f&q=' + result.naslov + '%20maribor&format=json')
+        .pipe(
+          map(data => _.values(data)),
+          tap(lokacije => { result.lat = lokacije [0].lat; result.lng = lokacije [0].lon; } )
+        )
+        .subscribe( lokacije => { result.lat = Number(lokacije [0].lat); result.lng = Number(lokacije [0].lon);
+        result.stVsehMest = Number(result.stVsehMest); result.cenaNaUro = Number(result.cenaNaUro);
+        this.dodaj(result)
+          .subscribe( odg => this.naloziPodatke()); });
       console.log('The dialog was closed');
       console.log(result);
       // result = { uid: firebase.auth().currentUser.uid, naziv: '', naslov: '', stVsehMest: 400,
         // stZasedenihMest: 0, cenaNaUro: 4.5, lat: 46.559839, lng: 15.638941};
-      this.dodaj(result)
-        .subscribe( odg => this.naloziPodatke());
+      // this.dodaj(result)
+      //  .subscribe( odg => this.naloziPodatke());
     });
   }
 

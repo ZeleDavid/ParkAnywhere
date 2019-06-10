@@ -63,7 +63,11 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
-      const map1 = L.map('map').setView([46.560630, 15.632039], 15);
+      let map1 = L.map('map').setView([46.560630, 15.632039], 15);
+      if (this.parkirneHise$[0] != null) {
+        map1 = L.map('map').setView([this.parkirneHise$[0].lat, this.parkirneHise$[0].lng], 15);
+        console.log(this.parkirneHise$[0]);
+      }
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map1);
@@ -84,7 +88,6 @@ export class DashboardComponent implements OnInit {
             .bindPopup(
               '<p><b>' + podatki.naziv + '</b></br>' +
               podatki.naslov + '<p>' +
-              '<p><b>Lastnik: </b>' + podatki.lastnik + '</p>' +
               '<p>Število parkrnih mest:' + podatki.stVsehMest + ' </br>' +
               'Število zasedenih mest: ' + podatki.stZasedenihMest + '</p>'
             );
