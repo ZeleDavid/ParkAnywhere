@@ -12,6 +12,7 @@ interface User {
   email: string;
   password: string;
   walletAddress: string;
+  isAdmin: boolean;
 }
 
 const httpOptions = {
@@ -29,8 +30,6 @@ const httpOptions = {
 export class UporabnikiComponent implements OnInit {
     displayedColumns = ['email', 'izbrisi'];
     dataSource: MatTableDataSource<User>;
-    users$: Observable<User[]>;
-    animal: string;
     name: string;
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -66,8 +65,8 @@ export class UporabnikiComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DodajUComponent, {
-      width: '300px',
-      data: { email: '', password: '', walletAddress: '' }
+      width: '380px',
+      data: { email: '', password: '', walletAddress: '', isAdmin: false }
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -1,29 +1,51 @@
-<h1 mat-dialog-title>Nova parkirna hiša</h1>
-<div mat-dialog-content>
-  <div layout="row" layout-xs="column">
-    <div flex="">
-      <mat-form-field>
-        <input matInput [(ngModel)]="data.naziv" placeholder="Naziv">
-      </mat-form-field>
+<h1 mat-dialog-title style="width: 50%; margin: 0 auto; text-align:center;">Nova parkirna hiša</h1>
+<div mat-dialog-content style="width: 80%; margin: 0 auto;">
+  <div fxLayout="row" layout-xs="column" fxLayoutGap="32px">
+    <div fxLayout="column">
+      <div flex="">
+        <mat-form-field>
+          <input matInput [(ngModel)]="data.naziv" placeholder="Naziv">
+        </mat-form-field>
+      </div>
+      <div flex="">
+        <mat-form-field>
+          <mat-select [(ngModel)]="data.tip" placeholder="Tip parkirišča">
+            <mat-option value="Samostojno parkirišče">Samostojno parkirišče</mat-option>
+            <mat-option value="Parkirna hiša">Parkirna hiša</mat-option>
+            <!--<mat-option value="Parkirišča ob cesti">Parkirišča ob cesti</mat-option>-->
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div flex="">
+        <mat-form-field>
+          <input matInput [(ngModel)]="data.stVsehMest" placeholder="Št. vseh parkirnih mest">
+        </mat-form-field>
+      </div>
     </div>
-    <div flex="">
-      <mat-form-field>
-        <input matInput [(ngModel)]="data.naslov" placeholder="Naslov">
-      </mat-form-field>
-    </div>
-    <div flex="">
-      <mat-form-field>
-        <input matInput [(ngModel)]="data.cenaNaUro" placeholder="Cena na uro">
-      </mat-form-field>
-    </div>
-    <div flex="">
-      <mat-form-field>
-        <input matInput [(ngModel)]="data.stVsehMest" placeholder="Št. vseh parkirnih mest">
-      </mat-form-field>
+    <div fxLayout="column">
+      <div flex="">
+        <mat-form-field>
+          <input matInput [(ngModel)]="data.naslov" placeholder="Naslov">
+        </mat-form-field>
+      </div>
+      <div flex="">
+        <mat-form-field>
+          <input matInput [(ngModel)]="data.cenaNaUro" placeholder="Cena na uro">
+        </mat-form-field>
+      </div>
+      <div flex="">
+        <mat-form-field>
+          <mat-select [(ngModel)]="data.nacinPlacila" placeholder="Način plačila">
+            <mat-option value="Predplačilo">Predplačilo</mat-option>
+            <mat-option value="Ob prihodu">Ob prihodu</mat-option>
+            <mat-option value="Ob odhodu">Ob odhodu</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
   </div>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions style="width: 50%; margin: 0 auto; margin-left: 33%;">
     <button mat-button (click)="onNoClick()">Prekliči</button>
     <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial>Dodaj vpis</button>
 </div>
