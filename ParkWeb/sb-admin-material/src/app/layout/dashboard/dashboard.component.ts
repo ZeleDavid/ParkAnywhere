@@ -68,19 +68,31 @@ export class DashboardComponent implements OnInit {
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map1);
 
-      const Icon = L.icon({
+      const MIcon = L.icon({
         // tslint:disable-next-line:max-line-length
-      iconUrl: 'https://cdn0.iconfinder.com/data/icons/travel-vacation/289/travel-transport-hotel-vacation-holidays-tourist-tourism-travelling-traveling_164-512.png',
+     // iconUrl: 'https://cdn0.iconfinder.com/data/icons/travel-vacation/289/travel-transport-hotel-vacation-holidays-tourist-tourism-travelling-traveling_164-512.png',
+        iconUrl: 'https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/Pin-slike/m.png',
       iconSize:     [40, 40], // size of the icon
       // shadowSize:   [50, 64], // size of the shadow
       iconAnchor:   [40, 40], // point of the icon which will correspond to marker's location
      // shadowAnchor: [4, 62],  // the same for the shadow
       popupAnchor:  [-21, -40] // point from which the popup should open relative to the iconAnchor
 });
+      const RIcon = L.icon({
+        // tslint:disable-next-line:max-line-length
+        // iconUrl: 'https://cdn0.iconfinder.com/data/icons/travel-vacation/289/travel-transport-hotel-vacation-holidays-tourist-tourism-travelling-traveling_164-512.png',
+        iconUrl: 'https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/Pin-slike/r.png',
+        iconSize:     [40, 40], // size of the icon
+        // shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [40, 40], // point of the icon which will correspond to marker's location
+        // shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [-21, -40] // point from which the popup should open relative to the iconAnchor
+      });
 
       this.parkirneHise$.forEach(function (hisa) {
         hisa.forEach(function (podatki) {
-          L.marker([podatki.lat, podatki.lng],  {icon: Icon}).addTo(map1)
+          if ( podatki.stZasedenihMest === podatki.stVsehMest) {
+          L.marker([podatki.lat, podatki.lng],  {icon: RIcon}).addTo(map1)
             .bindPopup(
               '<p><b>' + podatki.naziv + '</b></br>' +
               podatki.naslov + '<p>' +
@@ -88,6 +100,16 @@ export class DashboardComponent implements OnInit {
               '<p>Število parkrnih mest:' + podatki.stVsehMest + ' </br>' +
               'Število zasedenih mest: ' + podatki.stZasedenihMest + '</p>'
             );
+          } else {
+            L.marker([podatki.lat, podatki.lng],  {icon: MIcon}).addTo(map1)
+              .bindPopup(
+                '<p><b>' + podatki.naziv + '</b></br>' +
+                podatki.naslov + '<p>' +
+                '<p><b>Lastnik: </b>' + podatki.lastnik + '</p>' +
+                '<p>Število parkrnih mest:' + podatki.stVsehMest + ' </br>' +
+                'Število zasedenih mest: ' + podatki.stZasedenihMest + '</p>'
+              );
+          }
         });
       });
 
