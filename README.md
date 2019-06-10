@@ -1,10 +1,8 @@
-# ParkAnywhere
-Projekt - Praktikum 2
-<hr>
+# PARK ANYWHERE
 
 <p align="center"><img src="https://ark.io/images/media-kit/ark-side.png" alt="ParkAnywhere" title="ParkAnywhere" width="300px" height="120px"/></p>
 
-# NAŠ PROJEKT
+# ParkAnywhere
 ParkAnywhere je rešitev, ki uporabnikom omogoča da najdejo parkirno mesto in plačajo parkirnino kar z mobilno aplikacijo, to pa podpira blockchain platforma ARK.
 
 ## ARK
@@ -22,7 +20,7 @@ ARK zagotavlja uporabnikom, razvijalcem in startupom inovativne blockchain tehno
 - namestite docker desktop za windows; nastavitve-general; obkljukajte Expose deamon on tcp://localhost...
 - namestite docker integration plugin za Intellij
 - odprite projekt <br>
-edit configuration->run build image (obkljkate) <br>
+edit configuration->run build image (obkljukajte) <br>
 določite container name <br>
 bind ports: specify <br>
 port bindings-port:8080 protcol:tcp hostip:127.0.0.1 .....bindings-port:9990 protcol:tcp hostip:127.0.0.1 
