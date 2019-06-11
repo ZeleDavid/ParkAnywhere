@@ -1,5 +1,8 @@
 package com.example.parkmobile.Transaction;
 
+import android.util.Log;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.google.gson.internal.LinkedTreeMap;
 
 import org.arkecosystem.client.Connection;
@@ -7,13 +10,15 @@ import org.arkecosystem.client.api.two.Two;
 import org.arkecosystem.crypto.configuration.Network;
 import org.arkecosystem.crypto.transactions.Transaction;
 import org.arkecosystem.crypto.transactions.builder.Transfer;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ParkTransaction {
-    public static void CreateParkTransaction(int amount, String recipientAddress, String passphrase1) throws IOException {
+    public static void CreateParkTransaction(int amount, String recipientAddress, String passphrase1, String ParkHouseId, String registerska) throws IOException {
         Network.set(new ParkNet());
         HashMap<String, Object> map = new HashMap<>();
         // map.put("host", "http://IP:4003/api/"); // network settings are autoc-configured from the node
@@ -22,12 +27,20 @@ public class ParkTransaction {
         map.put("content-type","application/json");
         Connection<Two> connection2 = new Connection(map);
 
+//        JSONObject jsObj = new JSONObject();
+//        try {
+//            jsObj.put("reg", registerska);
+//            jsObj.put("pId", ParkHouseId);
+//            Log.i("JSON", jsObj.toString());
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
 
         Transaction actual = new Transfer()
                 .recipient(recipientAddress)
                 .amount(amount)
-                //.vendorField()<------- tu not zapakiraj json, kateri se bo videl v transakciji
+                //.vendorField("name: Xcdvfbgnhm,vxyxcvbnm,nbvcxyxcvbnmmnbvcxyxcvbnmdsffsdsdffsdfsdfsdfsdsdfsdffsdsdfsdsdffsdsdffsdfsd") rabima parkirnaHisaId, registerska, casParkiranja, nazivParkirisca
                 .sign(passphrase1)
                 .transaction;
 

@@ -84,8 +84,6 @@ class ParkirisceRecyclerAdapter(seznam: List<Parkirisce>, val clickListenerParki
     override fun getItemCount(): Int {
         return seznamParkirisc.size
     }
-
-
 }
 class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view){
     fun bind(parkirisce: Parkirisce, clickListenerParkiraj: (Parkirisce) -> Unit, clickListenerNavigiraj: (Parkirisce) -> Unit){

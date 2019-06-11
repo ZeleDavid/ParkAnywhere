@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:orientation="vertical"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content" android:id="@+id/linearLayout5">
+    <TextView
+            android:text="Parkirišče pod gradom"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/transaction_history_location" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            android:textSize="16dp" android:textColor="@android:color/black" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/transaction_history_amount"/>
+    <TextView
+            android:text="2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/transaction_history_duration"
+            android:textSize="18dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/transaction_history_registerska"
+            app:layout_constraintTop_toTopOf="@+id/transaction_history_registerska"
+            app:layout_constraintEnd_toStartOf="@+id/textView4" android:textColor="@android:color/black"/>
+    <TextView
+            android:text="2.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/transaction_history_amount"
+            app:layout_constraintBottom_toBottomOf="@+id/transaction_history_location"
+            app:layout_constraintTop_toTopOf="@+id/transaction_history_location"
+            android:textColor="@android:color/black"
+            android:textSize="18dp" app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintEnd_toStartOf="@+id/imageView"/>
+    <TextView
+            android:text="15.5.2019 16:33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/transaction_history_date" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/transaction_history_location"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"/>
+    <TextView
+            android:text="CE185-66"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/transaction_history_registerska"
+            app:layout_constraintStart_toEndOf="@+id/transaction_history_date"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/transaction_history_date"
+            app:layout_constraintTop_toTopOf="@+id/transaction_history_date"/>
+    <TextView
+            android:text="h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            app:layout_constraintBottom_toBottomOf="@+id/transaction_history_duration"
+            app:layout_constraintTop_toTopOf="@+id/transaction_history_duration"
+            android:textColor="@android:color/black" android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
+    <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp" app:srcCompat="@drawable/ic_local_parking_black_24dp"
+            android:id="@+id/imageView" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/transaction_history_amount"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
