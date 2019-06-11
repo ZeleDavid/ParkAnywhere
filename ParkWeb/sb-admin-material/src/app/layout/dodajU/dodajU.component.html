@@ -1,31 +1,31 @@
-<h1 mat-dialog-title>Nov uporabnik</h1>
-<div mat-dialog-content>
+<h1 mat-dialog-title style="width: 50%; margin: 0 auto; text-align:center;">Nov uporabnik</h1>
+<div mat-dialog-content style="width: 50%; margin: 0 auto; text-align:center;">
   <div layout="row" layout-xs="column">
     <div flex="">
       <mat-form-field>
-        <input matInput [(ngModel)]="data.animal" placeholder="Email">
+        <input matInput [(ngModel)]="data.email" placeholder="Email">
       </mat-form-field>
     </div>
     <div flex="">
       <mat-form-field>
-        <input matInput [(ngModel)]="data.animal" placeholder="Geslo">
+        <input matInput type='password' [(ngModel)]="data.password" placeholder="Geslo">
       </mat-form-field>
     </div>
     <div flex="">
       <mat-form-field>
-        <input matInput [(ngModel)]="data.animal" placeholder="Naslov denarnice">
+        <input matInput [(ngModel)]="data.walletAddress" placeholder="Naslov denarnice">
       </mat-form-field>
     </div>
     <br />
     <div flex="">
-      <mat-slide-toggle>
-        Administratorske pravice
+      <mat-slide-toggle [(ngModel)]="data.isAdmin" >
+        Admin
       </mat-slide-toggle>
     </div>
     <br />
   </div>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions style="width: 70%; margin: 0 auto; text-align:center;">
     <button mat-button (click)="onNoClick()">Prekliči</button>
-    <button mat-raised-button [mat-dialog-close]="data.animal" cdkFocusInitial>Dodaj uporabnika</button>
+    <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial>Dodaj uporabnika</button>
 </div>

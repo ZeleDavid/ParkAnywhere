@@ -39,17 +39,22 @@
 
         <ng-container matColumnDef="cenaNaUro">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Cena na uro </th>
-          <td mat-cell *matCellDef="let row"> {{row.cenaNaUro | number:'1.2-2'}}€ </td>
+          <td mat-cell *matCellDef="let row"> {{row.cenaNaUro | number:'1.2-2'}}<b>P</b> </td>
         </ng-container>
 
-        <ng-container matColumnDef="lastnik">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Lastnik </th>
-            <td mat-cell *matCellDef="let row"> {{row.lastnik}} </td>
+        <ng-container matColumnDef="nacinPlacila">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Način plačila </th>
+          <td mat-cell *matCellDef="let row"> {{row.nacinPlacila}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tip">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Tip </th>
+          <td mat-cell *matCellDef="let row"> {{row.tip}} </td>
         </ng-container>
 
         <ng-container matColumnDef="izbrisi">
           <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let row"> <button mat-raised-button color="warn" (click)="izbrisi(row.naziv)">Izbriši</button> </td>
+          <td mat-cell *matCellDef="let row"> <button mat-raised-button color="warn" (click)="izbrisi(row)">Izbriši</button> </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
