@@ -1,0 +1,13 @@
+//parkchain
+@GET("locations")
+    fun vrniVsaParkirisca():Observable<List<Parkirisce>>
+
+@GET("starterpack/{address}")
+fun starterpack(@Path("address") address: String):Observable<StarterpackResponse>
+
+//ark apiV2
+@GET("wallets/{address}")
+    fun vrniDenarnico(@Path("address") address: String): Observable<Wallet>
+
+@GET("wallets/{address}/transactions/sent")
+fun vrniTransakcije(@Path("address") address: String):Observable<AccountTransactions>
