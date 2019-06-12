@@ -38,6 +38,10 @@ const routes: Routes = [
                 loadChildren: './tables/tables.module#TablesModule'
             },
             {
+              path: 'transakcije',
+              loadChildren: './transakcije/transakcije.module#TransakcijeModule'
+            },
+            {
               path: 'uporabniki',
               loadChildren: './uporabniki/uporabniki.module#UporabnikiModule'
             },

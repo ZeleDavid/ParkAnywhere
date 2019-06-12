@@ -28,7 +28,7 @@ const httpOptions = {
     styleUrls: ['./uporabniki.component.scss']
 })
 export class UporabnikiComponent implements OnInit {
-    displayedColumns = ['email', 'izbrisi'];
+    displayedColumns = ['email', 'walletAddress', 'isAdmin', 'izbrisi'];
     dataSource: MatTableDataSource<User>;
     name: string;
 
@@ -78,11 +78,10 @@ export class UporabnikiComponent implements OnInit {
   }
 
   dodaj (data: Object): Observable<Object> {
+    this.naloziPodatke();
     return this.http.post<Object>('http://45.77.58.205:8000/parkchain/user', data, httpOptions)
       .pipe(
       );
-    console.log(data);
-    console.log(httpOptions);
   }
 
   brisiUsera (uid: number): Observable<{}> {

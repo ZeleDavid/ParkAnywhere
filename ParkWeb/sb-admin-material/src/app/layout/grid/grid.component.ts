@@ -4,6 +4,8 @@ import {map, filter, switchMap, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import * as _ from 'lodash';
 import * as firebase from 'firebase';
+import {DodajComponent} from '../dodaj/dodaj.component';
+import {MatDialog} from '@angular/material';
 
 interface User {
   email: string;
@@ -34,4 +36,5 @@ export class GridComponent implements OnInit {
       this.getAll();
       console.log(this.podatki);
     }
+
 }

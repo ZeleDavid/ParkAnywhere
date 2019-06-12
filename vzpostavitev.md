@@ -1,6 +1,15 @@
 # VZPOSTAVITEV 
 
-## Orodja
+## MOBILNA APLIKACIJA
+
+Uporabnik si lahko mobilno aplikacijo namesti na dva načina:
+1. Preko .apk datoteke, tako, da si .apk datoteko naloži na telefon in nanjo klikne, da se namesti. 
+Če je potrebno mora omogočiti namestitev aplikacij iz neznanih virov.
+2. Prenese projekt in ga odpre s porgramom Android Studio, na računalnik poveže svoj telefon in aplikacijo namesti preko Android Studia.
+
+## SPLETNA APLIKACIJA
+
+### Orodja
 - Intellij 2019
 - Docker za Windows (Eneterprise ali Professional windows)
 <hr>  
