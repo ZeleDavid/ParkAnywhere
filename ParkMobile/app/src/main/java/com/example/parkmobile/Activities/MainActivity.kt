@@ -9,6 +9,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.parkmobile.Beacons.BeaconScanner
@@ -36,6 +37,10 @@ class MainActivity : AppCompatActivity(){
             notificationManager.createNotificationChannel(mChannel)
         }
 
+        if(intent.getStringExtra("id")!=null){
+            Toast.makeText(this, intent.getStringExtra("id"), Toast.LENGTH_LONG).show()
+            
+        }
 
     }
 }

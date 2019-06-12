@@ -1,25 +1,44 @@
 package com.example.parkmobile.Fragments
 
 import android.content.Context
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
-import android.view.Display
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.parkmobile.DataClass.Parkirisce
+import com.example.parkmobile.DataClass.ParkirisceRecyclerAdapter
+import com.example.parkmobile.DataClass.Transactions.Transaction
+import com.example.parkmobile.DataClass.Transactions.TransactionAdapter
 import com.example.parkmobile.R
-import com.example.parkmobile.Transaction.Mnemonic.GeneratePass
+import com.example.parkmobile.Retrofit.ApiV2Interface
+import com.example.parkmobile.Retrofit.ParkchainInterface
 import com.example.parkmobile.Transaction.Mnemonic.GeneratePass.generateWallet
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.transaction_history_row.*
 import org.arkecosystem.crypto.identities.Address.fromPassphrase
 
 class ProfileFragment : Fragment() {
+
+    //retrofit
+    val parkchainInterface by lazy {
+        ParkchainInterface.create()
+    }
+    val apiV2Interface by lazy {
+        ApiV2Interface.create()
+    }
+    var disposable: Disposable? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -52,20 +71,24 @@ class ProfileFragment : Fragment() {
                     .apply()
             }
         }
-        val walletCode = sharedPreferences.getString("wallet_code", "Stanje vaše denarnice")
-        if(!walletCode.equals("Stanje vaše denarnice")){
+        val walletCode = sharedPreferences.getString("wallet_code", "")
+        val walletName = sharedPreferences.getString("wallet_name", "Ime vaše denarnice")
+        if(!walletCode.equals("")){
             generate_wallet_button.visibility = View.GONE
+            val address = fromPassphrase(walletCode, 55).toString()
+            pokaziStanjeDenarnice(address)
+            vrniTransakcije(address)
         }
-        wallet_name.text = walletCode
-        wallet_balance.text = sharedPreferences.getString("wallet_code", "Stanje vaše denarnice")
+        wallet_name.text = walletName
         generate_wallet_button.setOnClickListener {
             val generatedCode = generateWallet()
+            val address = fromPassphrase(generatedCode, 55).toString()
             sharedPreferences
                 .edit()
-                .putString("wallet_name", generatedCode)
+                .putString("wallet_code", generatedCode)
                 .apply()
-            generate_wallet_button.visibility = View.GONE
-            Log.i("WALLET", fromPassphrase(generatedCode))
+            registrirajDenarnico(address)
+            Log.i("WALLET", address)
             Toast.makeText(context, "Uspešno ste ustvarili vašo denarnico", Toast.LENGTH_SHORT).show()
         }
         import_wallet_button.setOnClickListener {
@@ -137,13 +160,66 @@ class ProfileFragment : Fragment() {
             }
 
             dialog.show()
+
         }
 
+    }
+    fun vrniTransakcije(address: String){
+        apiV2Interface.vrniTransakcije(address)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { result ->
+                    Log.i("TRANSACTIONS", result.meta.count.toString())
+                    transaction_history_list.layoutManager = LinearLayoutManager(context)
+                    val adapter = TransactionAdapter(result.data)
+                    transaction_history_list.adapter = adapter
+                },
+                { error ->
+                    Log.i("TRANSACTIONS", error.message)
+                }
+            )
+    }
+    fun pokaziStanjeDenarnice(address: String){
+        disposable =
+            apiV2Interface.vrniDenarnico(address)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                    { result ->
+                        val balance = result.data.balance / 100000000
+                        wallet_balance.text = balance.toString()
+                    },
+                    { error ->
+                        Log.i("WALLET", error.message)
+                    }
+                )
+
+    }
+    fun registrirajDenarnico(address: String){
+        disposable =
+            parkchainInterface.starterpack(address)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                    { result ->
+                        generate_wallet_button.visibility = View.GONE
+                        Toast.makeText(context, "Starter success: ${result.success}", Toast.LENGTH_SHORT).show()
+                        pokaziStanjeDenarnice(address)
+                    },
+                    { error -> Toast.makeText(context, "Prišlo je do napake pri prenosu podatkov "+error.message, Toast.LENGTH_SHORT).show()
+                        Log.i("STARTER", error.message)
+                    }
+                )
     }
     fun countWords(string:String):Int{
         val trim = string.trim()
         if (trim.isEmpty())
             return 0
         return trim.split("\\s+".toRegex()).size
+    }
+    override fun onPause() {
+        super.onPause()
+        disposable?.dispose()
     }
 }
