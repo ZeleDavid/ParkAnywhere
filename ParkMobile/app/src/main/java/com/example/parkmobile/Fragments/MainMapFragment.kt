@@ -32,6 +32,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.parkmobile.Activities.MainActivity
 import com.example.parkmobile.Beacons.BeaconScanner
 import com.example.parkmobile.DataClass.*
 import com.example.parkmobile.R
@@ -105,7 +106,7 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
             val animation = AnimationUtils.loadAnimation(context, R.anim.beacon_found_animation)
             fab.startAnimation(animation)
             if(beaconCurrentlyDetected){
-                Toast.makeText(context, "Parkiraj z beaconom", Toast.LENGTH_SHORT).show()
+                vrniParkirisceNotification(beaconData)
             }
             else{
                 if(parkingLocations.size>0){
@@ -166,6 +167,7 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
         //gumb ki pokaže bottom sheet kjer je recycle view vseh parkirisc
         bottom_bar_list.setOnClickListener {
             naloziParkirisca()
+            izracunajOddaljenostZaVse()
             val location_list_view = layoutInflater.inflate(R.layout.location_bottom_sheet, null)
             val dialog = BottomSheetDialog(context!!)
             dialog.setContentView(location_list_view)
@@ -173,7 +175,8 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
             location_bottom_sheet_dialog = dialog
             val locationList = location_list_view.findViewById<RecyclerView>(R.id.location_list_recycler)
             locationList.layoutManager = LinearLayoutManager(context)
-            var arraylist = parkingLocations//ArrayList<Parkirisce>()
+            var arraylist = sortirajPoRazdalji(parkingLocations)//ArrayList<Parkirisce>()
+
 //            arraylist.add(Parkirisce("0", 1.5, "1", "Luka", 46.55556, 15.5568, "Zofke Kvedrove 2b", "Pred hišo", 5, 2))
 //            arraylist.add(Parkirisce("1", 3.5, "2", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "Okoli hiše", 15, 7))
 //            arraylist.add(Parkirisce("2", 2.0, "3", "Luka", 46.57956, 15.5598, "Maksima gorkega 15", "A garažo", 25, 7))
@@ -193,24 +196,28 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
                 popup.setOnMenuItemClickListener {selectedItem ->
                     when (selectedItem.title){
                         "Abecedi" -> {
-                            val abecedaArray = arraylist
-                            abecedaArray.sortedWith(NazivComparator)
-                            //Toast.makeText(context, abecedaArray[0].naziv, Toast.LENGTH_SHORT).show()
+                            val abecedaArray = arraylist.sortedWith(NazivComparator)
                             arraylist.clear()
                             arraylist.addAll(abecedaArray)
-                            Toast.makeText(context, arraylist.size, Toast.LENGTH_SHORT).show()
                             adapter.notifyDataSetChanged()
                         }
                         "Ceni" -> {
-                            Toast.makeText(context, "Ceni item", Toast.LENGTH_SHORT).show()
+                            val cenaArray = arraylist.sortedWith(CenaComparator)
+                            arraylist.clear()
+                            arraylist.addAll(cenaArray)
+                            adapter.notifyDataSetChanged()
                         }
                         "Prostih mestih" -> {
-                            val mestaArray = arraylist
-                            mestaArray.sortedWith(MestaComparator)
-                            Toast.makeText(context, mestaArray[0].naziv, Toast.LENGTH_SHORT).show()
+                            val mestaArray = arraylist.sortedWith(MestaComparator)
+                            arraylist.clear()
+                            arraylist.addAll(mestaArray)
+                            adapter.notifyDataSetChanged()
                         }
                         "Razdalji" -> {
-                            Toast.makeText(context, "Razdalji item", Toast.LENGTH_SHORT).show()
+                            val oddaljenostArray = arraylist.sortedWith(OddaljenostComparator)
+                            arraylist.clear()
+                            arraylist.addAll(oddaljenostArray)
+                            adapter.notifyDataSetChanged()
                         }
                     }
                     true
@@ -219,6 +226,41 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
             }
 
         }
+    }
+    private fun najdiNajblizjeParkirisce(array: ArrayList<Parkirisce>): Parkirisce {
+        var najblizje = array[0]
+        val temp_distance = FloatArray(1)
+        Location.distanceBetween(najblizje.lat, najblizje.lat, mLastLocation.latitude, mLastLocation.longitude, temp_distance)
+        var minRazdalja = temp_distance[0]
+        for(parkirisce: Parkirisce in array){
+            if(parkirisce.stVsehMest-parkirisce.stZasedenihMest>0){
+                val distance_result = FloatArray(1)
+                Location.distanceBetween(parkirisce.lat, parkirisce.lng, mLastLocation.latitude, mLastLocation.longitude, distance_result)
+                if(distance_result[0]<minRazdalja){
+                    minRazdalja = distance_result[0]
+                    najblizje = parkirisce
+                }
+            }
+            else{
+                continue
+            }
+        }
+        return najblizje
+    }
+    fun izracunajOddaljenostZaVse(){
+        for(parkirisce in parkingLocations){
+            parkirisce.oddaljenost = oddaljenostParkirisca(parkirisce)
+        }
+    }
+    fun sortirajPoRazdalji(seznam: ArrayList<Parkirisce>): ArrayList<Parkirisce>{
+        val list = seznam
+        val sortiranSeznam = ArrayList<Parkirisce>()
+        while(list.size>0){
+            val najblizje = najdiNajblizjeParkirisce(list)
+            list.remove(najblizje)
+            sortiranSeznam.add(najblizje)
+        }
+        return sortiranSeznam
     }
     //Recycleview on item click function
     fun parkirisceItemClickedParkiraj(parkirisce: Parkirisce) {
@@ -281,19 +323,11 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
                 )
     }
     private fun vrniParkirisceNotification(id: String){
-        disposable =
-            parkchainInterface.vrniParkirisce(id)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                    { result ->
-                        pokaziPodrobnostiParkiriscaDialog(result)
-                    },
-                    { error ->
-                        Toast.makeText(context, "Prišlo je do napake pri prenosu podatkov "+error.message, Toast.LENGTH_SHORT).show()
-                        error.printStackTrace()
-                    }
-                )
+        for(parkirisce in parkingLocations){
+            if(parkirisce.ParkHouseId.equals(id)){
+                pokaziPodrobnostiParkiriscaDialog(parkirisce)
+            }
+        }
     }
     private fun vrniNajblizjeParkirisce(): Parkirisce {
         if(parkingLocations.size==0){
@@ -552,7 +586,7 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
             override fun run() {
                 try
                 {
-                    ParkTransaction.CreateParkTransaction(amount, parkirisce.ParkHouseId, racun, parkirisce.ParkHouseId, registerska)
+                    ParkTransaction.CreateParkTransaction(amount, parkirisce.walletAddress, racun, parkirisce.ParkHouseId, registerska, casParkiranja, parkirisce.naziv)
                     val timerIntent = Intent(activity, Timer::class.java)
                     timerIntent.putExtra("parkirisce", parkirisce.naziv)
                     timerIntent.putExtra("countDownTime", casParkiranja)
@@ -600,8 +634,8 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
 
     override fun onBeaconFound(data: String) {
         beaconCurrentlyDetected = true
-
-        val n = Intent(context, MainMapFragment::class.java)
+        beaconData = data
+        val n = Intent(context, MainActivity::class.java)
         n.putExtra("id",data)
         val contentIntent = PendingIntent.getActivity(context, 0, n, 0)
 

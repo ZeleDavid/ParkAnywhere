@@ -16,9 +16,6 @@ interface ParkchainInterface {
     @GET("starterpack/{address}")
     fun starterpack(@Path("address") address: String):Observable<StarterpackResponse>
 
-    @GET("location/{id}")
-    fun vrniParkirisce(@Path("id") id: String): Observable<Parkirisce>
-
     companion object{
         fun create(): ParkchainInterface {
             val retrofit = Retrofit.Builder()
