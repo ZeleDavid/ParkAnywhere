@@ -1,0 +1,33 @@
+<mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Iskanje">
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="blockId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> BlockId </th>
+            <td mat-cell *matCellDef="let row"> {{row.blockId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Vsota </th>
+            <td mat-cell *matCellDef="let row"> {{row.amount/100000000}}<b>P</b> </td>
+        </ng-container>
+
+      <ng-container matColumnDef="timestamp">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Čas </th>
+        <td mat-cell *matCellDef="let row"> {{row.timestamp.human.substring(0,10)}} │ {{row.timestamp.human.substring(11,19)}} </td>
+      </ng-container>
+
+        <ng-container matColumnDef="fee">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Stroški </th>
+            <td mat-cell *matCellDef="let row"> {{(row.fee/100000000)*100}}% </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

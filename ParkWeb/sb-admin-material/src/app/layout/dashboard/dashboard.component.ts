@@ -44,10 +44,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
     styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-    displayedColumns = ['position', 'name', 'weight', 'symbol'];
     dataSource = new MatTableDataSource(ELEMENT_DATA);
     places: Array<any> = [];
     parkirneHise$: Observable<ParkirnaHisa[]>;
+    public doughnutChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
+    public doughnutChartData: number[] = [350, 450, 100];
+    public doughnutChartType: string;
 
     applyFilter(filterValue: string) {
         filterValue = filterValue.trim(); // Remove whitespace
@@ -63,6 +65,7 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
+      this.doughnutChartType = 'doughnut';
       const map1 = L.map('map');
       map1.setView([46.560630, 15.632039], 15);
       this.parkirneHise$.forEach(function (hisa) {
@@ -110,7 +113,8 @@ export class DashboardComponent implements OnInit {
               .bindPopup(
                 '<p><b>' + podatki.naziv + '</b></br>' +
                 podatki.naslov + '<p>' +
-                '<p><b>Lastnik: </b>' + podatki.lastnik + '</p>' +
+                ' <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"' +
+                '></canvas>' +
                 '<p>Število parkrnih mest:' + podatki.stVsehMest + ' </br>' +
                 'Število zasedenih mest: ' + podatki.stZasedenihMest + '</p>'
               );
@@ -119,4 +123,12 @@ export class DashboardComponent implements OnInit {
       });
 
     }
+
+  public chartClicked(e: any): void {
+    // console.log(e);
+  }
+
+  public chartHovered(e: any): void {
+    // console.log(e);
+  }
 }

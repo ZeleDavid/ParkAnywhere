@@ -14,9 +14,9 @@
             <mat-icon>person</mat-icon>
             <span>{{ 'Profil' | translate }}</span>
         </button>
-        <button mat-menu-item [routerLinkActive]="'active'" [routerLink]="['/forms']">
+        <button mat-menu-item [routerLinkActive]="'active'" [routerLink]="['/transakcije']">
             <mat-icon>settings</mat-icon>
-            <span>{{ 'Nastavitve' | translate }}</span>
+            <span>{{ 'Transakcije' | translate }}</span>
         </button>
     </mat-menu>
     <button mat-icon-button (click)="authService.SignOut()">
