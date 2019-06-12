@@ -12,7 +12,6 @@
         <action android:id="@+id/action_testFragment_to_settingsFragment" app:destination="@id/settingsFragment"
                 app:enterAnim="@anim/fade_in" app:exitAnim="@anim/fade_out" app:popEnterAnim="@anim/fade_in"
                 app:popExitAnim="@anim/fade_out" app:launchSingleTop="false"/>
-        <argument android:name="id" app:argType="string" app:nullable="true"/>
     </fragment>
     <fragment android:id="@+id/profileFragment" android:name="com.example.parkmobile.Fragments.ProfileFragment"
               android:label="fragment_profile" tools:layout="@layout/fragment_profile"/>

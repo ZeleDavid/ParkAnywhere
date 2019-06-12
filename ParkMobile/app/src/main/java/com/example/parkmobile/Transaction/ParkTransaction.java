@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ParkTransaction {
-    public static void CreateParkTransaction(int amount, String recipientAddress, String passphrase1, String ParkHouseId, String registerska) throws IOException {
+    public static void CreateParkTransaction(int amount, String recipientAddress, String passphrase1, String ParkHouseId, String registerska, Double cas, String naziv) throws IOException {
         Network.set(new ParkNet());
         HashMap<String, Object> map = new HashMap<>();
         // map.put("host", "http://IP:4003/api/"); // network settings are autoc-configured from the node
@@ -27,20 +27,23 @@ public class ParkTransaction {
         map.put("content-type","application/json");
         Connection<Two> connection2 = new Connection(map);
 
-//        JSONObject jsObj = new JSONObject();
-//        try {
-//            jsObj.put("reg", registerska);
-//            jsObj.put("pId", ParkHouseId);
-//            Log.i("JSON", jsObj.toString());
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-
+        JSONObject jsObj = new JSONObject();
+        try {
+            jsObj.put("reg", registerska);
+            jsObj.put("pId", ParkHouseId);
+            jsObj.put("cas", cas);
+            jsObj.put("naziv", naziv);
+            Log.i("JSON", jsObj.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Log.i("TRANSACTION", passphrase1);
+        Log.i("TRANSACTION", recipientAddress);
 
         Transaction actual = new Transfer()
                 .recipient(recipientAddress)
                 .amount(amount)
-                //.vendorField("name: Xcdvfbgnhm,vxyxcvbnm,nbvcxyxcvbnmmnbvcxyxcvbnmdsffsdsdffsdfsdfsdfsdsdfsdffsdsdfsdsdffsdsdffsdfsd") rabima parkirnaHisaId, registerska, casParkiranja, nazivParkirisca
+                .vendorField(jsObj.toString()) //imava parkirnaHisaId, registerska, casParkiranja, nazivParkirisca
                 .sign(passphrase1)
                 .transaction;
 

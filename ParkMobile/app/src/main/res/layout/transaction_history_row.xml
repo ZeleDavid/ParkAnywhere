@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/transaction_history_location" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3"
-            android:textSize="16dp" android:textColor="@android:color/black" app:layout_constraintTop_toTopOf="parent"
+            android:textSize="18dp" android:textColor="@android:color/black" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toStartOf="@+id/transaction_history_amount"/>
     <TextView
             android:text="2"
@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/transaction_history_date" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintTop_toBottomOf="@+id/transaction_history_location"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"/>
     <TextView

@@ -20,6 +20,8 @@ data class Transaction(
     val sender: String,
     @SerializedName("signature")
     val signature: String,
+    @SerializedName("vendorField")
+    val vendorField: String,
     @SerializedName("timestamp")
     val timestamp: Timestamp,
     @SerializedName("type")

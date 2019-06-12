@@ -72,8 +72,10 @@ class ProfileFragment : Fragment() {
             }
         }
         val walletCode = sharedPreferences.getString("wallet_code", "")
+        Log.i("WALLET", walletCode)
         val walletName = sharedPreferences.getString("wallet_name", "Ime vaše denarnice")
         if(!walletCode.equals("")){
+            nalozi_gumb.visibility = View.VISIBLE
             generate_wallet_button.visibility = View.GONE
             val address = fromPassphrase(walletCode, 55).toString()
             pokaziStanjeDenarnice(address)
@@ -89,7 +91,6 @@ class ProfileFragment : Fragment() {
                 .apply()
             registrirajDenarnico(address)
             Log.i("WALLET", address)
-            Toast.makeText(context, "Uspešno ste ustvarili vašo denarnico", Toast.LENGTH_SHORT).show()
         }
         import_wallet_button.setOnClickListener {
             val alertView = LayoutInflater.from(context).inflate(R.layout.edit_wallet_layout, getView() as ViewGroup, false)
@@ -170,7 +171,6 @@ class ProfileFragment : Fragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { result ->
-                    Log.i("TRANSACTIONS", result.meta.count.toString())
                     transaction_history_list.layoutManager = LinearLayoutManager(context)
                     val adapter = TransactionAdapter(result.data)
                     transaction_history_list.adapter = adapter
@@ -204,11 +204,10 @@ class ProfileFragment : Fragment() {
                 .subscribe(
                     { result ->
                         generate_wallet_button.visibility = View.GONE
-                        Toast.makeText(context, "Starter success: ${result.success}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Uspešno ste ustvarili vašo denarnico", Toast.LENGTH_SHORT).show()
                         pokaziStanjeDenarnice(address)
                     },
                     { error -> Toast.makeText(context, "Prišlo je do napake pri prenosu podatkov "+error.message, Toast.LENGTH_SHORT).show()
-                        Log.i("STARTER", error.message)
                     }
                 )
     }

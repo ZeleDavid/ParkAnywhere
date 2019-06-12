@@ -1,12 +1,9 @@
 package com.example.parkmobile.DataClass
 
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.parkmobile.R
 import com.google.gson.annotations.SerializedName
@@ -21,6 +18,8 @@ data class Parkirisce(
     val id: String,
     @SerializedName("ParkHouseId")
     val ParkHouseId: String,
+    @SerializedName("walletAddress")
+    val walletAddress: String,
     @SerializedName("lat")
     val lat: Double,
     @SerializedName("lng")
@@ -35,6 +34,7 @@ data class Parkirisce(
     val stZasedenihMest: Int
 
 ) {
+    var oddaljenost = 0.0
     override fun toString(): String {
         return "Parkirisce(naziv='$naziv')"
     }
@@ -49,7 +49,14 @@ class CenaComparator{
 class MestaComparator{
     companion object: Comparator<Parkirisce>{
         override fun compare(o1: Parkirisce, o2: Parkirisce): Int {
-            return (o1.stVsehMest-o1.stZasedenihMest) - (o2.stVsehMest-o2.stZasedenihMest)
+            return (o2.stVsehMest-o2.stZasedenihMest) - (o1.stVsehMest-o1.stZasedenihMest)
+        }
+    }
+}
+class OddaljenostComparator{
+    companion object: Comparator<Parkirisce>{
+        override fun compare(o1: Parkirisce, o2: Parkirisce): Int {
+            return (o1.oddaljenost*10).toInt() - (o2.oddaljenost*10).toInt()
         }
     }
 }
@@ -89,7 +96,8 @@ class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view){
     fun bind(parkirisce: Parkirisce, clickListenerParkiraj: (Parkirisce) -> Unit, clickListenerNavigiraj: (Parkirisce) -> Unit){
         view.location_list_text?.text = parkirisce.naziv
         view.location_list_adress?.text = parkirisce.naslov
-        view.location_list_spots?.text = (parkirisce.stVsehMest - parkirisce.stZasedenihMest).toString()
+        view.location_list_oddaljenost?.text = parkirisce.oddaljenost.toString()
+        view.location_list_mesta?.text = (parkirisce.stVsehMest - parkirisce.stZasedenihMest).toString()
         view.location_list_cena?.text = parkirisce.cenaNaUro.toString()
         view.location_list_show.setOnClickListener { clickListenerParkiraj(parkirisce) }
         view.location_list_navigate.setOnClickListener { clickListenerNavigiraj(parkirisce) }

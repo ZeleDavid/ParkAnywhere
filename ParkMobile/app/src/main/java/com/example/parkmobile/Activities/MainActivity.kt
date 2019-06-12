@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(){
 
         if(intent.getStringExtra("id")!=null){
             Toast.makeText(this, intent.getStringExtra("id"), Toast.LENGTH_LONG).show()
-            
+            Log.i("BEACON", "MAIN ACTIVITY WAS HERE")
         }
 
     }
