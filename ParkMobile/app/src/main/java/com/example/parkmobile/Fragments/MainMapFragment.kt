@@ -441,7 +441,6 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
             LayoutInflater.from(context).inflate(R.layout.cas_parkiranja_alert_view, getView() as ViewGroup, false)
         val spinner = casParkiranjaView.findViewById<AutoCompleteTextView>(R.id.cas_parkiranja_spinner)
         val list = ArrayList<String>()
-        list.add("0.5 ure")
         list.add("1 ura")
         list.add("2 uri")
         list.add("3 ure")
