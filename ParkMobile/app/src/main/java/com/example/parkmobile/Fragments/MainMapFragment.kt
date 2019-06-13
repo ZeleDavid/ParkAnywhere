@@ -607,7 +607,7 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
             override fun run() {
                 try
                 {
-                    ParkTransaction.CreateParkTransaction(amount, parkirisce.walletAddress, racun, parkirisce.ParkHouseId, registerska, casParkiranja, parkirisce.naziv)
+                    ParkTransaction.CreateParkTransaction(amount, parkirisce.walletAddress, racun, parkirisce.ParkHouseId, registerska, casParkiranja, parkirisce.naziv,parkirisce.uid)
                 }
                 catch (e:IOException) {
                     e.printStackTrace()

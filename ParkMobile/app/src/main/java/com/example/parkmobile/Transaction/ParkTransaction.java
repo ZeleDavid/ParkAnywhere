@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ParkTransaction {
-    public static void CreateParkTransaction(int amount, String recipientAddress, String passphrase1, String ParkHouseId, String registerska, Double cas, String naziv) throws IOException {
+    public static void CreateParkTransaction(int amount, String recipientAddress, String passphrase1, String ParkHouseId, String registerska, Double cas, String naziv, String uid) throws IOException {
         Network.set(new ParkNet());
         HashMap<String, Object> map = new HashMap<>();
         // map.put("host", "http://IP:4003/api/"); // network settings are autoc-configured from the node
@@ -33,6 +33,7 @@ public class ParkTransaction {
             jsObj.put("pId", ParkHouseId);
             jsObj.put("cas", cas);
             jsObj.put("naziv", naziv);
+            jsObj.put("uid", uid);
             Log.i("JSON", jsObj.toString());
         } catch (JSONException e) {
             e.printStackTrace();
