@@ -12,18 +12,52 @@ ARK zagotavlja uporabnikom, razvijalcem in startupom inovativne blockchain tehno
 Naša rešitev je sestavljena iz spletne aplikacije namenjene občini in lastnikom parkirnih hiš, ki lahko z njimi upravljajo, jih dodajajo, brišejo itd.. Omogočen je pregled vseh parkirnih hiš in statistike parkiranja. <br>
 Za uporabike pa smo izdelali mobilno aplikacijo, ki omogoča pregled parkirnih hiš, navigiranje do izbrane hiše, parkiranje vozila ter plačevanje s pomočjo <b>P</b>.
 
-### WEB
+### SPLETNA APLIKACIJA
 
-- ...
+<div class="row">
+<div>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_8.png" alt="Prijava" title="Prijava" width="400px" height="200px" margin="20px" />
+ </div>
+<div>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_1.png" alt="Dashboard" title="Dashboard" width="400px" height="200px"/>
+ </div>
+ </div>
+ <br>
+<div class="row">
+<div>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_2.png" alt="Tabela" title="Tabela" width="400px" height="200px"/>
+ </div>
+ <div>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_3.png" alt="Dodaj" title="Dodaj" width="400px" height="200px"/>
+ </div>
+ </div>
 
-### MOBILE
+### MOBILNA APLIKACIJA
 
-- ...
+<div>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195453.jpg" alt="Pogled1" title="Pogled1" width="250" height="500"/>
+ </div>
+ <div>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195501.jpg" alt="Pogled2" title="Pogled2" width="250" height="500"/>
+ </div>
+ <div>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195611.jpg" alt="Pogled3" title="Pogled3" width="250" height="500"/>
+ </div>
+ <br>
+ <div>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195513.jpg" alt="Pogled4" title="Pogled4" width="250" height="500"/>
+ </div>
+  <div>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195524.jpg" alt="Pogled5" title="Pogled5" width="250" height="500"/>
+ </div>
+  <div>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195923.jpg" alt="Pogled6" title="Pogled6" width="250" height="500"/>
+ </div>
 
 <br><br>
 ## ARHITEKTURA
 
- ...
+<p align="center"><img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/arhitektura.png" alt="Arhitektura" title="Arhitektura" width="700px" height="500px"/></p>
 
 ## VZPOSTAVITEV
 
