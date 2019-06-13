@@ -35,6 +35,16 @@ class MainActivity : AppCompatActivity(){
             // or other notification behaviors after this
             val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(mChannel)
+
+            val name2 = "Podatki o poteku časa parkiranja"
+            val descriptionText2 = "10 min pred koncem časa parkiranja dobite obvestilo"
+            val importance2 = NotificationManager.IMPORTANCE_DEFAULT
+            val mChannel2 = NotificationChannel("1", name2, importance2)
+            mChannel2.description = descriptionText2
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            val notificationManager2 = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager2.createNotificationChannel(mChannel2)
         }
 
         if(intent.getStringExtra("id")!=null){

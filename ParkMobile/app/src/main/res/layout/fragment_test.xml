@@ -22,12 +22,11 @@
             android:layout_height="match_parent">
 
 
-
         <com.google.android.material.bottomappbar.BottomAppBar
                 android:id="@+id/bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom">
+                android:layout_gravity="bottom" android:background="#FFFFFF">
             <include layout="@layout/bottom_bar"/>
         </com.google.android.material.bottomappbar.BottomAppBar>
         <!--com.google.android.material.floatingactionbutton.FloatingActionButton

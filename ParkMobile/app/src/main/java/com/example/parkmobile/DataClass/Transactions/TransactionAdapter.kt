@@ -28,7 +28,7 @@ class TransactionAdapter(seznam: List<Transaction>): RecyclerView.Adapter<Histor
 class HistoryViewHolder(val view: View): RecyclerView.ViewHolder(view){
     fun bind(transakcija: Transaction){
         val vendorField = parseVendorField(transakcija.vendorField)
-        view.transaction_history_amount?.text = (transakcija.amount/100000000).toString()
+        view.transaction_history_amount?.text = (transakcija.amount/100000000.0).toString()
         val timestamp = transakcija.timestamp.human.subSequence(0, 17)
         view.transaction_history_date?.text = timestamp.toString().replace("T", " ")
         view.transaction_history_location?.text = vendorField.naziv

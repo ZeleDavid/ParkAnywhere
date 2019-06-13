@@ -74,6 +74,7 @@ class ProfileFragment : Fragment() {
         val walletCode = sharedPreferences.getString("wallet_code", "")
         Log.i("WALLET", walletCode)
         val walletName = sharedPreferences.getString("wallet_name", "Ime vaše denarnice")
+        nalozi_gumb.visibility = View.GONE
         if(!walletCode.equals("")){
             nalozi_gumb.visibility = View.VISIBLE
             generate_wallet_button.visibility = View.GONE

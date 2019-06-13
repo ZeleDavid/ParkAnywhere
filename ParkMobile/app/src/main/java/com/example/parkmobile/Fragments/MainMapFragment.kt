@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_test.*
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -140,26 +141,7 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
         }
         bottom_bar_car.setOnClickListener(View.OnClickListener {
             //inflate view za bottom sheet kjer je seznam avtov
-            val sheetView = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
-            val dialog = BottomSheetDialog(context!!)
-            dialog.setContentView(sheetView)
-            dialog.show()
-            val sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE)
-            val avto = sharedPreferences.getString("registerska", null)
-            val list = ArrayList<String>()
-            if(avto!=null){
-                list.add(avto)
-            }
-            //adapter za prikaz avtov v listView
-            val arrayAdapter = ArrayAdapter<String>(context!!,
-                R.layout.bottom_sheet_list_row,
-                R.id.bottom_list_text, list)
-            sheetView.findViewById<ListView>(R.id.car_list).adapter = arrayAdapter
-            //gumb pod seznamom, ki doda avto
-            val car_button = sheetView.findViewById<Button>(R.id.add_car_button)
-            car_button.setOnClickListener {
-                dodajanjeAvta()
-            }
+            odpriSeznamAvtov()
         })
         bottom_bar_user.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_testFragment_to_profileFragment)
@@ -227,6 +209,32 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
 
         }
     }
+
+    private fun odpriSeznamAvtov() {
+        val sheetView = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
+        val dialog = BottomSheetDialog(context!!)
+        dialog.setContentView(sheetView)
+        dialog.show()
+        val sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE)
+        val avto = sharedPreferences.getString("registerska", null)
+        val list = ArrayList<String>()
+        if (avto != null) {
+            list.add(avto)
+        }
+        //adapter za prikaz avtov v listView
+        val arrayAdapter = ArrayAdapter<String>(
+            context!!,
+            R.layout.bottom_sheet_list_row,
+            R.id.bottom_list_text, list
+        )
+        sheetView.findViewById<ListView>(R.id.car_list).adapter = arrayAdapter
+        //gumb pod seznamom, ki doda avto
+        val car_button = sheetView.findViewById<Button>(R.id.add_car_button)
+        car_button.setOnClickListener {
+            dodajanjeAvta(list, arrayAdapter)
+        }
+    }
+
     private fun najdiNajblizjeParkirisce(array: ArrayList<Parkirisce>): Parkirisce {
         var najblizje = array[0]
         val temp_distance = FloatArray(1)
@@ -373,8 +381,14 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
         val sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE)
         val darkMode = sharedPreferences.getBoolean("dark_mode", false)
         var mapStyle = R.raw.map_style_day
-        if(darkMode)
+        if(darkMode){
             mapStyle = R.raw.map_style_night
+            bar.backgroundTint = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+            bottom_bar_user.setColorFilter(Color.WHITE)
+            bottom_bar_car.setColorFilter(Color.WHITE)
+            bottom_bar_directions.setColorFilter(Color.WHITE)
+            bottom_bar_list.setColorFilter(Color.WHITE)
+        }
         mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(context, mapStyle))
         addLocationMarkers()
         mGoogleMap.setOnInfoWindowClickListener(this)
@@ -434,31 +448,17 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
         list.add("4 ure")
         list.add("5 ur")
         list.add("12 ur")
-        val dataAdapter = ArrayAdapter<String>(context, R.layout.cas_parkiranja_spinner_item, list)
+        val dataAdapter = ArrayAdapter<String>(context!!, R.layout.cas_parkiranja_spinner_item, list)
         spinner.setAdapter(dataAdapter)
         spinner.setSelection(0)
         var cas = list[0].split(" ".toRegex())[0].toDouble()
-        spinner.setOnItemClickListener { parent, view, position, id ->
+        spinner.setOnItemClickListener { _, _, position, _ ->
             cas = list[position].split(" ".toRegex())[0].toDouble()
         }
         val prostaMesta = parkirisce.stVsehMest - parkirisce.stZasedenihMest
-        MaterialAlertDialogBuilder(context)
+        val builder = MaterialAlertDialogBuilder(context)
             .setTitle(parkirisce.naziv)
             .setMessage("Prosta mesta: $prostaMesta\nCena na uro: ${parkirisce.cenaNaUro}P")
-            .setPositiveButton("Plačaj", DialogInterface.OnClickListener { _, _ ->
-                val sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE)
-                val registerska = sharedPreferences.getString("registerska", null)
-                val racun = sharedPreferences.getString("wallet_code", null)
-                if (registerska != null) {
-                    if (racun != null) {
-                        parkiraj(parkirisce, registerska, cas, racun)
-                    } else {
-                        Navigation.findNavController(this.view!!).navigate(R.id.action_testFragment_to_profileFragment)
-                    }
-                } else {
-                    dodajanjeAvta()
-                }
-            })
             .setNegativeButton("Navigiraj", DialogInterface.OnClickListener { _, _ ->
                 val gmmIntentUri =
                     Uri.parse("google.navigation:q=${parkirisce.lat},${parkirisce.lng}")
@@ -471,7 +471,23 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
                 val parent = casParkiranjaView.parent as ViewGroup
                 parent.removeView(casParkiranjaView)
             }
-            .show()
+        if(prostaMesta>0){
+            builder.setPositiveButton("Plačaj", DialogInterface.OnClickListener { _, _ ->
+                val sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE)
+                val registerska = sharedPreferences.getString("registerska", null)
+                val racun = sharedPreferences.getString("wallet_code", null)
+                if (registerska != null) {
+                    if (racun != null) {
+                        parkiraj(parkirisce, registerska, cas, racun)
+                    } else {
+                        Navigation.findNavController(this.view!!).navigate(R.id.action_testFragment_to_profileFragment)
+                    }
+                } else {
+                    odpriSeznamAvtov()
+                }
+            })
+        }
+        builder.show()
     }
 
     //metoda, ki pretvori sliko v ikono za google maps
@@ -530,6 +546,8 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
                     == PackageManager.PERMISSION_GRANTED){
                     mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper())
                     mGoogleMap.isMyLocationEnabled = true
+                    scanner = BeaconScanner(context!!, this)
+                    scanner.start()
                 }
             }
             else{
@@ -539,11 +557,11 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
 
     }
 
-    private fun dodajanjeAvta() {
+    private fun dodajanjeAvta(list: ArrayList<String>, adapter: ArrayAdapter<String>) {
         val alertView = LayoutInflater.from(context).inflate(R.layout.add_car_dialog, getView() as ViewGroup, false)
         val car_dialog = MaterialAlertDialogBuilder(context).create()
-        car_dialog.setTitle("Dodajanje avta")
-        car_dialog.setMessage("Vpišite registrsko tablico avta, ki ga želite dodati")
+        car_dialog.setTitle("Urejanje registerske")
+        car_dialog.setMessage("Vpišite registrsko tablico vašega ")
         car_dialog.setView(alertView)
         car_dialog.setOnDismissListener {
             val parent = alertView.parent as ViewGroup
@@ -562,6 +580,9 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
                     .edit()
                     .putString("registerska", add_car_string)
                     .apply()
+                list.clear()
+                list.add(add_car_string)
+                adapter.notifyDataSetChanged()
                 car_dialog.dismiss()
             } else {
                 alertView.findViewById<TextInputEditText>(R.id.add_car_input).error = "Polje ne sme biti prazno"
@@ -587,10 +608,6 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
                 try
                 {
                     ParkTransaction.CreateParkTransaction(amount, parkirisce.walletAddress, racun, parkirisce.ParkHouseId, registerska, casParkiranja, parkirisce.naziv)
-                    val timerIntent = Intent(activity, Timer::class.java)
-                    timerIntent.putExtra("parkirisce", parkirisce.naziv)
-                    timerIntent.putExtra("countDownTime", casParkiranja)
-                    activity!!.startService(timerIntent)
                 }
                 catch (e:IOException) {
                     e.printStackTrace()
@@ -598,6 +615,10 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
             }
         }.start()
         Toast.makeText(context, "Plačilo je bilo uspešno izvedeno", Toast.LENGTH_SHORT).show()
+        val timerIntent = Intent(context, Timer::class.java)
+        timerIntent.putExtra("parkirisce", parkirisce.naziv)
+        timerIntent.putExtra("countDownTime", (casParkiranja*3600000 - 600000).toLong())
+        activity!!.startService(timerIntent)
     }
 
 
@@ -609,7 +630,6 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
 
     //-----------------------------------------
     private fun parkirajNajblizjeParkirisce(){
-        val sharedPreferences = activity!!.getPreferences(Context.MODE_PRIVATE)
         val najblizje = vrniNajblizjeParkirisce()
         val distance = oddaljenostParkirisca(najblizje)
         if(distance<PARKING_DISTANCE_KM){
@@ -622,8 +642,12 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
     }
 
     override fun onStart() {
-        scanner = BeaconScanner(context!!, this)
-        scanner.start()
+        if (ContextCompat.checkSelfPermission(context!!,
+                android.Manifest.permission.ACCESS_FINE_LOCATION)
+            == PackageManager.PERMISSION_GRANTED) {
+            scanner = BeaconScanner(context!!, this)
+            scanner.start()
+        }
         super.onStart()
     }
 
@@ -635,6 +659,9 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
     override fun onBeaconFound(data: String) {
         beaconCurrentlyDetected = true
         beaconData = data
+        val animation = AnimationUtils.loadAnimation(context, R.anim.beacon_found_animation)
+        findPark.startAnimation(animation)
+        animation.repeatCount = 6
         val n = Intent(context, MainActivity::class.java)
         n.putExtra("id",data)
         val contentIntent = PendingIntent.getActivity(context, 0, n, 0)
@@ -642,7 +669,7 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
         var mBuilder = NotificationCompat.Builder(context!!, "0")
             .setSmallIcon(R.drawable.ic_directions_car_black_24dp)
             .setContentTitle("Nahajate se na parkirišču")
-            .setContentText("Zaznali smo da se nahajate na parkirišču. Pritisnite na sporočilo, če želite parkirati.")
+            .setContentText("Zaznali smo da se nahajate na parkirišču")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(contentIntent)
             .setAutoCancel(true)
@@ -652,6 +679,7 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
     }
 
     override fun onBeaconLost(data: String) {
+        findPark.clearAnimation()
         beaconCurrentlyDetected = false
         Log.i("BEACON", "Lost")
         val ns = Context.NOTIFICATION_SERVICE

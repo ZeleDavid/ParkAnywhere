@@ -49,8 +49,10 @@
                 android:name="org.apache.http.legacy"
                 android:required="false"/>
 
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name=".Activities.MainActivity"
+                  android:launchMode="singleTop">
         </activity>
+        <service android:name=".Service.Timer"/>
     </application>
 
 </manifest>

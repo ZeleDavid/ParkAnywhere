@@ -1,5 +1,6 @@
 package com.example.parkmobile.Service
 
+import android.app.NotificationManager
 import android.app.Service
 import android.content.Intent
 import android.os.CountDownTimer
@@ -15,28 +16,26 @@ class Timer : Service(){
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onCreate() {
-        super.onCreate()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         timer.cancel()
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        val countDownTime = intent!!.getLongExtra("countDownTime", 3600000)
+        val countDownTime = intent!!.getLongExtra("countDownTime", 1800000)
+        val naziv = intent!!.getStringExtra("parkirisce")
         timer = object: CountDownTimer(countDownTime, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 Log.i("Timer", (millisUntilFinished/1000).toString())
             }
 
             override fun onFinish() {
-                val ime_sobe = intent!!.getStringExtra("ime_sobe")
+                Log.i("Timer", "Finish")
+
                 var mBuilder = NotificationCompat.Builder(this@Timer, "1")
                     .setSmallIcon(R.drawable.ic_directions_car_black_24dp)
-                    .setContentTitle("Iztek časa za parkiranje")
-                    .setContentText("Pritisnite na sporočilo, da podaljšate čas parkiranja.")
+                    .setContentTitle("Iztek parkiranja na parkirišču $naziv")
+                    .setContentText("Čez 10 minut vam poteče plačano parkiranje.")
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                     //.setContentIntent(contentIntent)
                     .setAutoCancel(true)
