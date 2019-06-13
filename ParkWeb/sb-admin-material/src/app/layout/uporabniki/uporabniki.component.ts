@@ -70,8 +70,6 @@ export class UporabnikiComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      console.log('The dialog was closed');
       this.dodaj(result)
         .subscribe( odg => this.naloziPodatke());
     });
@@ -93,7 +91,6 @@ export class UporabnikiComponent implements OnInit {
 
   izbrisi(obj: any) {
     if (confirm('Res želite izbrisati uporabnika z emailom: ' + obj.email + '?')) {
-      console.log(obj);
       this.brisiUsera(obj.uid).subscribe(odg => this.naloziPodatke());
     }
   }

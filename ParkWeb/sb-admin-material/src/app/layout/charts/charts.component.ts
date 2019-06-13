@@ -166,7 +166,7 @@ export class ChartsComponent implements OnInit {
         .get(localStorage.getItem('url') + '/parkchain/location/' + firebase.auth().currentUser.uid)
         .pipe(
           map(data => _.values(data)),
-          tap(parkirneHise => { console.log(parkirneHise); } )
+          tap(parkirneHise => { } )
         )
         .subscribe(parkirneHise => { parkHise = parkirneHise; const self = this; parkHise.forEach(function (value) {
           self.barChartLabels.push(value.naziv);

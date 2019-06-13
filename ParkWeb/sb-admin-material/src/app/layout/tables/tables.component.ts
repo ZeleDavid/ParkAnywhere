@@ -92,8 +92,6 @@ export class TablesComponent implements OnInit {
         result.stVsehMest = Number(result.stVsehMest); result.cenaNaUro = Number(result.cenaNaUro);
         this.dodaj(result)
           .subscribe( odg => this.naloziPodatke()); });
-      console.log('The dialog was closed');
-      console.log(result);
       // result = { uid: firebase.auth().currentUser.uid, naziv: '', naslov: '', stVsehMest: 400,
         // stZasedenihMest: 0, cenaNaUro: 4.5, lat: 46.559839, lng: 15.638941};
       // this.dodaj(result)
@@ -105,8 +103,6 @@ export class TablesComponent implements OnInit {
     return this.http.post<Object>(localStorage.getItem('url') + '/parkchain/locations', data, httpOptions)
       .pipe(
       );
-      console.log(data);
-      console.log(httpOptions);
   }
 
   brisiParkHiso (id: number, uid: number): Observable<{}> {
@@ -120,7 +116,6 @@ export class TablesComponent implements OnInit {
 
   izbrisi(obj: any) {
     if (confirm('Res želite izbrisati parkirno hišo: ' + obj.naziv + '?')) {
-      console.log(obj.ParkHouseId);
       this.brisiParkHiso(obj.ParkHouseId, obj.uid).subscribe( odg => this.naloziPodatke());
     }
   }

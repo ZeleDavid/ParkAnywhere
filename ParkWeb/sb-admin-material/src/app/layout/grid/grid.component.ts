@@ -26,7 +26,6 @@ export class GridComponent implements OnInit {
 
     getAll() {
       return this.http.get(localStorage.getItem('url') + '/parkchain/user/' + firebase.auth().currentUser.uid).subscribe(data => {
-        console.log(data);
         this.podatki = data;
         return data;
       });
@@ -37,8 +36,6 @@ export class GridComponent implements OnInit {
     }
 
   spremeniUrl(value: string) {
-    console.log(localStorage.getItem('url'));
     localStorage.setItem('url', value);
-    console.log(localStorage.getItem('url'));
   }
 }
