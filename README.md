@@ -16,42 +16,42 @@ Za uporabike pa smo izdelali mobilno aplikacijo, ki omogoča pregled parkirnih h
 
 <div class="row">
 <div>
-<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_8.png" alt="Prijava" title="Prijava" width="430px" height="200px" margin="20px" />
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_8.png" alt="Prijava" title="Prijava" width="400px" height="200px" margin="20px" />
  </div>
 <div>
-<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_1.png" alt="Dashboard" title="Dashboard" width="430px" height="200px"/>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_1.png" alt="Dashboard" title="Dashboard" width="400px" height="200px"/>
  </div>
  </div>
  <br>
 <div class="row">
 <div>
-<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_2.png" alt="Tabela" title="Tabela" width="430px" height="200px"/>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_2.png" alt="Tabela" title="Tabela" width="400px" height="200px"/>
  </div>
  <div>
-<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_3.png" alt="Dodaj" title="Dodaj" width="430px" height="200px"/>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_3.png" alt="Dodaj" title="Dodaj" width="400px" height="200px"/>
  </div>
  </div>
 
 ### MOBILNA APLIKACIJA
 
 <div>
-<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195453.jpg" alt="Pogled1" title="Pogled1" width="290" height="600"/>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195453.jpg" alt="Pogled1" title="Pogled1" width="250" height="500"/>
  </div>
  <div>
-<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195501.jpg" alt="Pogled2" title="Pogled2" width="290" height="600"/>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195501.jpg" alt="Pogled2" title="Pogled2" width="250" height="500"/>
  </div>
  <div>
-<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195611.jpg" alt="Pogled3" title="Pogled3" width="290" height="600"/>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195611.jpg" alt="Pogled3" title="Pogled3" width="250" height="500"/>
  </div>
  <br>
  <div>
-<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195513.jpg" alt="Pogled4" title="Pogled4" width="290" height="600"/>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195513.jpg" alt="Pogled4" title="Pogled4" width="250" height="500"/>
  </div>
   <div>
-<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195524.jpg" alt="Pogled5" title="Pogled5" width="290" height="600"/>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195524.jpg" alt="Pogled5" title="Pogled5" width="250" height="500"/>
  </div>
   <div>
-<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195923.jpg" alt="Pogled6" title="Pogled6" width="290" height="600"/>
+<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195923.jpg" alt="Pogled6" title="Pogled6" width="250" height="500"/>
  </div>
 
 <br><br>
