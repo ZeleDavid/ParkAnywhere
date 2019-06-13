@@ -637,7 +637,6 @@ class MainMapFragment : Fragment(), GoogleMap.OnInfoWindowClickListener, OnMapRe
         }
         else{
             Toast.makeText(context, "Niste v bližini parkirišča", Toast.LENGTH_SHORT).show()
-            //klic za qr kodo
         }
     }
 
