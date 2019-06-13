@@ -22,6 +22,7 @@ Za uporabike pa smo izdelali mobilno aplikacijo, ki omogoča pregled parkirnih h
 <img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_1.png" alt="Dashboard" title="Dashboard" width="430px" height="200px"/>
  </div>
  </div>
+ <br>
 <div class="row">
 <div>
 <img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_2.png" alt="Tabela" title="Tabela" width="430px" height="200px"/>
@@ -42,6 +43,7 @@ Za uporabike pa smo izdelali mobilno aplikacijo, ki omogoča pregled parkirnih h
  <div>
 <img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195611.jpg" alt="Pogled3" title="Pogled3" width="290" height="600"/>
  </div>
+ <br>
  <div>
 <img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195513.jpg" alt="Pogled4" title="Pogled4" width="290" height="600"/>
  </div>
