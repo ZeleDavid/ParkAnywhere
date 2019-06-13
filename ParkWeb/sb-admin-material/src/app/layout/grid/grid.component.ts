@@ -24,17 +24,18 @@ export class GridComponent implements OnInit {
 
     }
 
-  getAll() {
-    return this.http.get('http://45.77.58.205:8000/parkchain/user/' + firebase.auth().currentUser.uid).subscribe(data => {
-      console.log(data);
-      this.podatki = data;
-      return data;
-    });
-  }
+    getAll() {
+      return this.http.get(localStorage.getItem('url') + '/parkchain/user/' + firebase.auth().currentUser.uid).subscribe(data => {
+        this.podatki = data;
+        return data;
+      });
+    }
 
     ngOnInit() {
       this.getAll();
-      console.log(this.podatki);
     }
 
+  spremeniUrl(value: string) {
+    localStorage.setItem('url', value);
+  }
 }

@@ -56,7 +56,7 @@ export class TablesComponent implements OnInit {
     naloziPodatke() {
       let parkHise: ParkirnaHisa[] = new Array();
       this.http
-        .get('http://45.77.58.205:8000/parkchain/location/' + firebase.auth().currentUser.uid)
+        .get(localStorage.getItem('url') + '/parkchain/location/' + firebase.auth().currentUser.uid)
         .pipe(
           map(data => _.values(data)),
           tap(parkirneHise => {this.dataSource = new MatTableDataSource(parkirneHise); this.dataSource.paginator = this.paginator;
@@ -92,8 +92,6 @@ export class TablesComponent implements OnInit {
         result.stVsehMest = Number(result.stVsehMest); result.cenaNaUro = Number(result.cenaNaUro);
         this.dodaj(result)
           .subscribe( odg => this.naloziPodatke()); });
-      console.log('The dialog was closed');
-      console.log(result);
       // result = { uid: firebase.auth().currentUser.uid, naziv: '', naslov: '', stVsehMest: 400,
         // stZasedenihMest: 0, cenaNaUro: 4.5, lat: 46.559839, lng: 15.638941};
       // this.dodaj(result)
@@ -102,15 +100,13 @@ export class TablesComponent implements OnInit {
   }
 
   dodaj (data: Object): Observable<Object> {
-    return this.http.post<Object>('http://45.77.58.205:8000/parkchain/locations', data, httpOptions)
+    return this.http.post<Object>(localStorage.getItem('url') + '/parkchain/locations', data, httpOptions)
       .pipe(
       );
-      console.log(data);
-      console.log(httpOptions);
   }
 
   brisiParkHiso (id: number, uid: number): Observable<{}> {
-    const url = 'http://45.77.58.205:8000/parkchain/location/' + uid + '/' + id;
+    const url = localStorage.getItem('url') + '/parkchain/location/' + uid + '/' + id;
     return this.http.delete(url, httpOptions)
       .pipe(
       );
@@ -120,7 +116,6 @@ export class TablesComponent implements OnInit {
 
   izbrisi(obj: any) {
     if (confirm('Res želite izbrisati parkirno hišo: ' + obj.naziv + '?')) {
-      console.log(obj.ParkHouseId);
       this.brisiParkHiso(obj.ParkHouseId, obj.uid).subscribe( odg => this.naloziPodatke());
     }
   }

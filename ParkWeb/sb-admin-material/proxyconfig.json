@@ -1,5 +1,5 @@
 {
-  "/api/*": {
+  "/*": {
     "target": "http://45.77.58.205:8000",
     "secure": false,
     "logLevel": "debug"

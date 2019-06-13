@@ -1,4 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import {map, tap} from 'rxjs/operators';
+import * as firebase from 'firebase';
+import {HttpClient} from '@angular/common/http';
+import * as _ from 'lodash';
+
+interface ParkirnaHisa {
+  cenaNaUro: string;
+  ParkHouseId: string;
+  uid: string;
+  lat: string;
+  lng: string;
+  naslov: string;
+  naziv: string;
+  tip: string;
+  nacinPlacila: string;
+  stVsehMest: string;
+  stZasedenihMest: string;
+}
 
 @Component({
     selector: 'app-charts',
@@ -6,23 +24,24 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./charts.component.scss']
 })
 export class ChartsComponent implements OnInit {
+  public loaded = false;
     // bar chart
     public barChartOptions: any = {
         scaleShowVerticalLines: false,
         responsive: true
     };
-    public barChartLabels: string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+    public barChartLabels: string[] = [];
     public barChartType: string;
     public barChartLegend: boolean;
 
     public barChartData: any[] = [
-        { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-        { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
+        { data: [], label: 'Št. zasedenih' },
+        { data: [], label: 'Št. vseh mest' }
     ];
 
     // Doughnut
-    public doughnutChartLabels: string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
-    public doughnutChartData: number[] = [350, 450, 100];
+    public doughnutChartLabels: string[] = [];
+    public doughnutChartData: number[] = [];
     public doughnutChartType: string;
 
     // Radar
@@ -139,9 +158,30 @@ export class ChartsComponent implements OnInit {
          * assign it;
          */
     }
-    constructor() {}
+    constructor(private http: HttpClient) {}
+
+    naloziPodatke() {
+      let parkHise: ParkirnaHisa[] = new Array();
+      this.http
+        .get(localStorage.getItem('url') + '/parkchain/location/' + firebase.auth().currentUser.uid)
+        .pipe(
+          map(data => _.values(data)),
+          tap(parkirneHise => { } )
+        )
+        .subscribe(parkirneHise => { parkHise = parkirneHise; const self = this; parkHise.forEach(function (value) {
+          self.barChartLabels.push(value.naziv);
+          self.barChartData[0].data.push(value.stZasedenihMest);
+          self.barChartData[1].data.push(value.stVsehMest);
+          self.doughnutChartData.push(Number(value.stZasedenihMest) / Number(value.stVsehMest) * 100);
+          self.doughnutChartLabels.push(value.naziv);
+          self.loaded = true;
+          // self.barChartLabels.push(value.naziv);
+        }); } );
+    }
 
     ngOnInit() {
+        this.naloziPodatke();
+
         this.barChartType = 'bar';
         this.barChartLegend = true;
         this.doughnutChartType = 'doughnut';

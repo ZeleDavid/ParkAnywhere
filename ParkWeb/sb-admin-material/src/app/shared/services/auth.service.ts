@@ -31,7 +31,7 @@ export class AuthService {
 // Sign in with email/password
   SignIn(email, password) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then((result) => {localStorage.setItem('isLoggedin', 'true');
+      .then((result) => {localStorage.setItem('isLoggedin', 'true'); localStorage.setItem('url', 'http://45.77.58.205:8000');
         this.ngZone.run(() => {
           this.router.navigate(['/zemljevid']);
         });
