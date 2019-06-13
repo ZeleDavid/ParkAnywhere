@@ -14,7 +14,7 @@
             <div fxFlex  fxLayout="row" fxLayout.lt-md="column">
                 <div fxFlexFill>
                     <mat-form-field class="w-100">
-                        <input matInput #userPassword type="password" placeholder="Geslo">
+                        <input matInput #userPassword (keyup.enter)="authService.SignIn(userName.value, userPassword.value)" type="password" placeholder="Geslo">
                     </mat-form-field>
                 </div>
             </div>

@@ -56,7 +56,7 @@ export class TablesComponent implements OnInit {
     naloziPodatke() {
       let parkHise: ParkirnaHisa[] = new Array();
       this.http
-        .get('http://45.77.58.205:8000/parkchain/location/' + firebase.auth().currentUser.uid)
+        .get(localStorage.getItem('url') + '/parkchain/location/' + firebase.auth().currentUser.uid)
         .pipe(
           map(data => _.values(data)),
           tap(parkirneHise => {this.dataSource = new MatTableDataSource(parkirneHise); this.dataSource.paginator = this.paginator;
@@ -102,7 +102,7 @@ export class TablesComponent implements OnInit {
   }
 
   dodaj (data: Object): Observable<Object> {
-    return this.http.post<Object>('http://45.77.58.205:8000/parkchain/locations', data, httpOptions)
+    return this.http.post<Object>(localStorage.getItem('url') + '/parkchain/locations', data, httpOptions)
       .pipe(
       );
       console.log(data);
@@ -110,7 +110,7 @@ export class TablesComponent implements OnInit {
   }
 
   brisiParkHiso (id: number, uid: number): Observable<{}> {
-    const url = 'http://45.77.58.205:8000/parkchain/location/' + uid + '/' + id;
+    const url = localStorage.getItem('url') + '/parkchain/location/' + uid + '/' + id;
     return this.http.delete(url, httpOptions)
       .pipe(
       );

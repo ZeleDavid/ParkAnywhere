@@ -17,8 +17,13 @@
             <br /><br />
             <b>Registriran:</b> {{podatki?.metadata.creationTime}}
             <br/><br/>
+            <h1>Uporabniške nastavitve</h1>
             <button mat-raised-button color="primary" >Spremeni geslo</button> &nbsp;
             <button mat-raised-button color="primary">Uredi denarnico</button>
+            <br /><br />
+            <mat-form-field>
+              <input matInput placeholder="Url REST strežnika" value="http://45.77.58.205:8000" #url (keyup.enter)="spremeniUrl(url.value)">
+            </mat-form-field>
           </div>
           <div [fxFlex]="40">
            <!-- <button mat-raised-button color="primary">Spremeni geslo</button>

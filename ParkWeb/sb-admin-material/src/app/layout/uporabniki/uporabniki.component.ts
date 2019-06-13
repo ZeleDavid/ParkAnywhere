@@ -45,7 +45,7 @@ export class UporabnikiComponent implements OnInit {
     naloziPodatke() {
       let userji: User[] = new Array();
       this.http
-        .get('http://45.77.58.205:8000/parkchain/users')
+        .get(localStorage.getItem('url') + '/parkchain/users')
         .pipe(
           map(data => _.values(data)),
           tap(users => {this.dataSource = new MatTableDataSource(users[0]); this.dataSource.paginator = this.paginator;
@@ -79,13 +79,13 @@ export class UporabnikiComponent implements OnInit {
 
   dodaj (data: Object): Observable<Object> {
     this.naloziPodatke();
-    return this.http.post<Object>('http://45.77.58.205:8000/parkchain/user', data, httpOptions)
+    return this.http.post<Object>(localStorage.getItem('url') + '/parkchain/user', data, httpOptions)
       .pipe(
       );
   }
 
   brisiUsera (uid: number): Observable<{}> {
-    const url = 'http://45.77.58.205:8000/parkchain/user/' + uid;
+    const url = localStorage.getItem('url') + '/parkchain/user/' + uid;
     return this.http.delete(url, httpOptions)
       .pipe(
       );
