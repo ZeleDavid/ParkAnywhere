@@ -34,20 +34,20 @@ Za uporabike pa smo izdelali mobilno aplikacijo, ki omogoča pregled parkirnih h
 
 ### MOBILNA APLIKACIJA
 
-<div>
+<div style="float:left">
 <img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195453.jpg" alt="Pogled1" title="Pogled1" width="250" height="500"/>
  </div>
- <div>
+ <div style="float:left">
 <img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195501.jpg" alt="Pogled2" title="Pogled2" width="250" height="500"/>
  </div>
- <div>
+ <div style="float:left">
 <img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195611.jpg" alt="Pogled3" title="Pogled3" width="250" height="500"/>
  </div>
  <br>
- <div>
+ <div style="float:left">
 <img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195513.jpg" alt="Pogled4" title="Pogled4" width="250" height="500"/>
  </div>
-  <div>
+  <div style="float:left">
 <img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195524.jpg" alt="Pogled5" title="Pogled5" width="250" height="500"/>
  </div>
   <div>
