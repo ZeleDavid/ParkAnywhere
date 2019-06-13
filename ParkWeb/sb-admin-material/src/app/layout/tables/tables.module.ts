@@ -9,7 +9,7 @@ import { TablesRoutingModule } from './tables-routing.module';
 import { TablesComponent } from './tables.component';
 import {DodajComponent} from '../dodaj/dodaj.component';
 import {FormsModule} from '@angular/forms';
-import {FlexModule} from '@angular/flex-layout';
+// import {FlexModule} from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -24,7 +24,7 @@ import {FlexModule} from '@angular/flex-layout';
     MatDialogModule,
     FormsModule,
     MatSelectModule,
-    FlexModule
+    // FlexModule
   ],
     declarations: [TablesComponent,
       DodajComponent],
