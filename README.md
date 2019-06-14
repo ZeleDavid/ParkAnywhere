@@ -2,7 +2,7 @@
 
 <h1 align="center">ParkAnywhere</h1>
 
-ParkAnywhere je rešitev, ki uporabnikom omogoča da najdejo parkirno mesto in plačajo parkirnino kar z mobilno aplikacijo, to pa podpira blockchain platforma ARK. Spletna aplikcaija pa omogoča mestni upravi in lastnikom parkirišč da le-ta upravljajo. Podpiramo celotno izkušnjo parkiranja za uporabnike in tudi upravljalce parkirišč. Ker uporabljamo platformo ARK, s pomočjo katere smo ustvarili svojo kripto valuto, se vsa plačila zgodijo elektronsko. S tem nudimo uporabnikom čim večjo fleksibilnost in moderniziramo izkušnjo parkiranja.
+ParkAnywhere je rešitev, ki uporabnikom omogoča da najdejo parkirno mesto in plačajo parkirnino kar z mobilno aplikacijo, to pa podpira blockchain platforma ARK. Spletna aplikacija pa omogoča mestni upravi in lastnikom parkirišč da le-ta upravljajo.
 
 <p align="center"><img src="https://www.cryptoninjas.net/wp-content/uploads/arkio-ARK-crypto-ninjas.png" height="200px" width="400px"/></p>
 ARK zagotavlja uporabnikom, razvijalcem in startupom inovativne blockchain tehnologije. Naš cilj je ustvariti celoten ekosistem povezanih verig in navidezno pajkova mreža neskončnih primerov, zaradi katerih je ARK zelo prilagodljiv, prilagodljiv in prilagodljiv. ARK je varna platforma, namenjena množičnemu sprejemanju in bo zagotavljala storitve, ki jih potrošniki želijo in potrebujejo razvijalcem.
@@ -16,13 +16,15 @@ Za uporabike pa smo izdelali mobilno aplikacijo, ki omogoča pregled parkirnih h
 
 ### SPLETNA APLIKACIJA
 
+Spletna aplikacija je namenjena administrativnim primerom uporabe. V njej je glavni administrator občina, ki ima zmožnost nadzora vseh podatkov ter skrbi za profile uporabnikov strani - lastnikov parkirišč in parkirniš hiš. Ti lahko svoja parkirišča dodajajo / odstranjujejo iz aplikacije, nadzorujejo zasedenost preko statistike, ali preko vpogleda v transakcije preverijo kako dolgo (po kakšni ceni) so ljudje (z identifikatorjem - registrsko številko) parkirali v njihovih parkiriščih.
+
 <img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_8.png" alt="Prijava" title="Prijava" width="400px" height="200px" margin="20px" />|<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_1.png" alt="Dashboard" title="Dashboard" width="400px" height="200px"/>|
 :---: |:---: |
 <img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_2.png" alt="Tabela" title="Tabela" width="400px" height="200px"/>|<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_3.png" alt="Dodaj" title="Dodaj" width="400px" height="200px"/> |
 
 ### MOBILNA APLIKACIJA
 
-Mobilna aplikacija podpira celotno izkušnjo parkiranja. Uporabniku prikaže vsa prosta parkirišča, ki so razvrščena po oddaljenosti, ga vodi do njih in mu z uporabo GPS lokacije in BLE beaconov omogoča samodejno zaznavanje parkirišča in s tem lažje plačevanje. Ko si uporabnik prvič ustvari denarnico dobi 100 ParkCoinov s katerimi plačuje parkirnino. Aplikacija uporabniku prav tako pošlje obvestilo, ko zazna da je na parkirišču in ko je le še 10 minut do izteka plačane parkirnine.
+Mobilna aplikacija podpira celotno izkušnjo parkiranja. Uporabniku prikaže vsa prosta parkirišča, ki so razvrščena po oddaljenosti, ga vodi do njih in mu z uporabo GPS lokacije in BLE beaconov omogoča samodejno zaznavanje parkirišča in s tem lažje plačevanje. Ko si uporabnik prvič ustvari denarnico dobi 100 ParkCoinov s katerimi plačuje parkirnino.
 
 <img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195453.jpg" alt="Pogled1" title="Pogled1" width="250" height="500"/>|<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195501.jpg" alt="Pogled2" title="Pogled2" width="250" height="500"/>|<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195611.jpg" alt="Pogled3" title="Pogled3" width="250" height="500"/>|
 :---: |:---: | :---: |
@@ -31,7 +33,7 @@ Mobilna aplikacija podpira celotno izkušnjo parkiranja. Uporabniku prikaže vsa
 <br><br>
 ## ARHITEKTURA
 
-Mobilna aplikacija je namenjena uporabnikom, ki bodo le parkirali, spletna pa je namenjena lastnikom parkirišč in mestni upravi.Ti dve aplikaciji pa povezuje naše blockchain zaledje, ki sprejme transakcije od uporabnikov in omogoči upravljalcem parkirišč da te podatke vidijo. Na spodnji sliki pa je prikazana arhitektura našega ParkChaina.
+Mobilna aplikacija je namenjena uporabnikom, ki bodo le parkirali, spletna pa je namenjena lastnikom parkirišč in mestni upravi. Ti dve aplikaciji pa povezuje naše blockchain zaledje, ki sprejme transakcije od uporabnikov in omogoči upravljalcem parkirišč da te podatke vidijo. Na spodnji sliki pa je prikazana arhitektura našega ParkChaina.
 <p align="center"><img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/arhitektura.png" alt="Arhitektura" title="Arhitektura" width="700px" height="500px"/></p>
 
 ## TEHNOLOŠKI SKLAD
