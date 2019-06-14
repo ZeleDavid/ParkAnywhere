@@ -7,6 +7,8 @@ ARK zagotavlja uporabnikom, razvijalcem in startupom inovativne blockchain tehno
 
 <hr>
 
+## FUNKCIONALNOSTI
+
 Naša rešitev je sestavljena iz spletne aplikacije namenjene občini in lastnikom parkirnih hiš, ki lahko z njimi upravljajo, jih dodajajo, brišejo itd.. Omogočen je pregled vseh parkirnih hiš in statistike parkiranja. <br>
 Za uporabike pa smo izdelali mobilno aplikacijo, ki omogoča pregled parkirnih hiš, navigiranje do izbrane hiše, parkiranje vozila ter plačevanje s pomočjo <b>P</b>.
 
@@ -27,6 +29,24 @@ Za uporabike pa smo izdelali mobilno aplikacijo, ki omogoča pregled parkirnih h
 
 <p align="center"><img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/arhitektura.png" alt="Arhitektura" title="Arhitektura" width="700px" height="500px"/></p>
 
+## TEHNOLOŠKI SKLAD
+
+#### MOBILNA APLIKACIJA
+- Kotlin
+- Java
+- Retrofit za parsanje JSON
+
+#### SPLETNA APLIKACIJA
+- Angular
+- TypeScript
+- HTML
+- CSS
+- JavaScript
+
+#### PARKCHAIN
+- TypeScript
+- Postgress
+
 ## VZPOSTAVITEV
 
 Če želite vzpostaviti spletno in mobilno aplikacijo, najdete podrobnejša navodila na spodnjem linku: <br>
@@ -39,3 +59,4 @@ Za uporabike pa smo izdelali mobilno aplikacijo, ki omogoča pregled parkirnih h
 [<img alt="EvaSmolak" src="https://avatars0.githubusercontent.com/u/33725038?s=400&v=4" width="117">](https://github.com/EvaSmolak) |[<img alt="CetinaLuka" src="https://avatars3.githubusercontent.com/u/33715779?s=400&u=4752d8027850c8f376c54dd977df726c1d24c58a&v=4" width="117">](https://github.com/CetinaLuka) |[<img alt="KovacZan" src="https://avatars1.githubusercontent.com/u/39158639?s=400&v=4" width="117">](https://github.com/KovacZan) |[<img alt="ZeleDavid" src="https://avatars3.githubusercontent.com/u/33752926?s=400&v=4" width="117">](https://github.com/ZeleDavid) |
 :---: |:---: |:---: |:---: |
 [EvaSmolak](https://github.com/EvaSmolak) |[CetinaLuka](https://github.com/CetinaLuka) |[KovacZan](https://github.com/KovacZan) |[ZeleDavid](https://github.com/ZeleDavid) |
+| <p> Spletna aplikacija </p> | <p> Mobilna aplikacija </p> | <p> ParkChain </p> | <p> Spletna aplikacija </p> |
