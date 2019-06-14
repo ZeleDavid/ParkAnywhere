@@ -1,8 +1,12 @@
 <p align="center"><img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/logo/pa.png" alt="ParkAnywhere" title="ParkAnywhere" width="600px" height="120px"/></p>
 
-ParkAnywhere je rešitev, ki uporabnikom omogoča da najdejo parkirno mesto in plačajo parkirnino kar z mobilno aplikacijo, to pa podpira blockchain platforma ARK.
+<h1 align="center">ParkAnywhere</h1>
+
+ParkAnywhere je rešitev, ki uporabnikom omogoča da najdejo parkirno mesto in plačajo parkirnino kar z mobilno aplikacijo, to pa podpira blockchain platforma ARK. Spletna aplikcaija pa omogoča mestni upravi in lastnikom parkirišč da le-ta upravljajo.
 
 ### ARK
+
+<p align="center"><img src="https://www.cryptoninjas.net/wp-content/uploads/arkio-ARK-crypto-ninjas.png" height="200px" width="400px"/></p>
 ARK zagotavlja uporabnikom, razvijalcem in startupom inovativne blockchain tehnologije. Naš cilj je ustvariti celoten ekosistem povezanih verig in navidezno pajkova mreža neskončnih primerov, zaradi katerih je ARK zelo prilagodljiv, prilagodljiv in prilagodljiv. ARK je varna platforma, namenjena množičnemu sprejemanju in bo zagotavljala storitve, ki jih potrošniki želijo in potrebujejo razvijalcem.
 
 <hr>
