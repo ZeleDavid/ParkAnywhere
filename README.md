@@ -2,7 +2,7 @@
 
 <h1 align="center">ParkAnywhere</h1>
 
-ParkAnywhere je rešitev, ki uporabnikom omogoča da najdejo parkirno mesto in plačajo parkirnino kar z mobilno aplikacijo, to pa podpira blockchain platforma ARK. Spletna aplikcaija pa omogoča mestni upravi in lastnikom parkirišč da le-ta upravljajo.
+ParkAnywhere je rešitev, ki uporabnikom omogoča da najdejo parkirno mesto in plačajo parkirnino kar z mobilno aplikacijo, to pa podpira blockchain platforma ARK. Spletna aplikcaija pa omogoča mestni upravi in lastnikom parkirišč da le-ta upravljajo. Podpiramo celotno izkušnjo parkiranja za uporabnike in tudi upravljalce parkirišč. Ker uporabljamo platformo ARK, s pomočjo katere smo ustvarili svojo kripto valuto, se vsa plačila zgodijo elektronsko. S tem nudimo uporabnikom čim večjo fleksibilnost in moderniziramo izkušnjo parkiranja.
 
 <p align="center"><img src="https://www.cryptoninjas.net/wp-content/uploads/arkio-ARK-crypto-ninjas.png" height="200px" width="400px"/></p>
 ARK zagotavlja uporabnikom, razvijalcem in startupom inovativne blockchain tehnologije. Naš cilj je ustvariti celoten ekosistem povezanih verig in navidezno pajkova mreža neskončnih primerov, zaradi katerih je ARK zelo prilagodljiv, prilagodljiv in prilagodljiv. ARK je varna platforma, namenjena množičnemu sprejemanju in bo zagotavljala storitve, ki jih potrošniki želijo in potrebujejo razvijalcem.
@@ -22,7 +22,7 @@ Za uporabike pa smo izdelali mobilno aplikacijo, ki omogoča pregled parkirnih h
 
 ### MOBILNA APLIKACIJA
 
-Mobilna aplikacija podpira celotno izkušnjo parkiranja. Uporabniku prikaže vsa prosta parkirišča, ki so razvrščena po oddaljenosti, ga vodi do njih in mu z uporabo GPS lokacije in BLE beaconov omogoča samodejno zaznavanje parkirišča in s tem lažje plačevanje. Ko si uporabnik prvič ustvari denarnico dobi 100 ParkCoinov s katerimi plačuje parkirnino.
+Mobilna aplikacija podpira celotno izkušnjo parkiranja. Uporabniku prikaže vsa prosta parkirišča, ki so razvrščena po oddaljenosti, ga vodi do njih in mu z uporabo GPS lokacije in BLE beaconov omogoča samodejno zaznavanje parkirišča in s tem lažje plačevanje. Ko si uporabnik prvič ustvari denarnico dobi 100 ParkCoinov s katerimi plačuje parkirnino. Aplikacija uporabniku prav tako pošlje obvestilo, ko zazna da je na parkirišču in ko je le še 10 minut do izteka plačane parkirnine.
 
 <img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195453.jpg" alt="Pogled1" title="Pogled1" width="250" height="500"/>|<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195501.jpg" alt="Pogled2" title="Pogled2" width="250" height="500"/>|<img src="https://raw.githubusercontent.com/ZeleDavid/ParkAnywhere/master/Documentation/screenshoti/Screenshot_20190612-195611.jpg" alt="Pogled3" title="Pogled3" width="250" height="500"/>|
 :---: |:---: | :---: |
