@@ -39,6 +39,9 @@ android {
         exclude 'lib/x86_64/freebsd/libscrypt.so'
         exclude 'lib/x86_64/linux/libscrypt.so'
     }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
